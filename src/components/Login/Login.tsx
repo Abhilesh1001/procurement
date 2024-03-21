@@ -1,5 +1,8 @@
+
 import PrBurron from '@/components/button/PrBurron'
 import Button from '../button'
+import ButtonLoading from '../button/ButtonLoading';
+
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation';
@@ -18,9 +21,9 @@ const Login = () => {
   return (
     <div className='container flex justify-center'>
     <div className='mt-10  border-gray-500'>
-        <div className='text-bold'>Login Page</div>
-        {signup !=='' && <Button />}
-        <PrBurron onClick={handleSignup} label={'Signup Form'}  />
+     
+        <Button />
+        <button className="btn btn-warning mb-60 block" onClick={handleSignup} type='button'>Signup</button>
     </div>
 
 

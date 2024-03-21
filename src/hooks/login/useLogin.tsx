@@ -8,12 +8,13 @@ import { getUser, getAuthToken, clearAuthToken, clearUser, getUserId } from '@/r
 import { StateProps } from '@/type/type'
 import { getMainheader } from '@/redux/slice'
 import { soundClick, soundSsuccess, soundError } from "@/sound/sound"
-import { cookies } from 'next/headers'
+import { useRouter } from "next/navigation"
 
 export const useLogin = (data: loginred) => {
     const { baseurl, authToken } = useSelector((state: StateProps) => state.counter)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')  
+    const route = useRouter()
     const dispatch = useDispatch()
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         soundClick?.play()
@@ -35,6 +36,7 @@ export const useLogin = (data: loginred) => {
             dispatch(getMainheader('Index Page'))
             setLoading(false)
             soundSsuccess?.play()
+            route.push('/')
         } catch (error) {
             console.log(error)
             setError('Email or Password Wrong')
@@ -82,6 +84,7 @@ export const useLogin = (data: loginred) => {
         document.cookie = 'tokenAcess=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
         dispatch(clearAuthToken(''))
         dispatch(clearUser(""))
+        route.push('/login')
     }
 
 

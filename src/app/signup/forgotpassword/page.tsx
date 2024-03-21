@@ -47,14 +47,20 @@ const Page = () => {
         <div className='w-full container flex justify-center'>
 
           <form onSubmit={formik.handleSubmit} className='mt-6'>
-            <div className='h-6'>
+            
             {mutation.isPending && <Loading />}
-            {mutation.isSuccess && <div>{mutation.data.data.msg}</div>}
-          {mutation?.error?.response?.data?.errors?.non_field_errors[0]}
-            </div>
-           
-           <TextInputText label={'Enter Email'} type={'email'} name="email" value={formik.values.email} onChange={formik.handleChange} />
-           <PrBurron css={'mt-2'} label={'Submit'}  buttomType={'submit'} />
+            {mutation.isSuccess && <div className='p-2 rounded capitalize dark:bg-green-800 bg-green-400'>{mutation.data.data.msg}</div>}
+          {mutation.error && <div className='p-2 capitalize rounded dark:bg-red-900 bg-red-400' >{mutation?.error?.response?.data?.errors?.non_field_errors[0]}</div>}
+     
+            <label htmlFor="name" className='block'>Enter Email</label>
+                {<div className='dark:text-gray-50'>{formik.errors.email}</div>}
+                <input type="email" required name='email' value={formik.values.email} onChange={formik.handleChange} placeholder="name" className="input input-bordered w-80 my-2" />
+         
+        
+           <button className="btn btn-primary ml-2 mb-2 block" type='submit'>Submit</button>
+
+
+
           </form>
         </div>
     </div>

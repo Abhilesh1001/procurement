@@ -50,10 +50,9 @@ const Navbar = () => {
 
     }
     const handleLogin = () => {
-
         dispatch(getMainheader('Login Page'))
         soundClick?.play()
-        router.push('/')
+        router.push('/login')
     }
 
     const handleInputCahnge = () => {
@@ -110,23 +109,13 @@ const Navbar = () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
     return (
-        <nav className="lg:px-16 z-10 dark:bg-black bg-sky-500 shadow-md flex flex-wrap items-center justify-center lg:py-0 fixed  top-0 w-full">
+        <nav className="lg:px-16 z-10 dark:bg-gray-900 bg-sky-500 shadow-md flex flex-wrap items-center justify-center lg:py-0 fixed  top-0 w-full h-14">
             <div className="flex-1 flex justify-between items-center">
                 <div className='relative'>
                 <IoMdMenu className='cursor-pointer mr-4 text-2xl dark:text-gray-50 ml-2' onClick={handleClickMenu} />
                   {hiddenmenu !=='hidden' &&  <div className='fixed rounded top-14 overflow-auto  z-10 text-gray-50 bg-gray-600 h-[80%] text-nowrap w-[535px]'>
-                    <div className='pl-4 flex flex-col gap-4'>
+                    <div className='pl-4 flex flex-col gap-4 h-full  dark:bg-gray-900 bg-sky-500 '>
                          <ProcumentMenu />
                     </div>
                        
@@ -159,45 +148,7 @@ const Navbar = () => {
             <div className="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
                 <nav>
                     <ul className="text-xl text-center items-center gap-x-5 md:gap-x-4 lg:text-lg lg:flex  lg:pt-0">
-                        {/* <li className="py-2 lg:py-0 ">
-                                <a className=" dark:text-gray-50 text-sm text-gray-950" href="#">Search</a>
-                            </li> */}
-                        <li className="py-2 lg:py-0 ">
-                            <Link className="text-gray-950 text-sm dark:text-gray-50 " href={'/material'}>Materia Create
-                            </Link>
-                        </li>
-                        <li className="py-2 lg:py-0 ">
-                            <Link
-                                className="text-gray-950 text-sm dark:text-gray-50"
-                                href={'/purchase'}
-                            >
-                                PR
-                            </Link>
-                        </li>
-                        <li className="py-2 lg:py-0 ">
-                            <Link
-                                className="text-gray-950 text-sm dark:text-gray-50"
-                                href={'/purchase/purchaseorder'}
-                            >
-                                PO
-                            </Link>
-                        </li>
-                        <li className="py-2 lg:py-0 ">
-                            <Link
-                                className="text-gray-950 text-sm dark:text-gray-50"
-                                href={'/vendor'}
-                            >
-                                Vendor
-                            </Link>
-                        </li>
-                        <li className="py-2 lg:py-0 ">
-                            <Link
-                                className="text-gray-950 text-sm dark:text-gray-50"
-                                href={'/grn'}
-                            >
-                                GRN
-                            </Link>
-                        </li>
+                      
                         <li className="py-2 lg:py-0 ">
                             <a
                                 className="text-gray-950 text-sm dark:text-gray-50"
@@ -207,8 +158,8 @@ const Navbar = () => {
                             </a>
                         </li>
                         <li className="py-2 lg:py-0 ">
-                            {user && <PrBurron onClick={handleLogout} label={'Logout'} />}
-                            {!user && < PrBurron onClick={handleLogin} label={'Login'} />}
+                            {user &&   <button className="btn btn-error dark:bg-red-800 btn-sm ml-2 mr-5" onClick={handleLogout} type='button'>Logout</button>}
+                            {!user && <button className="btn btn-success btn-sm ml-2 mr-5" onClick={handleLogin} type='button'>Login</button>}
                         </li>
                     </ul>
                 </nav>

@@ -13,15 +13,14 @@ export type StateProps = {
 
 export default function Home() {
   const {user} = useSelector((state:StateProps)=>state.counter)
-  console.log('typeof type',typeof user)
+ 
   useEffect(()=>{
    
   },[user])
   
   return (
     <main className="min-h-screen dark:bg-gray-800 bg-sky-600 h-auto text-gray-50 lg:mt-6 mt-7">
-           {user === "" && <Login />}
-           {user && <Main /> }
+           <Main />
     </main>
   )
 }

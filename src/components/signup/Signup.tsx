@@ -1,24 +1,22 @@
 
 'use client'
-import PrBurron from '../button/PrBurron'
-import TextInputText from '../dummyinput/TextInputText'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import {useMutation} from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import axios from 'axios';
-import {useSelector} from 'react-redux'
-import {StateProps} from '@/type/type'
+import { useSelector } from 'react-redux'
+import { StateProps } from '@/type/type'
 import Loading from '../loading/Loading';
 
 const Signup = () => {
 
 
-    const {baseurl} = useSelector((state:StateProps)=>state.counter)
-    const mutation = useMutation<any,any,any,any>({
-        mutationFn: async (data)=>{
-            return await axios.post(`${baseurl}cus/authreg/`,data)
+    const { baseurl } = useSelector((state: StateProps) => state.counter)
+    const mutation = useMutation<any, any, any, any>({
+        mutationFn: async (data) => {
+            return await axios.post(`${baseurl}cus/authreg/`, data)
         },
-        onSuccess :()=>{
+        onSuccess: () => {
             formik.resetForm();
         }
     })
@@ -44,11 +42,12 @@ const Signup = () => {
         onSubmit: (values) => {
             console.log(values);
             const data = {
-                email : values.email,
-                name :values.name,
-                password :values.password,
-                tc : values.tc
+                email: values.email,
+                name: values.name,
+                password: values.password,
+                tc: values.tc
             }
+            // console.log(data)
             // Add your form submission logic here
             mutation.mutate(values)
         },
@@ -58,23 +57,30 @@ const Signup = () => {
     return (
         <div className='mt-10'>
             <form onSubmit={formik.handleSubmit}>
-                {mutation.isPending && <Loading />}
-                {mutation?.isSuccess && <div>{mutation.data.data.msg}</div>}
-                {mutation?.error?.response?.data?.errors?.email[0]}
-                <TextInputText label={'Email'} type={'email'} name="email" value={formik.values.email} onChange={formik.handleChange} />
+                
+                <div>{mutation.isPending && <Loading />}</div>
+                {mutation?.isSuccess && <div className='p-2 rounded capitalize dark:bg-green-800 bg-green-400'>{mutation.data.data.msg}</div>}
+                {mutation.error && <div className='p-2 capitalize rounded dark:bg-red-900 bg-red-400'>{mutation?.error?.response?.data?.errors?.email[0]}</div>}
+
+                <label htmlFor="name" className='block'>Name</label>
+                {<div className='dark:text-gray-50'>{formik.errors.name}</div>}
+                <input type="text" required name='name'  onChange={formik.handleChange} placeholder="name" className="input input-bordered w-80 my-2" />
                 {<div className='dark:text-gray-50'>{formik.errors.email}</div>}
-                <TextInputText label={'Name'} name="name" value={formik.values.name} onChange={formik.handleChange} />
-                {<div className='dark:text-gray-50'>{}</div>}
-                <TextInputText label={'Password'} type={'password'} name="password" value={formik.values.password} onChange={formik.handleChange} />
+                <label htmlFor="email" className='block'>Email</label>
+                <input type="email" required name='email' placeholder="email" value={formik.values.email} onChange={formik.handleChange} className="input input-bordered w-80 my-2" />
+                <label htmlFor="email" className='block'>Password</label>
                 {<div className='dark:text-gray-50'>{formik.errors.password}</div>}
-                <TextInputText label={'Confirm Password'} type={'password'} name="password2" value={formik.values.password2} onChange={formik.handleChange} />
-                {<div className='dark:text-gray-50'>{formik.errors.password2}</div>} 
-               <div className='flex items-center'> 
-               <input type="checkbox" className="rounded-md  p-2 items-center bg-sky-800 dark:checkbox checkbox checkbox-info  mb-3 mt-2"
-                checked={formik.values.tc} onChange={formik.handleChange} name="tc" />
-                <div className="form-label w-full mx-2 mt-2"><div className='dark:text-gray-50'>Do you Agree</div></div>
-               </div>
-                <PrBurron label={'Submit'} buttomType={'submit'} />
+                <input type="password" required name='password' value={formik.values.password} onChange={formik.handleChange} placeholder="password" className="input input-bordered w-80 my-2" />
+
+                <label htmlFor="email" className='block'>Confirm Password</label>
+                {<div className='dark:text-gray-50'>{formik.errors.password2}</div>}
+                <input type="password" required name='password2' value={formik.values.password2} onChange={formik.handleChange} placeholder="confirm password" className="input input-bordered w-80 my-2" />
+                <div>
+                <input type="checkbox" checked={formik.values.tc} onChange={formik.handleChange} name="tc" defaultChecked className="checkbox" />
+                <label htmlFor="checkbox" className='ml-2 mb-4'>Do you Agree</label>
+                </div>
+                <button className="btn btn-warning dark:bg-yellow-800 mb-60 block" type='submit'>Signup</button>
+                
             </form>
         </div>
     )

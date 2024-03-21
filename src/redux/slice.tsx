@@ -18,7 +18,7 @@ const initialState: CounterState = {
   // https://abhileshmaterial.pythonanywhere.com/
   // http://127.0.0.1:8000/
   // https://abhileshsharefund.pythonanywhere.com/
-  baseurl : 'https://abhileshmaterial.pythonanywhere.com/',
+  baseurl : 'http://127.0.0.1:8000/',
   logindata : {},
   authToken : null,
   user : "",
