@@ -18,7 +18,7 @@ const {data,irnview,irndata} = useSelector((state:irnsliiceState)=>state.irnSlic
     { data?.map((item, index) => {
             return <tr key={index}>
                 <th scope="row"> <DumyInput indum={index + 1}/></th>
-                <td>{irnview ?'' : <PrBurron onClick={()=>handleDelete(index)} label={'Delete'} />}</td>
+                <td>{irnview ?'' :<button className="btn btn-error btn-sm"  onClick={()=>handleDelete(index)}>Delete</button>}</td>
                 <td> <DumyInput indum={item.po_no} /></td>
                 <td> <DumyInput indum={item.grn_no} /></td>
                 <td ><DumyInput indum={item.billing.bill_no} /></td>
@@ -40,8 +40,6 @@ const {data,irnview,irndata} = useSelector((state:irnsliiceState)=>state.irnSlic
                 <td ><DumyInput indum={item.billing.delivery_note} /></td>
                 <td ><DumyInput indum={item.billing.transporter_name} /></td>
                 <td ><DumyInput indum={item.billing.way_bill} /></td>
-
-               
             </tr>
         })}
 

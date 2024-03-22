@@ -24,7 +24,7 @@ const SelectionHeader = () => {
     </div>
 
     <div className='overflow-auto' style={{ display: 'flex' }}>
-        <input type="text" className='form-control w-20 text-sm' onChange={handlePOGRNView} />
+        <input type="text" className='input input-bordered input-sm max-w-xs w-20 text-sm' onChange={handlePOGRNView} />
 
         {
             selectedValue === 'IRN' && <>
@@ -49,8 +49,8 @@ const SelectionHeader = () => {
         <div className='flex items-center ml-4 dark:text-slate-50'>Total Amount</div>
         <div className='flex items-center text-green-400 ml-4'>{mainData.TotalWithtax}</div>
         <label htmlFor="Bill Amount" className='ml-4  dark:text-slate-50 text-center mr-4'>Bill Amount</label>
-        <input type='number' className='form-control text-sm w-40'  onChange={(e)=>handleChange(Number(e.target.value))} />
-        <div className='w-full flex justify-center'>{mutation.isPending && <Loading />}iin</div>
+        <input type='number' className='input input-bordered input-sm max-w-xs text-sm w-40'  onChange={(e)=>handleChange(Number(e.target.value))} />
+        <div className='w-full flex justify-center'>{mutation.isPending && <Loading />}</div>
 
         {irndata.mir_no && <div className=' text-gray-50'>GRN : {irndata.mir_no}</div>}
 

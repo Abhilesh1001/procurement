@@ -29,11 +29,11 @@ const Billing = () => {
         </thead>
         <tbody>
                 <tr>
-                    <td>{irnview ?<DumyInput indum={billData.bill_date}/>:<input type="date" value={billData.bill_date != null ? billData.bill_date : ''} onChange={(e) => handleChange(e.target.value, 'bill_date')} className="form-control  text-sm  w-full" placeholder='DD.MM.YYYY' />}</td>
+                    <td>{irnview ?<DumyInput indum={billData.bill_date}/>:<input type="date" value={billData.bill_date != null ? billData.bill_date : ''} onChange={(e) => handleChange(e.target.value, 'bill_date')} className="input input-bordered input-sm text-sm  w-full" placeholder='DD.MM.YYYY' />}</td>
 
-                    <td>{irnview ?<DumyInput indum={billData.bill_no}/>:<input type="text" value={billData.bill_no != null ? billData.bill_no : ''} onChange={(e) => handleChange(e.target.value, 'bill_no')} className="form-control  text-sm  w-full" />}</td>
+                    <td>{irnview ?<DumyInput indum={billData.bill_no}/>:<input type="text" value={billData.bill_no != null ? billData.bill_no : ''} onChange={(e) => handleChange(e.target.value, 'bill_no')} className="input input-bordered input-sm text-sm  w-full" />}</td>
 
-                    <td>{irnview ?<DumyInput indum={billData.delivery_note}/>:<input type="text" value={billData.delivery_note != null ? billData.delivery_note: ''} onChange={(e) => handleChange(e.target.value, 'delivery_note')} className="form-control  text-sm  w-full" />}</td>
+                    <td>{irnview ?<DumyInput indum={billData.delivery_note}/>:<input type="text" value={billData.delivery_note != null ? billData.delivery_note: ''} onChange={(e) => handleChange(e.target.value, 'delivery_note')} className="input input-bordered input-sm text-sm  w-full" />}</td>
                 </tr>
         </tbody>
     </table>

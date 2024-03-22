@@ -31,7 +31,7 @@ const SelectionHeader = () => {
             </div>
 
             <div className='overflow-auto' style={{ display: 'flex' }}>
-                <input type="number" className='form-control w-20 text-sm' onChange={handlePRPOView} />
+                <input type="number" className='input input-bordered input-sm max-w-xs w-20 text-sm' onChange={handlePRPOView} />
 
                 {
                     selectedValue === 'PO' && <>

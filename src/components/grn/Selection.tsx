@@ -22,7 +22,7 @@ const SelectionHeader = () => {
     </div>
 
     <div className='overflow-auto' style={{ display: 'flex' }}>
-        <input type="text" className='form-control w-20 text-sm' onChange={handlePOGRNView} />
+        <input type="text" className='input input-bordered input-sm max-w-xs w-20 text-sm' onChange={handlePOGRNView} />
 
         {
             selectedValue === 'GRN' && <>

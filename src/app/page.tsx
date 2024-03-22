@@ -19,7 +19,7 @@ export default function Home() {
   },[user])
   
   return (
-    <main className="min-h-screen dark:bg-gray-800 bg-sky-600 h-auto text-gray-50 lg:mt-6 mt-7">
+    <main className="min-h-screen h-auto lg:mt-6 mt-7">
            <Main />
     </main>
   )

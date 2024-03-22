@@ -12,8 +12,6 @@ interface propsType {
 
 const Aleart = (props: propsType) => {
 
- 
-  
     return (
         <div>
               <div className="flex items-center p-2 ml-10 mr-10 mb-4 w-[90%] bg-sky-500 h-8 text-sm  rounded-lg dark:bg-gray-700 dark:text-gray-50 text-gray-50 ">

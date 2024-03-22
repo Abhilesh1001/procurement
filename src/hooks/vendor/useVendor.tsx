@@ -11,7 +11,6 @@ export const useVendor =()=>{
 
     const { baseurl, authToken,userId } = useSelector((state: StateProps) => state.counter)
 
-
     const [vendor, setVendor] = useState<vendorType>({ name: '', phone_no: null, vendor_name: '', gst: '', email: '', address: '' })
     const [vid, setVid] = useState<string>('')
     const [change, setChange] = useState('change')
@@ -119,7 +118,6 @@ export const useVendor =()=>{
             
               soundSsuccess?.play()
             
-
             }              
     })
 
@@ -134,15 +132,8 @@ export const useVendor =()=>{
         }
     }
 
-    const [enabled, setEnabled] = useState(false);
-    const { data: newData, error: errors } = useQuery({ queryKey: ['listVendor',mutationUpdate.data], queryFn: fetchTodoList, enabled: enabled })
-    console.log(newData)
-
-
-
-
+    const { data: newData, error: errors } = useQuery({ queryKey: ['listVendor',mutationUpdate.data], queryFn: fetchTodoList, })
     
 
-
-    return {setEnabled,handleUPdate,change,mutation,handleSubmit,vendor,setVendor,newData,vid,setVid,handleChange,sfcreate,handleCreate,handleKeyDown,mutationUpdate}
+    return {handleUPdate,change,mutation,handleSubmit,vendor,setVendor,newData,vid,setVid,handleChange,sfcreate,handleCreate,handleKeyDown,mutationUpdate}
 }

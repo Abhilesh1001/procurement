@@ -56,7 +56,7 @@ const PurchasePR = () => {
                         <div className='h-2'></div>
                         <label className="form-label font-bold dark:text-gray-50">PR No</label>
                         <div className='' style={{ display: 'flex' }}>
-                            <input type="number" onChange={handlePRView} className='form-control h-8 text-sm w-60' />
+                            <input type="number" onChange={handlePRView} className='input input-bordered input-sm max-w-xs h-8 text-sm w-60' />
                             <PrBurron onClick={handleView} label={'View'} />
                             {view ? '' : <PrBurron onClick={handleForm} label={'Add Form'} />}
                             {view ? '' : change!=='change' ? <PrBurron onClick={handleUpdate} buttomType={'button'} label={'Update'} /> : <PrBurron buttomType={'submit'} label={'Save'} />}
@@ -80,20 +80,20 @@ const PurchasePR = () => {
                                             <th><DumyInput indum={index + 1} /> </th>
                                             <th><DumyInput indum={item.line_no} /> </th>
                                             <td>
-                                                {view ? <DumyInput indum={item.material_no} /> : <>{item.po_no !== null ? <DumyInput indum={item.material_no} /> : <input required value={item.material_no !== null ? item.material_no : ''} type="number" onKeyDown={(e) => handleKeyDown(e, index)} onChange={(e) => handleChange(e.target.value, 'material_no', index)} className="form-control   text-sm  w-24" />}</>}
+                                                {view ? <DumyInput indum={item.material_no} /> : <>{item.po_no !== null ? <DumyInput indum={item.material_no} /> : <input required value={item.material_no !== null ? item.material_no : ''} type="number" onKeyDown={(e) => handleKeyDown(e, index)} onChange={(e) => handleChange(e.target.value, 'material_no', index)} className="input input-bordered input-sm max-w-xs  w-24" />}</>}
                                             </td>
                                             <td><DumyInput indum={item.material_name} /></td>
                                             <td><DumyInput indum={item.material_unit} /></td>
 
                                             <td>
-                                                {view ? <DumyInput indum={item.material_price} /> : <>{item.po_no !== null ? <DumyInput indum={item.material_price} /> : <input required type="number" value={item.material_price !== null ? item.material_price : ''} onChange={(e) => handleChange(e.target.value, 'material_price', index)} className="form-control  text-sm  w-24" />}</>}
+                                                {view ? <DumyInput indum={item.material_price} /> : <>{item.po_no !== null ? <DumyInput indum={item.material_price} /> : <input required type="number" value={item.material_price !== null ? item.material_price : ''} onChange={(e) => handleChange(e.target.value, 'material_price', index)} className="input input-bordered input-sm max-w-xs w-24" />}</>}
                                             </td>
                                             <td>
-                                                {view ? <DumyInput indum={item.material_qty} /> : <>{item.po_no !== null ? <DumyInput indum={item.material_qty} /> : <input required type="number" value={item.material_qty !== null ? item.material_qty : ''} onChange={(e) => handleChange(e.target.value, 'material_qty', index)} className="form-control text-sm w-24" />}</>}
+                                                {view ? <DumyInput indum={item.material_qty} /> : <>{item.po_no !== null ? <DumyInput indum={item.material_qty} /> : <input required type="number" value={item.material_qty !== null ? item.material_qty : ''} onChange={(e) => handleChange(e.target.value, 'material_qty', index)} className="input input-bordered input-sm max-w-xs w-24" />}</>}
                                             </td>
                                             <td><DumyInput indum={item.total_price} /> </td>
                                             <td>
-                                                {view ? <DumyInput indum={item.material_text} /> : <>{item.po_no !== null ? <DumyInput indum={item.material_text} /> : <input type="text" value={item.material_text !== null ? item.material_text : ''} onChange={(e) => handleChange(e.target.value, 'material_text', index)} className="form-control  text-sm w-80" />}</>}
+                                                {view ? <DumyInput indum={item.material_text} /> : <>{item.po_no !== null ? <DumyInput indum={item.material_text} /> : <input type="text" value={item.material_text !== null ? item.material_text : ''} onChange={(e) => handleChange(e.target.value, 'material_text', index)} className="input input-bordered input-sm max-w-xs w-80" />}</>}
                                             </td>
 
                                             <td>{view ? '' : <>{item.po_no !== null ? '' : <MdDelete className='text-2xl w-full text-red-500 cursor-pointer' onClick={() => handleDelete(index)} />}</>} </td>

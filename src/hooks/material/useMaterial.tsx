@@ -161,7 +161,11 @@ export const useMaterial = () =>{
         }})},
         onSuccess:(data)=>{
             soundSsuccess?.play()
-            
+            setDate({
+                material_name : '',
+                material_group:'',
+                unit : '',
+            })
         },
         onError:(error)=>{
             console.log('error',error)
