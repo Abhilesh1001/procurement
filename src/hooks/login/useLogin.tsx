@@ -35,8 +35,8 @@ export const useLogin = (data: loginred) => {
             dispatch(getUserId(userToken.user_id))
             dispatch(getMainheader('Index Page'))
             setLoading(false)
-            soundSsuccess?.play()
             route.push('/')
+            soundSsuccess?.play()
         } catch (error) {
             console.log(error)
             setError('Email or Password Wrong')

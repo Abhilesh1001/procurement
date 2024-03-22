@@ -24,12 +24,9 @@ interface MyError {
 
 const Page = () => {
   const { baseurl, authToken } = useSelector((state: StateProps) => state.counter)
-  const [enableData, setEnable] = useState(false)
+  
 
-  const mainData = []
-
-
-
+  
   const fetchData = async () => {
     console.log('ok')
     const res = await axios.get(`${baseurl}grn/grncreated`, {
@@ -37,28 +34,15 @@ const Page = () => {
         Authorization: `Bearer ${authToken?.access}`
       }
     })
-    setEnable(false)
+   
     return res.data
   }
 
 
-  const { data, error, isError, isLoading } = useQuery({ queryKey: ['allGRn'], queryFn: fetchData, enabled: enableData })
+  const { data, error, isError, isLoading } = useQuery({ queryKey: ['allGRn'], queryFn: fetchData})
   console.log(data)
 
   
-
- 
-
-  useEffect(() => {
-    if (isError) {
-      setEnable(false);
-    }
-  }, [isError]);
-
-  const handleClick = async () => {
-    soundClick?.play()
-    setEnable(true)
-  }
   let serialNumber = 0;
 
   
@@ -83,22 +67,21 @@ const Page = () => {
 
 
   return (
-    <div className='dark:bg-gray-800 bg-sky-600 min-h-screen mt-6'>
+    <div className='bg-base-100 min-h-screen mt-6'>
       <div></div>
-      <div className=' container'>
-        <div className='h-3'></div>
-        <div className='flex text-gray-50 text-center'>
-          <div className='bg-gray-900 pt-1 pb-1 pl-2 pr-2 text-sm rounded hover:bg-slate-800 drop-shadow-sm border-white shadow-sm border-1'><CSVLink filename={'my-file.csv'}  data={csvData}>Export Excel</CSVLink></div>
-          <div><PrBurron label='All GRN' onClick={handleClick} /></div>
+      <div className='container pt-8'>
+       
+        <div className='flex  text-center'>
+          <div className=' pt-1 pb-1 pl-2 pr-2 text-sm rounded  drop-shadow-sm border-white shadow-sm border-1'><CSVLink filename={'grn-file.csv'}  data={csvData}>Export Excel</CSVLink></div>
+          
           <div>{isLoading && <Loading />}</div>
           <div>{(error as MyError)?.response?.data?.errors?.detail}</div>
         </div>
-
       </div>
 
-      <div className=' ml-2 mr-2 h-[85vh] overflow-auto text-nowrap my-2 relative overflow-y-auto shadow-md dark:bg-gray-900 mt-2 bg-sky-500 sm:rounded-lg'>
-        <table className="w-full text-sm text-left rtl:text-right dark:bg-slate-700 text-gray-500 bg-sky-500 dark:text-gray-400 ">
-          <thead className='sticky top-0 z-1 bg-sky-800 dark:bg-gray-950 text-gray-50 h-10'>
+      <div className=' ml-2 mr-2 h-[75vh] overflow-auto text-nowrap my-2 relative overflow-y-auto shadow-md  mt-2 bg-base-300 sm:rounded-lg'>
+        <table className="w-full text-sm text-left rtl:text-right ">
+          <thead className='sticky top-0 z-1 bg-base-200 h-10'>
             <tr >
               <th scope="col"></th>
               <th scope="col"><div className='ml-2 mr-2'>S.No</div></th>

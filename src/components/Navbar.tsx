@@ -173,6 +173,29 @@ const Navbar = () => {
                 <option className='hidden dark:block' value="aqua">Aqua</option>
                 <option className='dark:hidden' value="cupcake">Cupcake</option>
                 <option className='dark:hidden' value="retro">Retro</option>
+                <option className='dark:hidden' value="bumblebee">Bumblebee</option>
+                <option className='dark:hidden' value="Emerald">Emerald</option>
+                <option className='dark:hidden' value="corporate">Corporate</option>
+                <option className='hidden dark:block' value="synthwave">Synthwave</option>
+                <option className='dark:hidden' value="cyberpunk">Cyberpunk</option>
+                <option className='dark:hidden' value="Valentine">Valentine</option>
+                <option className='dark:hidden' value="lofi">Lofi</option>
+                <option className='dark:hidden' value="garden">Garden</option>
+                <option className='hidden dark:block' value="forest">Forest</option>
+                <option className='hidden dark:block' value="halloween">Halloween</option>
+                <option className='dark:hidden' value="pastel">Pastel</option>
+                <option className='dark:hidden' value="fantasy">Fantasy</option>
+                <option className='dark:hidden' value="wireframe">wireframe</option>
+                <option className='hidden dark:block' value="black">black</option>
+                <option className='hidden dark:block'value="luxury">luxury</option>
+                <option className='hidden dark:block' value="dracula">dracula</option>
+                <option className='dark:hidden' value="cmyk">cmyk</option>
+                <option className='dark:hidden' value="autumn">autumn</option>
+                <option className='dark:hidden' value="lemonade">lemonade</option>
+                <option className='hidden dark:block'    value="night">night</option>
+                <option className='dark:hidden' value="winter">winter</option>
+                <option className='hidden dark:block' value="dim">dim</option>
+                <option className='hidden dark:block' value="sunset">sunset</option>
             </select>
 
             <div className="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">

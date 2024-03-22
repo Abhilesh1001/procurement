@@ -14,7 +14,7 @@ import {format, parseISO} from 'date-fns'
 import { CSVLink} from "react-csv";
 
 const IrnDumps = () => {
-    const [enable, setEnable] = useState<boolean>(false)
+    
     const {baseurl,authToken} = useSelector((state:StateProps)=>state.counter)
 
     async function fetchData(){
@@ -24,17 +24,14 @@ const IrnDumps = () => {
             }
         })
 
-        setEnable(false)
+       
         return res.data
     }
 
-    const {data,error,isLoading,isError} =  useQuery({ queryKey: ['irndata'], queryFn: fetchData, enabled: enable,staleTime:1000*4 })
-    console.log('data',data,error)
+    const {data,error,isLoading,isError} =  useQuery({ queryKey: ['irndata'], queryFn: fetchData,staleTime:1000*4 })
+ 
 
-    const handleClick=()=>{
-        soundClick?.play()
-        setEnable(true)
-    }
+   
 
      let serialNumber=0
     const tableHead = ['S No','Line No','MRN No','Material No','Material Name','Material Unit','Price','Quantity','Total Price','Material Tax','Total Amount with Tax','Text','Created By','Date','Po No','PR No','GRN NO','Vendor Id','Vendor Name','Deliver Id','Delivery Name','Bill No','Bill Data','Delivery Note']
@@ -61,22 +58,20 @@ const IrnDumps = () => {
 
 
   return (
-    <div className='dark:bg-gray-800 bg-sky-600 min-h-screen mt-6'>
+    <div className='bg-base-100 min-h-screen mt-6'>
         
-         <div className=''>
-        <div className='h-3'></div>
-            <div className='flex text-gray-50 text-center'>
-            <div className='bg-gray-900 ml-10 pt-1 pb-1 pl-2 pr-2 text-sm rounded hover:bg-slate-800 drop-shadow-sm border-white shadow-sm border-1'><CSVLink filename={'my-file.csv'}  data={csvData}>Export Excel</CSVLink></div>
-            <div><PrBurron label='All IRN' onClick={handleClick}/></div>
+         <div className='pt-6'>
+        
+            <div className='flex  text-center'>
+            <div className='ml-10 pt-1 pb-1 pl-2 pr-2 text-sm rounded  drop-shadow-sm border-white shadow-sm border-1'><CSVLink filename={'IRN-file.csv'}  data={csvData}>Export Excel</CSVLink></div>
                 {isLoading && <Loading />}
-                
             {/* <div>{isLoading && <Loading />}</div> */}
            
             </div>
 
-            <div className=' ml-2 mr-2 h-[85vh] overflow-auto text-nowrap my-2 relative overflow-y-auto shadow-md dark:bg-gray-900 mt-2 bg-sky-500 sm:rounded-lg'>
-                        <table className="w-full text-sm text-left rtl:text-right dark:bg-slate-700 text-gray-500 bg-sky-500 dark:text-gray-400 ">
-                            <thead className='sticky top-0 z-1 bg-sky-800 dark:bg-gray-950 text-gray-50 h-10'>
+            <div className=' ml-2 mr-2 h-[75vh]  bg-base-300 overflow-auto text-nowrap my-2 relative overflow-y-auto shadow-md  mt-2  sm:rounded-lg'>
+                        <table className="w-full text-sm text-left rtl:text-right  ">
+                            <thead className='sticky top-0 z-1 bg-base-200 h-10'>
                                 <tr >
                                     <th scope="col"></th>
                                     {

@@ -11,6 +11,12 @@ import { usePrPreview } from '@/hooks/purchaserequest/usePrPreview'
 import { useSelector } from 'react-redux'
 import { prsliiceState } from '@/type/type'
 import PrBurron from '@/components/button/PrBurron'
+import ViewBotton from '@/components/button/ViewBotton'
+import AddFormButton from '@/components/button/AddFormButton'
+import ButtonChange from '@/components/button/ButtonChange'
+import UpdateBotton from '@/components/button/UpdateButton'
+import ButtonSave from '@/components/button/ButtonSave'
+import ButtonReset from '@/components/button/ButtonReset'
 import { format } from 'date-fns';
 import { MdDelete } from "react-icons/md";
 
@@ -56,13 +62,13 @@ const PurchasePR = () => {
                         <div className='h-2'></div>
                         <label className="form-label font-bold dark:text-gray-50">PR No</label>
                         <div className='' style={{ display: 'flex' }}>
-                            <input type="number" onChange={handlePRView} className='input input-bordered input-sm max-w-xs h-8 text-sm w-60' />
-                            <PrBurron onClick={handleView} label={'View'} />
-                            {view ? '' : <PrBurron onClick={handleForm} label={'Add Form'} />}
-                            {view ? '' : change!=='change' ? <PrBurron onClick={handleUpdate} buttomType={'button'} label={'Update'} /> : <PrBurron buttomType={'submit'} label={'Save'} />}
-                            <PrBurron onClick={handleChangePr} label={'Change'} />
+                            <input type="number" onChange={handlePRView} className='input input-bordered input-sm max-w-xs h-8 text-sm w-60 mr-2' />
+                            <ViewBotton onClick={handleView} label={'View'} />
+                            {view ? '' : <AddFormButton onClick={handleForm} label={'Add Form'} />}
+                            {view ? '' : change!=='change' ? <UpdateBotton onClick={handleUpdate} buttomType={'button'} label={'Update'} /> : <ButtonSave buttomType={'submit'} label={'Save'} />}
+                            <ButtonChange onClick={handleChangePr} label={'Change'} />
                             <PrBurron label={'Print'} />
-                            <PrBurron onClick={FormReset} label={'Reset'} />
+                            <ButtonReset onClick={FormReset} label={'Reset'} />
                             {mutation.isPending || mutationUpdate.isPending && <Loading />}
                             {data[0].pr_no !== null && <div className='flex justify-end w-full text-gray-50'>Purchase Request :<div className='text-green-400'>{data[0].pr_no}</div> </div>}
                         </div>
