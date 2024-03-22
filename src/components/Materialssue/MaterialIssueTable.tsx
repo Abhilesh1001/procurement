@@ -23,14 +23,13 @@ const MaterialIssueTable = (props:dataType) => {
            return  <tr key={index}>
                     <td><DumyInput indum={serialNo} /></td>
                     <td ><DumyInput indum={item.mi_line} /></td>
-                        <td >{props.viewdata !=='change'  ?<DumyInput indum={item.material_no} />: <input type='number' value={item.material_no!==null?item.material_no===0?'':item.material_no:''} className='form-control text-sm' onKeyDown={(e)=>handleKeyDown(e,index)} onChange={(e)=>handleChange(Number(e.target.value),'material_no',index)} />}</td>
+                        <td >{props.viewdata !=='change'  ?<DumyInput indum={item.material_no} />: <input type='number' value={item.material_no!==null?item.material_no===0?'':item.material_no:''} className='input input-bordered input-sm  text-sm w-28' onKeyDown={(e)=>handleKeyDown(e,index)} onChange={(e)=>handleChange(Number(e.target.value),'material_no',index)} />}</td>
 
                         <td ><DumyInput indum={item.material_name} /></td>
                         <td ><DumyInput indum={item.material_unit} /></td>
                         <td ><DumyInput indum={item.material_qty} /></td>
-                        <td >{props.viewdata !=='change' ?<DumyInput indum={item.material_issue} />:<input type='number' className='form-control text-sm' value={item.material_issue!==null?item.material_issue===0?'':item.material_issue:''}  onChange={(e)=>handleChange(Number(e.target.value),'material_issue',index)} />}</td>
-
-                        <td >{props.viewdata !=='change'?<DumyInput indum={item.material_remarks} />:<input type='text' className='form-control text-sm w-60' value={item.material_remarks!==null?item.material_remarks:''}  onChange={(e)=>handleChange(e.target.value,'material_remarks',index)} />}</td>
+                        <td >{props.viewdata !=='change' ?<DumyInput indum={item.material_issue} />:<input type='number' className='input input-bordered input-sm  text-sm' value={item.material_issue!==null?item.material_issue===0?'':item.material_issue:''}  onChange={(e)=>handleChange(Number(e.target.value),'material_issue',index)} />}</td>
+                        <td >{props.viewdata !=='change'?<DumyInput indum={item.material_remarks} />:<input type='text' className='input input-bordered input-sm text-sm w-full' value={item.material_remarks!==null?item.material_remarks:''}  onChange={(e)=>handleChange(e.target.value,'material_remarks',index)} />}</td>
 
                         <td>{props.viewdata !=='change' ?'':<PrBurron label={'Delete'} onClick={()=>handleDelete(index)} />}</td>
                 </tr>
@@ -39,8 +38,8 @@ const MaterialIssueTable = (props:dataType) => {
 
 
   return (
-    <div className=' ml-2 mr-2 h-[550px] overflow-auto text-nowrap my-2 relative overflow-y-auto shadow-md dark:bg-gray-900 mt-2 bg-sky-500 sm:rounded-lg'>
-            <table className="w-full text-sm text-left rtl:text-right dark:bg-slate-700 text-gray-500 bg-sky-500 dark:text-gray-400 " >
+    <div className=' ml-2 mr-2 h-[550px] overflow-auto text-nowrap my-2 bg-base-300 relative overflow-y-auto shadow-md sm:rounded-lg'>
+            <table className="w-full text-sm text-left rtl:text-right" >
 
                      <TableHead mainData ={materialIssue} />                    
                 <tbody>

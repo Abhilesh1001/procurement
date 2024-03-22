@@ -54,14 +54,14 @@ const SelectionHeader = () => {
                     <PoPrint ref={componentRef} />
                 </div>
                 <button className="btn btn-warning mx-2 btn-sm  text-gray-800 dark:bg-slate-800  bg-sky-300 dark:text-gray-50 h-8 text-sm" onClick={handlePrint} type='button'>Print</button>
-                <div className='flex items-center mr-4 text-slate-50'>Total Tax</div>
+                <div className='flex items-center mr-4'>Total Tax</div>
                 <div className='flex items-center  text-green-400'>{mainData.TotalTax}</div>
-                <div className='flex items-center ml-4 dark:text-slate-50'>Total Amount</div>
+                <div className='flex items-center ml-4'>Total Amount</div>
                 <div className='flex items-center text-green-400 ml-4'>{mainData.TotalWithtax}</div>
                 <div className='w-full flex justify-center'>{loadingNewPoCreation && <Loading />}</div>
                 {podata.po_no && <div className=' text-gray-50'>Purchase Order : {podata.po_no}</div>}
 
-            </div>
+            </div>  
         </div>
     )
 }

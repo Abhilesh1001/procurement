@@ -12,12 +12,12 @@ const Vendor = () => {
  
   const {handleClick,handleSubmit,mutation,hasTrueValue,handleViewClick,handleIssuechange,handleReset,handleMateriIssueView,view,handleUpdate,change,mutationUpdata} = useIsMaterial()
   return (
-    <div className='dark:bg-gray-800 bg-sky-600 h-auto text-gray-50  min-h-screen'>
+    <div className=' h-auto bg-base-100  min-h-screen'>
         <div className='container'>  
         <div className="row my-4">
             <div className="col-sm-10 mt-4">
                 <div>
-                  <input className='rounded p-1 dark:text-gray-950 text-gray-900 ml-2' value={miview===null || miview===0 ?'':miview}  type="number" onChange={handleMateriIssueView} />
+                  <input className='input input-bordered input-sm ml-2' value={miview===null || miview===0 ?'':miview}  type="number" onChange={handleMateriIssueView} />
 
                    <PrBurron onClick={handleViewClick}  label={'View'} />
 

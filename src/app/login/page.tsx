@@ -8,7 +8,7 @@ const Page = () => {
 
 
     return (
-        <div className='min-h-screen dark:bg-gray-800 bg-sky-600 h-auto text-gray-50 lg:mt-6 mt-7'>
+        <div className='min-h-screen bg-base-100 lg:mt-6 mt-7'>
             <Login />
         </div>
     )

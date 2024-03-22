@@ -5,7 +5,7 @@ import DumyInput from './DumyInput'
 const TableHead = (props:any) => {
     
   return (
-    <thead className='sticky top-0 z-1 bg-sky-800 dark:bg-gray-950 text-gray-50 h-10'>
+    <thead className='sticky top-0 z-1 bg-base-200 '>
     <tr>
                 {props?.mainData?.map((data:any) => (
                     <th key={data}><DumyInput indum={data} /></th>

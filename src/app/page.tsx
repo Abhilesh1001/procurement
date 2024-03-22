@@ -19,7 +19,7 @@ export default function Home() {
   },[user])
   
   return (
-    <main className="min-h-screen h-auto lg:mt-6 mt-7">
+    <main className="min-h-screen bg-base-100 h-auto lg:mt-6 mt-7">
            <Main />
     </main>
   )

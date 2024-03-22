@@ -15,10 +15,10 @@ const Billing = () => {
           dispatch(getBillData(newData))
   }
   return (
-    <div className='h-[100px] relative overflow-y-auto shadow-md dark:bg-gray-900 mt-4 mb-2 bg-sky-500 sm:rounded-lg'>
-    <table className='w-full text-sm text-left rtl:text-right dark:bg-slate-700 text-gray-500 bg-sky-500 dark:text-gray-400'>
+    <div className='h-[100px] relative overflow-y-auto bg-base-300 shadow-md mt-4 mb-2 sm:rounded-lg'>
+    <table className='w-full text-sm text-left rtl:text-right   '>
         <thead>
-            <tr className='sticky top-0 z-1 bg-sky-800 dark:bg-gray-950 text-gray-50 h-10'>
+            <tr className='sticky top-0 z-1  h-10 bg-base-200'>
                 <th><div className='ml-2'>Bill Date</div></th>
                 <th>Bill No</th>
                 <th>Delivery Note</th>

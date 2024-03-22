@@ -20,7 +20,7 @@ const ProcumentMenu = () => {
         setHiddenMenu('hidden')
     } 
   return (
-    <div className="">
+    <div className="bg-base-100">
             <div className='top-10 relative overflow-auto'>
             <div className='' >PO / PR / GRN / Material Stock Main page</div>
 

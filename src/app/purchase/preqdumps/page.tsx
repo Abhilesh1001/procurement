@@ -8,25 +8,27 @@ import DumyInput from '@/components/dummyinput/DumyInput'
 import {datatypePr,prmainData} from '@/type/type'
 import {format, parseISO} from 'date-fns'
 import { CSVLink } from 'react-csv'
+import { useQuery } from '@tanstack/react-query'
+
 
 
 const Page = () => {
     const { baseurl, authToken } = useSelector((state: StateProps) => state.counter)
     
-    const [data,setData] = useState<prmainData[]>([])
+   
     const fetchData = async  () =>{
         const res =await axios.get(`${baseurl}mat/createpurchase`,{
             headers:{
                 Authorization : `Bearer ${authToken?.access}`
             }})
-        setData(res.data)
+
+        return res.data
         
     }
 
-   const handleClick =async  () =>{
-        
-         fetchData()
-   }
+    const {data} = useQuery({queryKey:['prequest'],queryFn:fetchData})
+
+   
    let serialNumber = 0;
 
    const tableHead = ["S No",'Line No','PR No','Material No','Material Name','Material Unit','Price','Quantity','Total Price','Text','Created By','Date']
@@ -52,18 +54,17 @@ const Page = () => {
    }
 
   return (
-    <div className='dark:bg-gray-800 bg-sky-600 min-h-screen mt-6'>
+    <div className='bg-base-100 min-h-screen mt-6'>
         <div></div>
-        <div className=' container'>
+        <div className=' container pt-4'>
             <div className='h-3'></div>
             <div className='flex'>
             <div className='dark:bg-gray-900 ml-10  pt-1 pb-1 pl-2 pr-2 text-sm rounded hover:dark:bg-slate-800 drop-shadow-sm border-white shadow-sm border-1'><CSVLink filename={'PR-file.csv'}  data={csvData}>Export Excel</CSVLink></div>
-            <PrBurron label='All Purchase Order' onClick={handleClick}/>
            </div>
         </div>
-        <div className=' ml-2 mr-2 h-[550px] overflow-auto text-nowrap my-2 relative overflow-y-auto shadow-md dark:bg-gray-900 mt-2 bg-sky-500 sm:rounded-lg'>
-                        <table className="w-full text-sm text-left rtl:text-right dark:bg-slate-700 text-gray-500 bg-sky-500 dark:text-gray-400 ">
-                            <thead className='sticky top-0 z-1 bg-sky-800 dark:bg-gray-950 text-gray-50 h-10'>
+        <div className=' ml-2 mr-2 h-[550px] overflow-auto text-nowrap my-2 bg-base-300 relative overflow-y-auto shadow-md mt-2  sm:rounded-lg'>
+                        <table className="w-full text-sm text-left rtl:text-right ">
+                            <thead className='sticky top-0 z-1  h-10 bg-base-200'>
                                 <tr >
                                     <th scope="col"></th>
                                    {tableHead.map((item)=>{

@@ -11,10 +11,10 @@ const VendorDetails = () => {
     const {vendoradress} = useSelector((state:irnsliiceState)=>state.irnSlice)
     
     return (
-          <div className='h-[100px] relative overflow-y-auto shadow-md dark:bg-gray-900 mt-4 mb-2 bg-sky-500 sm:rounded-lg'>
-            <table className='w-full text-sm text-left rtl:text-right dark:bg-slate-700 text-gray-500 bg-sky-500 dark:text-gray-400'>
+          <div className='h-[100px] relative overflow-y-auto shadow-md bg-base-300 mt-4 mb-2  sm:rounded-lg'>
+            <table className='w-full text-sm text-left rtl:text-right'>
                 <thead>
-                    <tr className='sticky top-0 z-1 bg-sky-800 dark:bg-gray-950 text-gray-50 h-10'>
+                    <tr className='sticky top-0 z-1 bg-base-200 h-10'>
                         <th>Party Id</th>
                         <><th>Name</th>
                         <th>Phone No</th>

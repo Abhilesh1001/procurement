@@ -27,7 +27,7 @@ const InvoiceReceipt = () => {
   const {handleCloseAlert} = useIrn()
   console.log(upirnno,'inside page')
   return (
-    <div className=' dark:bg-gray-800 bg-sky-600 min-h-screen' >
+    <div className=' bg-base-100 min-h-screen' >
       <div className='container mt-4 overflow-auto text-nowrap'>
         <div className='h-6 p-4 flex flex-col'>
           {hiddenalert !== "hidden" && <div>
@@ -46,9 +46,9 @@ const InvoiceReceipt = () => {
 
         <SelectionHeader />
         <form >
-          <div className={`h-[500px] overflow-auto  relative overflow-y-auto shadow-md dark:bg-gray-900 mt-2 bg-sky-500 sm:rounded-lg`}>
-            <table className="w-full text-sm text-left rtl:text-right dark:bg-slate-700 text-gray-500 bg-sky-500 dark:text-gray-400">
-              <thead className='sticky top-0 z-1 bg-sky-800 dark:bg-slate-950 text-gray-50 h-10'>
+          <div className={`h-[500px] overflow-auto  relative overflow-y-auto shadow-md bg-base-300  mt-2 sm:rounded-lg`}>
+            <table className="w-full text-sm text-left rtl:text-right ">
+              <thead className='sticky top-0 z-1 bg-base-200  h-10'>
                 <tr>
                   <th scope="col" ><div className='ml-2 mr-2'>S.No</div></th>
                   <th scope="col" ><div className='ml-2 mr-2'>Delete</div></th>

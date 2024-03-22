@@ -24,7 +24,6 @@ const Button = () => {
       <form onSubmit={handleSubmit}>
         {loading && <Loading />}
         {error && error}
-
                 <label htmlFor="email" className='block'>Email</label>
                 <input type="email" value={data.email} required name='email'  onChange={(e) => dispatch({ type: "EMAIL", value: e.target.value })} placeholder="email" className="input input-bordered w-80 my-2" />
                 <label htmlFor="email" className='block'>Password</label>

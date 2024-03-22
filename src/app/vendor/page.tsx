@@ -9,7 +9,7 @@ const Vendor = () => {
     const { mutation, newData } = useVendor()
 
     return (
-        <div className='dark:bg-gray-800 bg-sky-600 h-auto text-gray-50  min-h-screen'>
+        <div className=' h-auto bg-base-100  min-h-screen'>
             <div className='container pt-3'>
                 <div className="my-4 ">
 
@@ -28,9 +28,9 @@ const Vendor = () => {
                     </dialog>
 
 
-                    <div className="relative text-nowrap overflow-y-auto shadow-md dark:bg-gray-900 mt-2 bg-sky-600 sm:rounded-lg  h-96">
-                        <table className="w-full text-sm text-left rtl:text-right dark:bg-slate-700 text-gray-500 bg-sky-500 dark:text-gray-400">
-                            <thead className='sticky top-0 z-1 bg-sky-800 dark:bg-slate-950 text-gray-50 h-10'>
+                    <div className="relative text-nowrap overflow-y-auto shadow-md mt-4  sm:rounded-lg bg-base-300  h-96">
+                        <table className="w-full text-sm text-left rtl:text-right ">
+                            <thead className='sticky top-0 z-1 bg-base-200  h-10'>
                                 <tr>
                                     <th scope="col" className='px-6 py-2'>Vendor Id</th>
                                     <th scope="col">Name</th>

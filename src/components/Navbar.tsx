@@ -166,11 +166,11 @@ const Navbar = () => {
                     <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
                 </svg>
             </label>
-            <input className="hidden"  onChange={handleInput} type="checkbox" id="menu-toggle" />
-            <select value={theme===null?'':theme} onChange={handleChange} name="theme">
+           
+            <select className='rounded p-1 mr-2 bg-red-400' value={theme===null?'':theme} onChange={handleChange} name="theme">
                 <option className='dark:hidden' value="light">Light</option>
-                <option className='hidden' value="dark">Dark</option>
-                <option className='hidden' value="aqua">Aqua</option>
+                <option className='hidden dark:block' value="dark">Dark</option>
+                <option className='hidden dark:block' value="aqua">Aqua</option>
                 <option className='dark:hidden' value="cupcake">Cupcake</option>
                 <option className='dark:hidden' value="retro">Retro</option>
             </select>

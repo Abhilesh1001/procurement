@@ -39,9 +39,9 @@ const DeliveryAdress = () => {
 
 
     return (
-        <div className='h-[100px] relative overflow-y-auto shadow-md dark:bg-gray-900 mt-4 mb-2 bg-sky-500 sm:rounded-lg'>
-        <table className='w-full text-sm text-left rtl:text-right dark:bg-slate-700 text-gray-500 bg-sky-500 dark:text-gray-400'>
-            <thead className='sticky top-0 z-1 bg-sky-800 dark:bg-gray-950 text-gray-50 h-10'>
+        <div className='h-[100px] relative overflow-y-auto bg-base-300 shadow-md  mt-4 mb-2 sm:rounded-lg'>
+        <table className='w-full text-sm text-left rtl:text-right '>
+            <thead className='sticky top-0 z-1  h-10 bg-base-200'>
                 <tr>
                     <th>Delivery Id</th>
                     {devAdress.name !== "" && <><th>Name</th>
@@ -50,7 +50,6 @@ const DeliveryAdress = () => {
                         <th>Delivery Adrress</th>
                         <th>GST No</th>
                         <th>Email</th></>}
-
                 </tr>
             </thead>
             <tbody>
