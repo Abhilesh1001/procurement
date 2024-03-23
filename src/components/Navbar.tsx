@@ -6,7 +6,6 @@ import { getMainheader } from '@/redux/slice'
 import './style.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { getAuthToken } from '@/redux/slice'
-import PrBurron from './button/PrBurron'
 import { useRouter } from 'next/navigation';
 import { soundClick, soundError, soundSsuccess } from '@/sound/sound'
 import { IoMdMenu } from "react-icons/io";
@@ -34,6 +33,8 @@ const Navbar = () => {
     const data = { email: '', password: '' }
     const { handleLogout } = useLogin(data)
     const { handleClickMenu, hiddenmenu } = useMenu()
+
+ 
     const [theme, setTheme] = useState<string | null>(() => {
         if (typeof window !== 'undefined') {
             // Check if running in the browser environment
@@ -138,7 +139,7 @@ const Navbar = () => {
                 <div className='relative'>
                     <IoMdMenu className='cursor-pointer mr-4 text-2xl  ml-2' onClick={handleClickMenu} />
                     {hiddenmenu !== 'hidden' && <div className='fixed rounded top-14 overflow-auto  z-10[80%] text-nowrap w-[535px]'>
-                        <div className='pl-4 flex flex-col gap-4 h-full  '>
+                        <div className='pl-4 flex flex-col gap-4 h-[600px] bg-base-100'>
                             <ProcumentMenu />
                         </div>
 
@@ -146,7 +147,7 @@ const Navbar = () => {
                 </div>
 
                 <Link href="/" className="flex text-lg font-semibold">
-                    <div className="relative" onClick={() => hanclickMainHead('Index Page')}>AbhiMaterials</div>
+                    <div className="relative" onClick={() => hanclickMainHead('Index Page')}>SAP</div>
                 </Link>
                 <div className="flex-1 h-12 flex justify-between items-center ml-5 mr-5 w-full">
                     {mainheader}

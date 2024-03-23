@@ -39,7 +39,7 @@ const Materialcreate = () => {
 
 
             {change === 'create' && <><label htmlFor="Material No" className="form-label block mb-2 dark:text-gray-50 text-sm">Material No</label>
-                <input type="number" onKeyDown={(e) => handleKeyDown(e)} onChange={(e) => setVid(e.target.value)} className="input input-bordered w-full bg-sky-400" /></>}
+                <input type="number" onKeyDown={(e) => handleKeyDown(e)} onChange={(e) => setVid(e.target.value)} className="input input-bordered w-full " /></>}
 
             {sfcreate == 'create' && <form onSubmit={handleSubmit}>
                 <label htmlFor="material name" className='dark:text-gray-50 form-label text-sm'>Material Name</label>

@@ -10,6 +10,16 @@ import { useReactToPrint } from 'react-to-print';
 
 
 
+// button 
+import ButtonSave from '../button/ButtonSave'
+import ButtonChange from '../button/ButtonChange'
+import UpdateBotton from '../button/UpdateButton'
+import AddFormButton from '../button/AddFormButton'
+import ButtonReset from '../button/ButtonReset'
+import ViewBotton from '../button/ViewBotton'
+
+
+
 const SelectionHeader = () => {
     const { handleRadioChange, handlePRPOView, handleSubmit, loadingNewPoCreation, hasTrueValue } = usePo()
     const { handleViewClick, handlePochange, handleInsert, handleInsertPrInpo, handleUpdatePo, ResetPo } = usePoview()
@@ -35,21 +45,21 @@ const SelectionHeader = () => {
 
                 {
                     selectedValue === 'PO' && <>
-                        <PrBurron label={'View'} onClick={handleViewClick} />
-                        <PrBurron label={'Change'} onClick={handlePochange} />
-                        {pochange && <PrBurron label={'Insert PR'} onClick={handleInsertPrInpo} />}
-                        {pochange && <>{!hasTrueValue ? <button className="btn btn-success mx-2 btn-sm  text-gray-800 dark:bg-green-400  bg-green-400 dark:text-gray-50 h-8 text-sm" type='button' onClick={() => handleUpdatePo(Number(podata.po_no))} >Update</button> : <PrBurron label='Update' />}</>}
+                        <ViewBotton  label={'View'} onClick={handleViewClick} />
+                        <ButtonChange label={'Change'} onClick={handlePochange} />
+                        {pochange && <AddFormButton label={'Insert PR'} onClick={handleInsertPrInpo} />}
+                        {pochange && <>{!hasTrueValue ? <button className="btn btn-success mx-2 btn-sm  text-gray-800 dark:bg-green-400  bg-green-400 dark:text-gray-50 h-8 text-sm" type='button' onClick={() => handleUpdatePo(Number(podata.po_no))} >Update</button> : <UpdateBotton label='Update' />}</>}
                     </>
                 }
                 {
                     selectedValue === 'PR' && <>
-                        <PrBurron label={'Insert PR'} onClick={handleInsert} />
+                        <AddFormButton label={'Insert PR'} onClick={handleInsert} />
 
-                        {!hasTrueValue ? <button className="btn btn-success btn-sm mx-2 dark:bg-green-400 text-gray-800 bg-green-400  dark:text-gray-50 h-8 text-sm" type='button' onClick={handleSubmit} >Save</button> : <PrBurron label='Save' />}
+                        {!hasTrueValue ? <button className="btn btn-success btn-sm mx-2 dark:bg-green-400 text-gray-800 bg-green-400  dark:text-gray-50 h-8 text-sm" type='button' onClick={handleSubmit} >Save</button> : <ButtonSave label='Save' />}
 
                     </>
                 }
-                <PrBurron label={'Reset'} onClick={ResetPo} />
+                <ButtonReset label={'Reset'} onClick={ResetPo} />
                 <div className="hidden">
                     <PoPrint ref={componentRef} />
                 </div>
