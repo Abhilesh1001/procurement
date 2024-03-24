@@ -134,7 +134,7 @@ const Navbar = () => {
 
     return (
 
-        <nav className="lg:px-16 z-10 navbar bg-base-100 shadow-md flex flex-wrap items-center justify-center lg:py-0 fixed  top-0 w-full h-14">
+        <nav className="lg:px-16 z-10 navbar text-base-content bg-base-100 shadow-md flex flex-wrap items-center justify-center lg:py-0 fixed  top-0 w-full h-14 ">
             <div className="flex-1 flex justify-between items-center">
                 <div className='relative'>
                     <IoMdMenu className='cursor-pointer mr-4 text-2xl  ml-2' onClick={handleClickMenu} />
@@ -168,35 +168,35 @@ const Navbar = () => {
                 </svg>
             </label>
            
-            <select className='rounded p-1 mr-2 bg-red-400' value={theme===null?'':theme} onChange={handleChange} name="theme">
-                <option className='dark:hidden' value="light">Light</option>
-                <option className='hidden dark:block' value="dark">Dark</option>
-                <option className='hidden dark:block' value="aqua">Aqua</option>
-                <option className='dark:hidden' value="cupcake">Cupcake</option>
-                <option className='dark:hidden' value="retro">Retro</option>
-                <option className='dark:hidden' value="bumblebee">Bumblebee</option>
-                <option className='dark:hidden' value="Emerald">Emerald</option>
-                <option className='dark:hidden' value="corporate">Corporate</option>
-                <option className='hidden dark:block' value="synthwave">Synthwave</option>
-                <option className='dark:hidden' value="cyberpunk">Cyberpunk</option>
-                <option className='dark:hidden' value="Valentine">Valentine</option>
-                <option className='dark:hidden' value="lofi">Lofi</option>
-                <option className='dark:hidden' value="garden">Garden</option>
-                <option className='hidden dark:block' value="forest">Forest</option>
-                <option className='hidden dark:block' value="halloween">Halloween</option>
-                <option className='dark:hidden' value="pastel">Pastel</option>
-                <option className='dark:hidden' value="fantasy">Fantasy</option>
-                <option className='dark:hidden' value="wireframe">wireframe</option>
-                <option className='hidden dark:block' value="black">black</option>
-                <option className='hidden dark:block'value="luxury">luxury</option>
-                <option className='hidden dark:block' value="dracula">dracula</option>
-                <option className='dark:hidden' value="cmyk">cmyk</option>
-                <option className='dark:hidden' value="autumn">autumn</option>
-                <option className='dark:hidden' value="lemonade">lemonade</option>
-                <option className='hidden dark:block'    value="night">night</option>
-                <option className='dark:hidden' value="winter">winter</option>
-                <option className='hidden dark:block' value="dim">dim</option>
-                <option className='hidden dark:block' value="sunset">sunset</option>
+            <select className='rounded p-1 mr-2 w-60' value={theme===null?'':theme} onChange={handleChange} name="theme">
+                <option value="light">Light</option>
+                <option  value="dark">Dark</option>
+                <option  value="aqua">Aqua</option>
+                <option value="cupcake">Cupcake</option>
+                <option value="retro">Retro</option>
+                <option value="bumblebee">Bumblebee</option>
+                <option value="emerald">Emerald</option>
+                <option value="corporate">Corporate</option>
+                <option  value="synthwave">Synthwave</option>
+                <option value="cyberpunk">Cyberpunk</option>
+                <option value="valentine">Valentine</option>
+                <option value="lofi">Lofi</option>
+                <option value="garden">Garden</option>
+                <option  value="forest">Forest</option>
+                <option  value="halloween">Halloween</option>
+                <option value="pastel">Pastel</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="wireframe">wireframe</option>
+                <option  value="black">black</option>
+                <option value="luxury">luxury</option>
+                <option  value="dracula">dracula</option>
+                <option value="cmyk">cmyk</option>
+                <option value="autumn">autumn</option>
+                <option value="lemonade">lemonade</option>
+                <option     value="night">night</option>
+                <option value="winter">winter</option>
+                <option  value="dim">dim</option>
+                <option  value="sunset">sunset</option>
             </select>
 
             <div className="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">

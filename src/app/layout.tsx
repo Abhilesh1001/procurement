@@ -26,7 +26,7 @@ export default function RootLayout({
         <ToastContainer />
         <AppProvider >
           <Navbar />
-          <div className='relative lg:top-8 top-8'>
+          <div className='relative lg:top-8 top-8 text-base-content'>
         {children}
           </div>
         <Footer />
