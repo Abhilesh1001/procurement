@@ -1,10 +1,21 @@
 'use client'
-import {useSelector,useDispatch} from 'react-redux'
-import PrBurron from '@/components/button/PrBurron'
+import {useSelector} from 'react-redux'
 import MaterialIssueTable from '@/components/Materialssue/MaterialIssueTable'
 import { useIsMaterial } from '@/hooks/material/useIssueMatrial'
 import Loading from '@/components/loading/Loading'
 import {matState} from '@/type/material/materia-type'
+
+
+// button 
+
+import ButtonSave from '@/components/button/ButtonSave'
+import ButtonChange from '@/components/button/ButtonChange'
+import UpdateBotton from '@/components/button/UpdateButton'
+import AddFormButton from '@/components/button/AddFormButton'
+import ButtonReset from '@/components/button/ButtonReset'
+import ViewBotton from '@/components/button/ViewBotton'
+
+
 
 const Vendor = () => {
 
@@ -19,17 +30,17 @@ const Vendor = () => {
                 <div>
                   <input className='input input-bordered input-sm ml-2' value={miview===null || miview===0 ?'':miview}  type="number" onChange={handleMateriIssueView} />
 
-                   <PrBurron onClick={handleViewClick}  label={'View'} />
+                   <ViewBotton onClick={handleViewClick}  label={'View'} />
 
-                   <PrBurron  onClick={handleIssuechange} label={'Change'}/>
+                   <ButtonChange  onClick={handleIssuechange} label={'Change'}/>
 
-                   {view!=='change' ? '': <PrBurron onClick={handleClick} label={'Add Form'}/>}
+                   {view!=='change' ? '': <AddFormButton onClick={handleClick} label={'Add Form'}/>}
 
-                   { change!=='change' ? <> {!hasTrueValue ? <button className="btn btn-success mx-2 dark:bg-green-400 text-gray-800 bg-green-400 btn-sm  dark:text-gray-50 h-8 text-sm" type='button' onClick={handleUpdate} >Update</button>: <PrBurron  buttomType={'button'} label={'Update'} />}</>  :'' }
+                   { change!=='change' ? <> {!hasTrueValue ? <button className="btn btn-success mx-2 dark:bg-green-400 text-gray-800 bg-green-400 btn-sm  dark:text-gray-50 h-8 text-sm" type='button' onClick={handleUpdate} >Update</button>: <UpdateBotton  buttomType={'button'} label={'Update'} />}</>  :'' }
 
-                   {change==='change'?<>{!hasTrueValue ?<>{view==='change' && <button className="btn btn-success mx-2 dark:bg-green-400 text-gray-800 bg-green-400  dark:text-gray-50 h-8 text-sm btn-sm" type='button' onClick={handleSubmit} >Save</button>}</>:<PrBurron label='Save'/>}</>:''}
+                   {change==='change'?<>{!hasTrueValue ?<>{view==='change' && <button className="btn btn-success mx-2 dark:bg-green-400 text-gray-800 bg-green-400  dark:text-gray-50 h-8 text-sm btn-sm" type='button' onClick={handleSubmit} >Save</button>}</>:<ButtonSave label='Save'/>}</>:''}
                    
-                   <PrBurron  onClick={handleReset} label={'Reset'}/> 
+                   <ButtonReset  onClick={handleReset} label={'Reset'}/> 
                     {mutation.isPending && <Loading />}
                     {mutationUpdata.isPending && <Loading />}
                     {mutation.isSuccess && <>{mutation.data.data.msg} Issue No. {mutation.data.data.data.issue_no}</>}

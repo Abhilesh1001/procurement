@@ -2,9 +2,19 @@ import {grnsliiceState } from  '@/type/grn/grntype'
 import React,{memo} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 import Loading from '../loading/Loading'
-import PrBurron from '../button/PrBurron'
 import {useGrn} from '@/hooks/grn/useGrn'
 import {useGrnView} from '@/hooks/grn/useGrnView'
+
+
+// button 
+import ButtonSave from '../button/ButtonSave'
+import ButtonChange from '../button/ButtonChange'
+import UpdateBotton from '../button/UpdateButton'
+import AddFormButton from '../button/AddFormButton'
+import ButtonReset from '../button/ButtonReset'
+import ViewBotton from '../button/ViewBotton'
+
+
 
 const SelectionHeader = () => {
    const {grndata,selectedValue,mainData,grnchange} = useSelector((state:grnsliiceState)=>state.grnslice)
@@ -26,28 +36,28 @@ const SelectionHeader = () => {
 
         {
             selectedValue === 'GRN' && <>
-            <PrBurron label={'View'} onClick={handleViewClick} />
-            <PrBurron label={'Change'} onClick={handleGrnchange} />
-                {grnchange && <>{!hasTrueValue?<button className="btn btn-success mx-2  text-gray-800 dark:bg-green-500 bg-green-500 btn-sm dark:text-gray-50 h-8 text-sm" type='button' onClick={()=>handleUpdateGRN(Number(grndata.grn_no))} >Update</button>:<PrBurron label='Update'/>}</>}
+            <ViewBotton label={'View'} onClick={handleViewClick} />
+            <ButtonChange label={'Change'} onClick={handleGrnchange} />
+                {grnchange && <>{!hasTrueValue?<button className="btn btn-success mx-2  text-gray-800 dark:bg-green-500 bg-green-500 btn-sm dark:text-gray-50 h-8 text-sm" type='button' onClick={()=>handleUpdateGRN(Number(grndata.grn_no))} >Update</button>:<UpdateBotton label='Update'/>}</>}
             </>
         }
         {
             selectedValue === 'PO' && <> 
-            <PrBurron label={'Insert PO'} onClick={handleInsert} />
+            <AddFormButton label={'Insert PO'} onClick={handleInsert} />
 
-            {!hasTrueValue ? <button className="btn btn-success mx-2 dark:bg-green-800 text-gray-800 bg-green-500 dark:text-gray-50 h-8 text-sm  btn-sm" type='button' onClick={handleSubmit} >Save</button>:<PrBurron label='Save'/>}
+            {!hasTrueValue ? <button className="btn btn-success mx-2 dark:bg-green-800 text-gray-800 bg-green-500 dark:text-gray-50 h-8 text-sm  btn-sm" type='button' onClick={handleSubmit} >Save</button>:<ButtonSave label='Save'/>}
 
             </>
         }
-        <PrBurron label={'Reset'} onClick={ResetGRN} />
+        <ButtonReset label={'Reset'} onClick={ResetGRN} />
         
-        <button className="btn btn-warning mx-2  btn-sm  text-gray-800 dark:bg-slate-800  bg-sky-300 dark:text-gray-50 h-8 text-sm" type='button'>Print</button>
+        <button className="btn btn-warning mx-2  btn-sm h-8 text-sm" type='button'>Print</button>
         <div className='flex items-center mr-4'>Total Tax</div>
         <div className='flex items-center  text-green-400'>{mainData.TotalTax}</div>
-        <div className='flex items-center ml-4 dark:text-slate-50'>Total Amount</div>
+        <div className='flex items-center ml-4'>Total Amount</div>
         <div className='flex items-center text-green-400 ml-4'>{mainData.TotalWithtax}</div>
         <div className='w-full flex justify-center'>{loadingNewPoCreation && <Loading />}</div>
-        {grndata.grn_no && <div className=' text-gray-50'>GRN : {grndata.grn_no}</div>}
+        {grndata.grn_no && <div className=' '>GRN : {grndata.grn_no}</div>}
 
     </div>
 </div>

@@ -13,11 +13,10 @@ interface matType {
 
 const MaterialDisplaytable = () => {
     const {matdata } = useMaterial()
-   console.log(matdata)
   return (
     <div className="relative overflow-y-auto shadow-xl  bg-base-300 mt-2 sm:rounded-lg max-h-screen h-[550px]">
-    <table className=" text-sm mt-4 text-left rtl:text-right  bg-base-800 dark:text-gray-400">
-        <thead className='text-xs text-gray-50 uppercase bg-base-800 dark:text-gray-400'>
+    <table className=" text-sm mt-4 text-left rtl:text-right  bg-base-800">
+        <thead className='text-xs uppercase bg-base-800 '>
             <tr>
                 <th ><DumyInput indum={'Material Code'}/></th>
                 <th ><DumyInput indum={'Material Name'}/></th>

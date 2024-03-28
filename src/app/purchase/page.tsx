@@ -60,7 +60,7 @@ const PurchasePR = () => {
                 <form onSubmit={handleSubmit}>
                     <div className='overflow-auto' >
                         <div className='h-2'></div>
-                        <label className="form-label font-bold dark:text-gray-50">PR No</label>
+                        <label className="form-label font-bold ">PR No</label>
                         <div className='' style={{ display: 'flex' }}>
                             <input type="number" onChange={handlePRView} className='input input-bordered input-sm max-w-xs h-8 text-sm w-60 mr-2' />
                             <ViewBotton onClick={handleView} label={'View'} />

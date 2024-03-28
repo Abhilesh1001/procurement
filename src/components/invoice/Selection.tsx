@@ -2,9 +2,17 @@ import {irnsliiceState} from '@/type/irn/irn'
 import React,{memo, useState} from 'react'
 import {useSelector} from 'react-redux'
 import Loading from '../loading/Loading'
-import PrBurron from '../button/PrBurron'
 import {useIrn} from '@/hooks/invoice/useIrn'
 import {useIrnView} from '@/hooks/invoice/useIrnView'
+
+// Button 
+
+import ButtonSave from '../button/ButtonSave'
+import ButtonChange from '../button/ButtonChange'
+import UpdateBotton from '../button/UpdateButton'
+import AddFormButton from '../button/AddFormButton'
+import ButtonReset from '../button/ButtonReset'
+import ViewBotton from '../button/ViewBotton'
 
 const SelectionHeader = () => {
 
@@ -28,31 +36,31 @@ const SelectionHeader = () => {
 
         {
             selectedValue === 'IRN' && <>
-            <PrBurron label={'View'} onClick={handleViewClick} />
-            <PrBurron label={'Change'} onClick={handleGrnchange} />
-                {irnchange && <>{hastruevalue?<button className="btn btn-success mx-2  text-gray-800 dark:bg-green-500 bg-green-500 dark:text-gray-50 h-8 text-sm btn-sm" type='button' onClick={()=>handleUpdateGRN(Number(irndata.mir_no))} >Update</button>:<PrBurron label='Update'/>}</>}
+            <ViewBotton label={'View'} onClick={handleViewClick} />
+            <ButtonChange label={'Change'} onClick={handleGrnchange} />
+                {irnchange && <>{hastruevalue?<button className="btn btn-success mx-2  text-gray-800 dark:bg-green-500 bg-green-500 dark:text-gray-50 h-8 text-sm btn-sm" type='button' onClick={()=>handleUpdateGRN(Number(irndata.mir_no))} >Update</button>:<UpdateBotton label='Update'/>}</>}
             </>
         }
         {
             selectedValue === 'PO' && <> 
-            <PrBurron label={'Insert PO'} onClick={handleInsert} />
+            <AddFormButton label={'Insert PO'} onClick={handleInsert} />
 
-            {hastruevalue ? <button className="btn btn-success btn-sm  mx-2 dark:bg-green-800 text-gray-800 bg-green-500 dark:text-gray-50 h-8 text-sm" type='button' onClick={handleSubmit} >Save</button>:<PrBurron label='Save'/>}
+            {hastruevalue ? <button className="btn btn-success btn-sm  mx-2 dark:bg-green-800 text-gray-800 bg-green-500 dark:text-gray-50 h-8 text-sm" type='button' onClick={handleSubmit} >Save</button>:<ButtonSave label='Save'/>}
 
             </>
         }
-        <PrBurron label={'Reset'} onClick={ResetGRN} />
+        <ButtonReset label={'Reset'} onClick={ResetGRN} />
         
-        <button className="btn btn-warning mx-2 btn-sm  text-gray-800 dark:bg-slate-800  bg-sky-300 dark:text-gray-50 h-8 text-sm" type='button'>Print</button>
+        <button className="btn btn-warning mx-2 btn-sm  h-8 text-sm" type='button'>Print</button>
         <div className='flex items-center mr-4'>Total Tax</div>
         <div className='flex items-center  text-green-400'>{mainData.TotalTax}</div>
-        <div className='flex items-center ml-4 dark:text-slate-50'>Total Amount</div>
-        <div className='flex items-center text-green-400 ml-4'>{mainData.TotalWithtax}</div>
-        <label htmlFor="Bill Amount" className='ml-4  dark:text-slate-50 text-center mr-4'>Bill Amount</label>
+        <div className='flex items-center ml-4 '>Total Amount</div>
+        <div className='flex items-center text-green-400  ml-4'>{mainData.TotalWithtax}</div>
+        <label htmlFor="Bill Amount" className='ml-4 text-center mr-4'>Bill Amount</label>
         <input type='number' className='input input-bordered input-sm max-w-xs text-sm w-40'  onChange={(e)=>handleChange(Number(e.target.value))} />
         <div className='w-full flex justify-center'>{mutation.isPending && <Loading />}</div>
 
-        {irndata.mir_no && <div className=' text-gray-50'>GRN : {irndata.mir_no}</div>}
+        {irndata.mir_no && <div className=''>GRN : {irndata.mir_no}</div>}
 
     </div>
 </div>

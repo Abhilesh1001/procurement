@@ -48,7 +48,7 @@ const MaterrialPage = () => {
             <div className="container">
                 <div className='h-3'></div>
                 <div className='flex'>
-            <div className=' ml-10  pt-1 pb-1 pl-2 mt-4 mb-2 pr-2 text-sm rounded hover:dark:bg-slate-800 drop-shadow-sm border-white shadow-sm border-1'><CSVLink filename={'Material-file.csv'}  data={csvData}>Export Excel</CSVLink></div>
+            <div className=' ml-10  pt-1 pb-1 pl-2 mt-4 mb-2 pr-2 text-sm rounded border-white  drop-shadow-sm shadow-sm border-1'><CSVLink filename={'Material-file.csv'}  data={csvData}>Export Excel</CSVLink></div>
            </div>   
                 <div className="row">
                     <div className="col-sm-6">

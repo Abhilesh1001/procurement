@@ -4,9 +4,7 @@ import Loading from '@/components/loading/Loading'
 // hooks 
 import { useMaterial } from '@/hooks/material/useMaterial'
 // components 
-import TextInput from '@/components/dummyinput/TextInput'
 import React from 'react'
-import PrBurron from '@/components/button/PrBurron'
 
 
 
@@ -38,14 +36,14 @@ const Materialcreate = () => {
             {change === 'create' && <div className='w-full h-4 flex justify-center my-4'>{mutationUpdate.isPending && <Loading />} {mutationUpdate.isSuccess && <div><div>{mutationUpdate?.data !== undefined && mutationUpdate.data.data.msg} Material No. {mutationUpdate !== undefined && mutationUpdate.data.data.data.s_no}</div></div>}</div>}
 
 
-            {change === 'create' && <><label htmlFor="Material No" className="form-label block mb-2 dark:text-gray-50 text-sm">Material No</label>
+            {change === 'create' && <><label htmlFor="Material No" className="form-label block mb-2 text-sm">Material No</label>
                 <input type="number" onKeyDown={(e) => handleKeyDown(e)} onChange={(e) => setVid(e.target.value)} className="input input-bordered w-full " /></>}
 
             {sfcreate == 'create' && <form onSubmit={handleSubmit}>
-                <label htmlFor="material name" className='dark:text-gray-50 form-label text-sm'>Material Name</label>
+                <label htmlFor="material name" className=' form-label text-sm'>Material Name</label>
                 <input type="text" onChange={(e) => setDate({ ...data, material_name: e.target.value })} value={data.material_name} className="input input-bordered w-full" />
 
-                <label htmlFor="Material No" className="form-label dark:text-gray-50 text-sm">Material Group</label>
+                <label htmlFor="Material No" className="form-label text-sm">Material Group</label>
                 <select onChange={(e) => setDate({ ...data, material_group: e.target.value })} value={data.material_group} required className="select select-bordered block w-full" aria-label="Large select example">
                     {/* <option value='material_group' selected>Material Group</option> */}
                     <option disabled selected>Pick one</option>
@@ -54,7 +52,7 @@ const Materialcreate = () => {
                     <option value="mechanical">Mechanical</option>
                     <option value="civil">Civil</option>
                 </select>
-                <label htmlFor="Material No" className="form-label dark:text-gray-50 text-sm">Material Unit</label>
+                <label htmlFor="Material No" className="form-label text-sm">Material Unit</label>
                 <select onChange={(e) => setDate({ ...data, unit: e.target.value })} value={data.unit} required className="select select-bordered block w-full" aria-label="Large select example">
                     <option value="KG">KG</option>
                     <option value="number">NOS</option>

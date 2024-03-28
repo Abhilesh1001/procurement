@@ -1,6 +1,5 @@
 'use client'
 import React,{useState} from 'react'
-import PrBurron from '@/components/button/PrBurron'
 import Loading from '@/components/loading/Loading'
 import axios from 'axios'
 import {useQuery} from '@tanstack/react-query'

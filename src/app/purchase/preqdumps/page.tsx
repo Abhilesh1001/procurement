@@ -59,7 +59,7 @@ const Page = () => {
         <div className=' container pt-4'>
             <div className='h-3'></div>
             <div className='flex'>
-            <div className='dark:bg-gray-900 ml-10  pt-1 pb-1 pl-2 pr-2 text-sm rounded hover:dark:bg-slate-800 drop-shadow-sm border-white shadow-sm border-1'><CSVLink filename={'PR-file.csv'}  data={csvData}>Export Excel</CSVLink></div>
+            <div className=' ml-10  pt-1 pb-1 pl-2 pr-2 text-sm rounded  drop-shadow-sm border-white shadow-sm border-1'><CSVLink filename={'PR-file.csv'}  data={csvData}>Export Excel</CSVLink></div>
            </div>
         </div>
         <div className=' ml-2 mr-2 h-[550px] overflow-auto text-nowrap my-2 bg-base-300 relative overflow-y-auto shadow-md mt-2  sm:rounded-lg'>
@@ -91,7 +91,6 @@ const Page = () => {
                                         <td><DumyInput indum={itemJson.material_text} /></td>
                                         <td><DumyInput indum={item.user} /></td>
                                         <td><DumyInput indum={format(parseISO(item.time),'dd.MM.yy')} /></td>
-                                        
                                     </tr>
                                 })
 

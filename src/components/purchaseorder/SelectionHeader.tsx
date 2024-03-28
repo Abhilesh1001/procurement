@@ -69,7 +69,7 @@ const SelectionHeader = () => {
                 <div className='flex items-center ml-4'>Total Amount</div>
                 <div className='flex items-center text-green-400 ml-4'>{mainData.TotalWithtax}</div>
                 <div className='w-full flex justify-center'>{loadingNewPoCreation && <Loading />}</div>
-                {podata.po_no && <div className=' text-gray-50'>Purchase Order : {podata.po_no}</div>}
+                {podata.po_no && <div className=''>Purchase Order : <span className='text-success'>{podata.po_no}</span></div>}
 
             </div>  
         </div>
