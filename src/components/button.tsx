@@ -2,8 +2,6 @@
 import { useReducer } from 'react'
 import { useLogin } from '@/hooks/login/useLogin'
 import { reducer, initialState } from '@/reducer/loginreducer'
-import PrBurron from '@/components/button/PrBurron'
-import TextInput from './dummyinput/TextInput'
 import {useRouter} from 'next/navigation'
 import { getMainheader } from '@/redux/slice'
 import { useDispatch } from 'react-redux'
@@ -11,7 +9,7 @@ import Loading from './loading/Loading'
 
 const Button = () => {
   const [data, dispatch] = useReducer(reducer, initialState)
-  const { handleSubmit,error,loading} = useLogin(data)
+  const { handleSubmit,loading} = useLogin(data)
   const dispatchData = useDispatch()
   const router = useRouter()
   const handleForgotPassword =()=>{
@@ -23,7 +21,6 @@ const Button = () => {
     <div>
       <form onSubmit={handleSubmit}>
         {loading && <Loading />}
-        {error && error}
                 <label htmlFor="email" className='block'>Email</label>
                 <input type="email" value={data.email} required name='email'  onChange={(e) => dispatch({ type: "EMAIL", value: e.target.value })} placeholder="email" className="input input-bordered w-80 my-2" />
                 <label htmlFor="email" className='block'>Password</label>

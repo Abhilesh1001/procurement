@@ -9,11 +9,11 @@ import { StateProps } from '@/type/type'
 import { getMainheader } from '@/redux/slice'
 import { soundClick, soundSsuccess, soundError } from "@/sound/sound"
 import { useRouter } from "next/navigation"
+import {toast} from 'react-toastify'
 
 export const useLogin = (data: loginred) => {
     const { baseurl, authToken } = useSelector((state: StateProps) => state.counter)
     const [loading, setLoading] = useState(false)
-    const [error, setError] = useState('')  
     const route = useRouter()
     const dispatch = useDispatch()
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -22,6 +22,7 @@ export const useLogin = (data: loginred) => {
         e.preventDefault()
         try {
             const response = await axios.post(`${baseurl}cus/authlogin/`, data)
+            route.push('/')
             const res = response.data
             // console.log(res, 'login')
             const tokenRefresh = res.token.refresh;
@@ -35,11 +36,10 @@ export const useLogin = (data: loginred) => {
             dispatch(getUserId(userToken.user_id))
             dispatch(getMainheader('Index Page'))
             setLoading(false)
-            route.push('/')
             soundSsuccess?.play()
         } catch (error) {
-            console.log(error)
-            setError('Email or Password Wrong')
+            toast.error('Email or Password Wrong',{position:'top-center'})
+            // setError('Email or Password Wrong')
             setLoading(false)
             soundError?.play()
         }
@@ -91,5 +91,5 @@ export const useLogin = (data: loginred) => {
 
 
 
-    return { handleSubmit, handleLogout, error, loading }
+    return { handleSubmit, handleLogout,loading }
 }

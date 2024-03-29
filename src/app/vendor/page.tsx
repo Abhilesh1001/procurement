@@ -27,7 +27,6 @@ const Vendor = () => {
                         </div>
                     </dialog>
 
-
                     <div className="relative text-nowrap overflow-y-auto shadow-md mt-4  sm:rounded-lg bg-base-300  h-96">
                         <table className="w-full text-sm text-left rtl:text-right ">
                             <thead className='sticky top-0 z-1 bg-base-200  h-10'>
@@ -40,7 +39,7 @@ const Vendor = () => {
                                     <th scope="col">Email</th>
                                 </tr>
                             </thead>
-                            <tbody className=' text-gray-50 text-center'>
+                            <tbody className='text-center'>
                                 {newData?.map((items: vendorType) => {
                                     return <tr key={items.s_no}>
                                         <th scope="row"><DumyInput indum={items.s_no !== undefined ? items.s_no : null} /></th>

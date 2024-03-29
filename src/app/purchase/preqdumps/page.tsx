@@ -1,7 +1,6 @@
 'use client'
 import React, { useState } from 'react'
 import axios from 'axios'
-import PrBurron from '@/components/button/PrBurron'
 import {useSelector} from 'react-redux'
 import {StateProps} from '@/type/type'
 import DumyInput from '@/components/dummyinput/DumyInput'

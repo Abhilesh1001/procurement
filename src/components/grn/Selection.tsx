@@ -15,7 +15,6 @@ import ButtonReset from '../button/ButtonReset'
 import ViewBotton from '../button/ViewBotton'
 
 
-
 const SelectionHeader = () => {
    const {grndata,selectedValue,mainData,grnchange} = useSelector((state:grnsliiceState)=>state.grnslice)
    const {handleRadioChange,handlePOGRNView,handleSubmit,loadingNewPoCreation,hasTrueValue} =useGrn()

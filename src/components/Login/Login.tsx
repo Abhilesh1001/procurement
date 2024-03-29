@@ -1,7 +1,6 @@
 
-import PrBurron from '@/components/button/PrBurron'
 import Button from '../button'
-import ButtonLoading from '../button/ButtonLoading';
+
 
 
 import { useState } from 'react'
@@ -10,7 +9,6 @@ import { getMainheader } from '@/redux/slice'
 import { useDispatch } from 'react-redux'
 
 const Login = () => {
-  const [signup,setSignup] = useState('sign')
   const dispatch = useDispatch()
   const router = useRouter()
   const handleSignup =() =>{

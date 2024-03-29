@@ -13,6 +13,7 @@ import ProcumentMenu from './mainpage/ProcumentMenu'
 import { useMenu } from '@/hooks/menu/useMenu'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import Them from './navcomponent/Them'
 
 
 export type StateProps = {
@@ -34,24 +35,6 @@ const Navbar = () => {
     const { handleLogout } = useLogin(data)
     const { handleClickMenu, hiddenmenu } = useMenu()
 
- 
-    const [theme, setTheme] = useState<string | null>(() => {
-        if (typeof window !== 'undefined') {
-            // Check if running in the browser environment
-            const storedTheme = localStorage.getItem('theme') || 'light';
-            return storedTheme;
-        }
-        return 'light'; // Default value if running in a non-browser environment
-    });
-
-
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            // Check if running in the browser environment
-            localStorage.setItem('theme', theme || 'light');
-            document.querySelector('html')?.setAttribute('data-theme', theme || 'light');
-        }
-    }, [theme]);
 
 
     useEffect(() => {
@@ -125,18 +108,12 @@ const Navbar = () => {
 
     }, [authToken?.access])
 
-    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        console.log(e.target.value)
-        setTheme(e.target.value)
-
-    }
-
 
     return (
 
         <nav className="lg:px-16 z-10 navbar text-base-content bg-base-100 shadow-md flex flex-wrap items-center justify-center lg:py-0 fixed  top-0 w-full h-14 ">
             <div className="flex-1 flex justify-between items-center">
-                <div className='relative'>
+                {user && <div className='relative'>
                     <IoMdMenu className='cursor-pointer mr-4 text-2xl  ml-2' onClick={handleClickMenu} />
                     {hiddenmenu !== 'hidden' && <div className='fixed rounded top-14 overflow-auto  z-10[80%] text-nowrap w-[535px]'>
                         <div className='pl-4 flex flex-col gap-4 h-[600px] bg-base-100'>
@@ -144,63 +121,39 @@ const Navbar = () => {
                         </div>
 
                     </div>}
-                </div>
+                </div>}
 
                 <Link href="/" className="flex text-lg font-semibold">
-                    <div className="relative" onClick={() => hanclickMainHead('Index Page')}>SAP</div>
+                    <div className="relative text-error font-bold" onClick={() => hanclickMainHead('Index Page')}>SAP</div>
                 </Link>
-                <div className="flex-1 h-12 flex justify-between items-center ml-5 mr-5 w-full">
+                <div className="flex-1 h-12 flex text-success font-bold justify-between items-center ml-5 mr-5 w-full">
                     {mainheader}
                 </div>
-
+            </div>
+            <div className='md:flex hidden'>
+               <Them />
             </div>
 
-            <label htmlFor="menu-toggle" className="cursor-pointer mr-10 lg:hidden block">
-                <svg
-                    className="fill-current  text-sm "
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={20}
-                    height={20}
-                    viewBox="0 0 20 20"
-                >
-                    <title>menu</title>
-                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-                </svg>
-            </label>
-           
-            <select className='rounded p-1 mr-2 w-60' value={theme===null?'':theme} onChange={handleChange} name="theme">
-                <option value="light">Light</option>
-                <option  value="dark">Dark</option>
-                <option  value="aqua">Aqua</option>
-                <option value="cupcake">Cupcake</option>
-                <option value="retro">Retro</option>
-                <option value="bumblebee">Bumblebee</option>
-                <option value="emerald">Emerald</option>
-                <option value="corporate">Corporate</option>
-                <option  value="synthwave">Synthwave</option>
-                <option value="cyberpunk">Cyberpunk</option>
-                <option value="valentine">Valentine</option>
-                <option value="lofi">Lofi</option>
-                <option value="garden">Garden</option>
-                <option  value="forest">Forest</option>
-                <option  value="halloween">Halloween</option>
-                <option value="pastel">Pastel</option>
-                <option value="fantasy">Fantasy</option>
-                <option value="wireframe">wireframe</option>
-                <option  value="black">black</option>
-                <option value="luxury">luxury</option>
-                <option  value="dracula">dracula</option>
-                <option value="cmyk">cmyk</option>
-                <option value="autumn">autumn</option>
-                <option value="lemonade">lemonade</option>
-                <option     value="night">night</option>
-                <option value="winter">winter</option>
-                <option  value="dim">dim</option>
-                <option  value="sunset">sunset</option>
-            </select>
+
+            <div className="dropdown dropdown-end mr-10  md:hidden">
+                <div tabIndex={0} role="button" className="btn m-1">
+                <IoMdMenu className='text-2xl cursor-pointer flex' />
+                </div>
+                
+                <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-60">
+                <li className="py-2 lg:py-0">
+                            {user && <button className="btn btn-error btn-sm ml-2 mr-5 w-28" onClick={handleLogout} type='button'>Logout</button>}
+                            {!user && <button className="btn btn-success btn-sm ml-2 mr-5 w-28 my-2" onClick={handleLogin} type='button'>Login</button>}
+                            <div className='bg-base-100  w-full'>
+                            <Them /> 
+                            </div>
+                </li>
+                </ul>
+            </div>
+
+
 
             <div className="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
-
                 <nav>
                     <ul className="text-xl text-center items-center gap-x-5 md:gap-x-4 lg:text-lg lg:flex  lg:pt-0">
 
@@ -215,9 +168,7 @@ const Navbar = () => {
                         <li className="py-2 lg:py-0 ">
                             {user && <button className="btn btn-error btn-sm ml-2 mr-5" onClick={handleLogout} type='button'>Logout</button>}
                             {!user && <button className="btn btn-success btn-sm ml-2 mr-5" onClick={handleLogin} type='button'>Login</button>}
-
                         </li>
-
                     </ul>
                 </nav>
             </div>

@@ -1,14 +1,12 @@
 import { usePo } from '@/hooks/purchseorder/usePo'
 import { posliiceState, mainType } from '@/type/type'
-import React, { memo, useEffect, useRef, useState } from 'react'
+import React, { memo,useRef} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Loading from '../loading/Loading'
 import PrBurron from '../button/PrBurron'
 import { usePoview } from '@/hooks/purchseorder/usePoview'
 import PoPrint from '../print/PoPrint'
 import { useReactToPrint } from 'react-to-print';
-
-
 
 // button 
 import ButtonSave from '../button/ButtonSave'
