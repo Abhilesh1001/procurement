@@ -6,14 +6,13 @@ import { getMainheader } from '@/redux/slice'
 import './style.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { getAuthToken } from '@/redux/slice'
-import { useRouter } from 'next/navigation';
 import { soundClick, soundError, soundSsuccess } from '@/sound/sound'
 import { IoMdMenu } from "react-icons/io";
 import ProcumentMenu from './mainpage/ProcumentMenu'
 import { useMenu } from '@/hooks/menu/useMenu'
 import axios from 'axios'
 import { toast } from 'react-toastify'
-import Them from './navcomponent/Them'
+import NavColl from './navcomponent/NavColl'
 
 
 export type StateProps = {
@@ -35,32 +34,12 @@ const Navbar = () => {
     const { handleLogout } = useLogin(data)
     const { handleClickMenu, hiddenmenu } = useMenu()
 
-
-
     useEffect(() => {
         const mainhesder = localStorage.getItem('mainHeader')
         if (mainhesder !== null) {
             dispatch(getMainheader(mainhesder))
         }
     }, [])
-
-
-
-
-    const router = useRouter()
-
-    const handleInput = () => {
-
-    }
-    const handleLogin = () => {
-        dispatch(getMainheader('Login Page'))
-        soundClick?.play()
-        router.push('/login')
-    }
-
-    const handleInputCahnge = () => {
-
-    }
 
     useEffect(() => {
         if (document.cookie !== undefined && document.cookie !== null) {
@@ -131,44 +110,25 @@ const Navbar = () => {
                 </div>
             </div>
             <div className='md:flex hidden'>
-               <Them />
+
             </div>
 
 
             <div className="dropdown dropdown-end mr-10  md:hidden">
                 <div tabIndex={0} role="button" className="btn m-1">
-                <IoMdMenu className='text-2xl cursor-pointer flex' />
+                    <IoMdMenu className='text-2xl cursor-pointer flex' />
                 </div>
-                
+
                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-60">
-                <li className="py-2 lg:py-0">
-                            {user && <button className="btn btn-error btn-sm ml-2 mr-5 w-28" onClick={handleLogout} type='button'>Logout</button>}
-                            {!user && <button className="btn btn-success btn-sm ml-2 mr-5 w-28 my-2" onClick={handleLogin} type='button'>Login</button>}
-                            <div className='bg-base-100  w-full'>
-                            <Them /> 
-                            </div>
-                </li>
+                <NavColl />
                 </ul>
             </div>
-
-
 
             <div className="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
                 <nav>
                     <ul className="text-xl text-center items-center gap-x-5 md:gap-x-4 lg:text-lg lg:flex  lg:pt-0">
 
-                        <li className="py-2 lg:py-0 ">
-                            <a
-                                className="text-sm "
-                                href="#"
-                            >
-                                {!!user && user?.charAt(0).toUpperCase() + user?.slice(1)}
-                            </a>
-                        </li>
-                        <li className="py-2 lg:py-0 ">
-                            {user && <button className="btn btn-error btn-sm ml-2 mr-5" onClick={handleLogout} type='button'>Logout</button>}
-                            {!user && <button className="btn btn-success btn-sm ml-2 mr-5" onClick={handleLogin} type='button'>Login</button>}
-                        </li>
+                    <NavColl />
                     </ul>
                 </nav>
             </div>

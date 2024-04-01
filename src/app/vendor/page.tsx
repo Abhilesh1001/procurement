@@ -6,7 +6,8 @@ import { useVendor } from '@/hooks/vendor/useVendor'
 
 const Vendor = () => {
 
-    const { mutation, newData } = useVendor()
+    const { newData } = useVendor()
+
 
     return (
         <div className=' h-auto bg-base-100  min-h-screen'>
@@ -26,6 +27,7 @@ const Vendor = () => {
                             </div>
                         </div>
                     </dialog>
+                    
 
                     <div className="relative text-nowrap overflow-y-auto shadow-md mt-4  sm:rounded-lg bg-base-300  h-96">
                         <table className="w-full text-sm text-left rtl:text-right ">

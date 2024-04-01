@@ -26,7 +26,7 @@ export const useVendor =()=>{
             })
         },
     })
-    console.log(mutation.data,'inuseVendor')
+ 
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -42,9 +42,6 @@ export const useVendor =()=>{
         })
         return res.data
     }
-
-
-
 
 
     const handleUPdate =()=> {

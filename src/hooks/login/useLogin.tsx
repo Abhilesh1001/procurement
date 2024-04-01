@@ -11,7 +11,7 @@ import { soundClick, soundSsuccess, soundError } from "@/sound/sound"
 import { useRouter } from "next/navigation"
 import {toast} from 'react-toastify'
 
-export const useLogin = (data: loginred) => {
+export const useLogin = (data?: loginred) => {
     const { baseurl, authToken } = useSelector((state: StateProps) => state.counter)
     const [loading, setLoading] = useState(false)
     const route = useRouter()

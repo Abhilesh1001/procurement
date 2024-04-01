@@ -10,8 +10,6 @@ const Home = () => {
 
   const { data, poview, podata } = useSelector((state: posliiceState) => state.poslicer)
   const { handleViewClick } = usePoview()
-  console.log(data)
-
 
   return (
     <div>
@@ -32,26 +30,40 @@ const Home = () => {
 
             </div>
 
-
-
-
             <div className="flex flex-col w-full lg:flex-row">
-              <div className="grid flex-grow  p-4 text-lg h-32 card bg-base-300 text-success rounded-box place-items-center">
+              <div className="grid flex-grow  p-4 text-lg h-auto card bg-base-300 text-success rounded-box place-items-center">
               1.	Purchase Request (PR): Users within the organization initiate a purchase request for required materials.
               </div>
               <div className="divider lg:divider-horizontal"></div>
-              <div className="grid flex-grow text-lg text-success p-4 h-32 card bg-base-300 rounded-box place-items-center">
+              <div className="grid flex-grow text-lg text-success p-4 h-auto card bg-base-300 rounded-box place-items-center">
+              2.	Purchase Order (PO): The procurement department generates a purchase order based on the approved purchase request. This PO is then sent to the vendor, specifying the details of the materials to be procured.
 
-              <span className='font-bold flex'>2.	Purchase Order (PO):</span> The procurement department generates a purchase order based on the approved purchase request. This PO is then sent to the vendor, specifying the details of the materials to be procured.
               </div>
             </div>
 
 
 
+            <div className="flex flex-col w-full lg:flex-row mt-4">
+              <div className="grid flex-grow  p-4 text-lg h-auto card bg-base-300 text-success rounded-box place-items-center">
+              3.	Good Receipt Note (GRN): Upon receiving the materials from the vendor, the store personnel create a Good Receipt Note to acknowledge the receipt of the materials. This document confirms the delivery and allows for the updating of the inventory.
+              </div>
+              <div className="divider lg:divider-horizontal"></div>
+              <div className="grid flex-grow text-lg text-success p-4 h-auto card bg-base-300 rounded-box place-items-center">
+              4.	Material Stock Management: With the successful receipt of materials, the inventory or material stock is updated accordingly in the system. The store personnel manage the stock levels and ensure accurate records of available materials.
 
+              </div>
+            </div>
 
+            <div className="flex flex-col w-full lg:flex-row mt-4">
+              <div className="grid flex-grow  p-4 text-lg h-auto card bg-base-300 text-success rounded-box place-items-center">
+              5.	Material Issue: When materials are needed for usage, the store personnel issue the materials from the stock to the respective departments or users who requested them.
+              </div>
+              <div className="divider lg:divider-horizontal"></div>
+              <div className="grid flex-grow text-lg text-success p-4 h-auto card bg-base-300 rounded-box place-items-center">
+              6.	Invoice Receipt Note (IRN): Following the receipt of materials, the accounting department creates an Invoice Receipt Note to verify the receipt of goods and validate the invoice from the vendor.
 
-
+              </div>
+            </div>
           </div>
         </div>
       </main>

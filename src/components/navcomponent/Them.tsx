@@ -5,23 +5,22 @@ const Them = () => {
 
     const [theme, setTheme] = useState<string | null>(() => {
         if (typeof window !== 'undefined') {
-            // Check if running in the browser environment
             const storedTheme = localStorage.getItem('theme') || 'light';
             return storedTheme;
         }
-        return 'light'; // Default value if running in a non-browser environment
+        return 'light'; 
     });
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            // Check if running in the browser environment
+        
             localStorage.setItem('theme', theme || 'light');
             document.querySelector('html')?.setAttribute('data-theme', theme || 'light');
         }
     }, [theme]);
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        console.log(e.target.value)
+       
         setTheme(e.target.value)
 
     }

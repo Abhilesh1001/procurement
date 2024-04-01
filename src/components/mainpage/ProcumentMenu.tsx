@@ -69,6 +69,14 @@ const ProcumentMenu = () => {
             <ul className={`ml-8 cursor-pointer ${hidden.hiddenDelivery} flex-col`}>
                 <li>⭐ Delivery Address create/Update/Change </li>
             </ul>  
+
+            <div className='cursor-pointer' onClick={()=>dispatch(getHidden({...hidden , rdpername : `${hidden.rdpername==='hidden'?'flex':'hidden'}`}))}>📁Payment</div>  
+            <ul className={`ml-8 cursor-pointer ${hidden.rdpername} flex-col`}>
+            <Link href={'/payment'} onClick={()=>handleClick('Paymet Create/Change')}>⭐ Payment </Link>
+            </ul>  
+            <ul className={`ml-8 cursor-pointer ${hidden.rdpername} flex-col`}>
+            <Link href={'/payment/advancepayment'} onClick={()=>handleClick('Advance Payment Create/Cahnge')}>⭐ Advance Payment </Link>
+            </ul>  
         </div>
             </div>
   )

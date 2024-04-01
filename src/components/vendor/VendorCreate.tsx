@@ -12,7 +12,6 @@ const VendorCreate = () => {
     <div className="mt-4">
     <div className=''>
 
-
     <div className='flex justify-between'>
                 <div>
                     <button onClick={handleCreate} className="btn btn-success">Create</button>
@@ -49,10 +48,10 @@ const VendorCreate = () => {
         <input type="text" value={vendor.vendor_name} placeholder='Vendor Name'  onChange={(e) => setVendor({ ...vendor, vendor_name: e.target.value })} className="input input-bordered w-full" />
 
         <label htmlFor="GST" className="form-label text-sm">GST</label>
-        <input type="text" value={vendor.gst} placeholder='Vendor Name' onChange={(e) => setVendor({ ...vendor, gst: e.target.value })}  className="input input-bordered w-full" />
+        <input type="text" value={vendor.gst} placeholder='gst' onChange={(e) => setVendor({ ...vendor, gst: e.target.value })}  className="input input-bordered w-full" />
 
         <label htmlFor="Email" className="form-label text-sm">Email</label>
-        <input type="email" value={vendor.email} placeholder='Vendor Name' onChange={(e) => setVendor({ ...vendor, email: e.target.value })}  className="input input-bordered w-full" />
+        <input type="email" value={vendor.email} placeholder='email' onChange={(e) => setVendor({ ...vendor, email: e.target.value })}  className="input input-bordered w-full" />
 
         <label htmlFor="Address" className="form-label text-sm">Address</label>
         <input type="email" value={vendor.address}  placeholder='Vendor Name' onChange={(e) => setVendor({ ...vendor, address: e.target.value })}  className="input input-bordered w-full" />
