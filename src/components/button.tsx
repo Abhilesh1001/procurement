@@ -6,6 +6,7 @@ import {useRouter} from 'next/navigation'
 import { getMainheader } from '@/redux/slice'
 import { useDispatch } from 'react-redux'
 import Loading from './loading/Loading'
+import { soundClick } from '@/sound/sound'
 
 const Button = () => {
   const [data, dispatch] = useReducer(reducer, initialState)
@@ -13,6 +14,7 @@ const Button = () => {
   const dispatchData = useDispatch()
   const router = useRouter()
   const handleForgotPassword =()=>{
+    soundClick?.play()
     dispatchData(getMainheader('ForgotPassword'))
     router.push('/signup/forgotpassword')
   }

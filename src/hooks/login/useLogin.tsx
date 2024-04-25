@@ -36,6 +36,7 @@ export const useLogin = (data?: loginred) => {
             dispatch(getUserId(userToken.user_id))
             dispatch(getMainheader('Index Page'))
             setLoading(false)
+            toast.success('You are Succeessfully Login',{position:'top-center'})
             soundSsuccess?.play()
         } catch (error) {
             toast.error('Email or Password Wrong',{position:'top-center'})
@@ -45,8 +46,6 @@ export const useLogin = (data?: loginred) => {
         }
     }
     // updatetoken 
-
-    
     useEffect(() => {
         let time = 1000 * 4 * 60
         if (authToken?.access !== undefined) {
@@ -85,11 +84,8 @@ export const useLogin = (data?: loginred) => {
         dispatch(clearAuthToken(''))
         dispatch(clearUser(""))
         route.push('/login')
+        dispatch(getMainheader('Login Page' ))
     }
-
-
-
-
 
     return { handleSubmit, handleLogout,loading }
 }

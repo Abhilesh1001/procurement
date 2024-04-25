@@ -34,7 +34,7 @@ const NavColl = () => {
     return (
         <>
             <li className="py-2 lg:py-0 ">
-                <Link href={'/home'} ><button className="btn btn-info btn-sm">About Page</button></Link>
+                <Link href={'/home'} ><button className="btn btn-info btn-sm" onClick={()=>dispatch(getMainheader('About Page'))}>About Page</button></Link>
             </li>
             <li>
 

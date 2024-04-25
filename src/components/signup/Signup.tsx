@@ -7,6 +7,8 @@ import axios from 'axios';
 import { useSelector } from 'react-redux'
 import { StateProps } from '@/type/type'
 import Loading from '../loading/Loading';
+import { soundError } from '@/sound/sound';
+import { toast } from 'react-toastify';
 
 const Signup = () => {
 
@@ -18,6 +20,10 @@ const Signup = () => {
         },
         onSuccess: () => {
             formik.resetForm();
+        },
+        onError:()=>{
+            soundError?.play()
+            toast.error('Please Check your Credentials',{position:'top-center'})
         }
     })
     // console.log(mutation.data,mutation?.error?.response?.data?.errors?.email[0],mutation.error)
@@ -63,17 +69,17 @@ const Signup = () => {
                 {mutation.error && <div className='p-2 capitalize rounded dark:bg-red-900 bg-red-400'>{mutation?.error?.response?.data?.errors?.email[0]}</div>}
 
                 <label htmlFor="name" className='block'>Name</label>
-                {<div className='dark:text-gray-50'>{formik.errors.name}</div>}
+                {<div className=''>{formik.errors.name}</div>}
                 <input type="text" required name='name'  onChange={formik.handleChange} placeholder="name" className="input input-bordered w-80 my-2" />
-                {<div className='dark:text-gray-50'>{formik.errors.email}</div>}
+                {<div className=''>{formik.errors.email}</div>}
                 <label htmlFor="email" className='block'>Email</label>
                 <input type="email" required name='email' placeholder="email" value={formik.values.email} onChange={formik.handleChange} className="input input-bordered w-80 my-2" />
                 <label htmlFor="email" className='block'>Password</label>
-                {<div className='dark:text-gray-50'>{formik.errors.password}</div>}
+                {<div className=''>{formik.errors.password}</div>}
                 <input type="password" required name='password' value={formik.values.password} onChange={formik.handleChange} placeholder="password" className="input input-bordered w-80 my-2" />
 
                 <label htmlFor="email" className='block'>Confirm Password</label>
-                {<div className='dark:text-gray-50'>{formik.errors.password2}</div>}
+                {<div className=''>{formik.errors.password2}</div>}
                 <input type="password" required name='password2' value={formik.values.password2} onChange={formik.handleChange} placeholder="confirm password" className="input input-bordered w-80 my-2" />
                 <div>
                 <input type="checkbox" checked={formik.values.tc} onChange={formik.handleChange} name="tc" defaultChecked className="checkbox" />

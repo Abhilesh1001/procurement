@@ -27,17 +27,17 @@ const PoPrint = React.forwardRef<HTMLDivElement>((props, ref) => {
 
 
     return (
-        <div ref={ref} className='' style={{ width: '210mm', height: '297mm' }}>
+        <div  ref={ref} className='bg-white p-3' style={{ width: '210mm', height: '297mm' }}>
           
             <style>{getPageMargins()}</style>
             
             <div className="row">
                 <div className="col-sm-8">
-                    <div className="font-bold text-2xl text-blue-600">Mayroor Studio Limited.</div>
+                    <div className="font-bold text-2xl">Mayroor Studio Limited.</div>
                     <div>Thana Road Maharajganj Siwan Bihar</div>
                 </div>
                 <div className="col-sm-4">
-                    <div className="text-blue-400 text-2xl">Purchase Order</div>
+                    <div className=" text-2xl">Purchase Order</div>
                     <div>PO NO : {podata.po_no}</div>
                     <div>Date : {podata?.po_no !== null && format(podata?.time, 'dd-MM-yyyy')}</div>
                 </div>
@@ -45,7 +45,7 @@ const PoPrint = React.forwardRef<HTMLDivElement>((props, ref) => {
 
             <div className="row">
                 <div className="col-sm-6">
-                    <div className="bg-blue-500">Vendor Address</div>
+                    <div className="">Vendor Address</div>
                     {/* Render actual vendor address data here */}
                     <div>{vendorAdress.vendor_name}</div>
                     <div>{vendorAdress.name}</div>
@@ -55,7 +55,7 @@ const PoPrint = React.forwardRef<HTMLDivElement>((props, ref) => {
                     <div>{vendorAdress.email}</div>
                 </div>
                 <div className="col-sm-6">
-                    <div className="bg-blue-500">Ship To Address</div>
+                    <div className="">Ship To Address</div>
                     {/* Render actual ship-to address data here */}
                     <div>{deliveryAdress.vendor_name}</div>
                     <div>{deliveryAdress.name}</div>
@@ -67,7 +67,7 @@ const PoPrint = React.forwardRef<HTMLDivElement>((props, ref) => {
             </div>
 
             <table className="table table-bordered mt-2">
-                <thead className="bg-blue-500">
+                <thead className="">
                     <tr>
                         <th className="text-nowrap">S No</th>
                         <th className="text-nowrap">Description</th>

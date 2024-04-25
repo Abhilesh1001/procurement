@@ -189,8 +189,8 @@ export const usePayment=()=>{
         }
     }
 
-    const {data:viewData} = useQuery({queryKey:['advancePayment',mutation.data,updataMutation.data],queryFn:fetchData})
 
+    const {data:viewData} = useQuery({queryKey:['advancePayment',mutation.data,updataMutation.data],queryFn:fetchData})
 
     return {handleChange,handleUPdate,handleCreate,change,paymentData,setPaymentData,handleSubmit,sfcreate,handleKeyDown,handleKeyDownUpdate,mutation,updataMutation,viewData}
 

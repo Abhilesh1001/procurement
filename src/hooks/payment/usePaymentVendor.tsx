@@ -37,9 +37,9 @@ export const usePaymentVendor = () => {
     function handleChange() {
         setChange(`${change !== 'create' ? 'create' : null}`)
     }
+    
     function handleUPdate() {
         // updataMutation.reset()
-
         const data = {
             payment_no : paymentData.payment_no,
             miro_no: paymentData.mir_no,
@@ -147,7 +147,7 @@ export const usePaymentVendor = () => {
             if (e.key === 'Enter') {
                 const vid = parseInt(value)
                 e.preventDefault();
-                // console.log(vid)
+                console.log(vid)
                 try {
                     const res = await axios.get(`${baseurl}payment/mirocreateview/${vid}`, {
                         headers: {
@@ -155,7 +155,7 @@ export const usePaymentVendor = () => {
                         }
                     })
 
-                    // console.log(res.data)
+                    console.log(res.data)
                     const vendor_details = JSON.parse(res.data.data.vendor_address)
                     const mainData = JSON.parse(res.data.data.maindata)
                     const billNo = JSON.parse(res.data.data.billing)
@@ -176,7 +176,8 @@ export const usePaymentVendor = () => {
 
                 } catch (error) {
 
-                    toast.error('Enter Correct PO no', { position: 'top-center' })
+                    console.log(error)
+                    toast.error('Enter Correct MIRO no', { position: 'top-center' })
 
                 }
             }

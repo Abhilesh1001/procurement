@@ -1,6 +1,6 @@
 'use client'
-import Login from '@/components/Login/Login'
-import {useDispatch,useSelector} from 'react-redux'
+
+import {useSelector} from 'react-redux'
 import { useEffect } from 'react'
 import Main from '@/components/mainpage/Main'
 
