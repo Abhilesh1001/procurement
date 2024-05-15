@@ -10,7 +10,9 @@ import React from 'react'
 
 const Materialcreate = () => {
 
-    const { handleSubmit, setDate, data, handleUPdate, handleCreate, handleChange, change, mutation, handleKeyDown, setVid, mutationUpdate, sfcreate } = useMaterial()
+    const { handleSubmit, setDate, data, handleUPdate, handleCreate, handleChange, change, mutation, handleKeyDown, setVid, mutationUpdate, sfcreate,materialGroup,materialUnit } = useMaterial()
+
+
 
     return (
         <div className="my-4">
@@ -47,19 +49,23 @@ const Materialcreate = () => {
                 <select onChange={(e) => setDate({ ...data, material_group: e.target.value })} value={data.material_group} required className="select select-bordered block w-full" aria-label="Large select example">
                     {/* <option value='material_group' selected>Material Group</option> */}
                     <option disabled selected>Pick one</option>
-                    <option value="electrical">Electrical</option>
-                    <option value="instrumentation">Instrumentation</option>
-                    <option value="mechanical">Mechanical</option>
-                    <option value="civil">Civil</option>
+                    {
+                        materialGroup?.map((item:{group_no:number,group_name:string})=>{
+                            return  <option key={item.group_no} value={item.group_name}>{item.group_name}</option>
+                        })
+                    }
                 </select>
                 <label htmlFor="Material No" className="form-label text-sm">Material Unit</label>
                 <select onChange={(e) => setDate({ ...data, unit: e.target.value })} value={data.unit} required className="select select-bordered block w-full" aria-label="Large select example">
-                    <option value="KG">KG</option>
-                    <option value="number">NOS</option>
-                    <option value="packet">Packet</option>
-                    <option value="box">BOX</option>
-                    <option value="gram">GRAM</option>
+                <option disabled selected>Pick one</option>
+                    {
+                        materialUnit?.map((item:{unit_no:number,material_umit:string,materil_unit_desc:string})=>{
+                            return  <option key={item.unit_no} value={item.material_umit}>{item.material_umit}</option>
+                        })
+                    }
+
                 </select>
+
                 {change !== 'create' && <button type='submit' className="btn btn-success mt-2">Submit</button>}
 
             </form>}

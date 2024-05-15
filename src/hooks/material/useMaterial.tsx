@@ -176,5 +176,65 @@ export const useMaterial = () =>{
     const { data: matdata } = useQuery({ queryKey: ['matData',mutation.data,authToken], queryFn: fetchData })
 
 
-    return {handleSubmit,setDate,data,loadingNewCreation,newMatNo,setEnabled,handleUPdate,handleCreate,handleChange,change,mutation,handleKeyDown,setVid,mutationUpdate,sfcreate,matdata}
+
+
+
+
+
+
+
+
+    // get materialunit 
+
+    const fetchMaterialGroup = async () => {
+        const res = await axios.get(`${baseurl}mat/materialgroup`, {
+            headers: {
+                Authorization: `Bearer ${authToken?.access}`,
+            },
+        });
+        return res.data;
+    };  
+
+
+
+    const {data:materialGroup} = useQuery({queryKey:['fetchGroup'],queryFn:fetchMaterialGroup})
+
+    // get materialgroup 
+
+
+    const fetchMaterialUnit = async () => {
+        const res = await axios.get(`${baseurl}mat/materialunit`, {
+            headers: {
+                Authorization: `Bearer ${authToken?.access}`,
+            },
+        });
+        return res.data;
+    };  
+
+
+    const {data:materialUnit} = useQuery({queryKey:['fetchUnit'],queryFn:fetchMaterialUnit}) 
+
+    console.log(materialUnit)
+
+
+
+    // store location 
+
+
+    // create material Group    
+
+
+    
+
+
+
+
+    // create material Unit 
+
+
+
+
+
+
+    return {handleSubmit,setDate,data,loadingNewCreation,newMatNo,setEnabled,handleUPdate,handleCreate,handleChange,change,mutation,handleKeyDown,setVid,mutationUpdate,sfcreate,matdata,materialGroup,materialUnit}
 }
