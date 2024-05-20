@@ -5,14 +5,17 @@ import Loading from '@/components/loading/Loading'
 import { useMaterial } from '@/hooks/material/useMaterial'
 // components 
 import React from 'react'
+import { useSelector } from 'react-redux'
+import {matState} from '@/type/material/materia-type'
+
 
 
 
 const Materialcreate = () => {
 
-    const { handleSubmit, setDate, data, handleUPdate, handleCreate, handleChange, change, mutation, handleKeyDown, setVid, mutationUpdate, sfcreate,materialGroup,materialUnit } = useMaterial()
+    const { handleSubmit, setDate, data, handleUPdate, handleCreate, handleChange, change, mutation, handleKeyDown, setVid, mutationUpdate, sfcreate,materialGroup } = useMaterial()
 
-
+    const {materilalunit} = useSelector((state:matState)=>state.matSlice)
 
     return (
         <div className="my-4">
@@ -59,7 +62,7 @@ const Materialcreate = () => {
                 <select onChange={(e) => setDate({ ...data, unit: e.target.value })} value={data.unit} required className="select select-bordered block w-full" aria-label="Large select example">
                 <option disabled selected>Pick one</option>
                     {
-                        materialUnit?.map((item:{unit_no:number,material_umit:string,materil_unit_desc:string})=>{
+                        materilalunit?.map((item:any)=>{
                             return  <option key={item.unit_no} value={item.material_umit}>{item.material_umit}</option>
                         })
                     }

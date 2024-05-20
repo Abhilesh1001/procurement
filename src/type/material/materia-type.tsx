@@ -7,11 +7,28 @@ export interface matType{
     material_issue :null|number 
     material_remarks:string,
 }
+
+
+export type materialunittype= {
+    unit_no?:number|null,
+    material_umit:string,
+    materil_unit_desc:string
+}
+
+export type materialgrouptype = {
+    group_no : null| number,
+    group_name : string
+}
+
+
 export interface dataTypeMatIssue {
     matData : matType[],
     orignalData : matType[],
     totalQuantity :matType[],
     miview:null|number 
+    materilalunit : materialunittype[]
+    materialGroup : materialgrouptype[]
+
 }
 
 export interface matState {

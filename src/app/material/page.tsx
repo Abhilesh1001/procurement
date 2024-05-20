@@ -52,7 +52,7 @@ const page = () => {
               {/* material Unit  */}
 
                 <dialog id="my_modal_3" className="modal">
-                    <div className="modal-box">
+                    <div className="modal-box w-11/12 max-w-5xl">
                    <MaterialUnit />
                         <div className="modal-action">
                          
@@ -63,7 +63,7 @@ const page = () => {
 
               {/* material GRoup  */}
                 <dialog id="my_modal_2" className="modal">
-                    <div className="modal-box">
+                    <div className="modal-box w-11/12 max-w-5xl">
                     <MaterialGroup />
                         <div className="modal-action">
                          
