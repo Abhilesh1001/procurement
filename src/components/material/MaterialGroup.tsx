@@ -30,7 +30,7 @@ const MaterialGroup = () => {
                  
                 {hiddenslert === '' && <Aleart label={'Updated'} alertname={'Material Unit'} onClose={handleCloseAlert} newMat={updateData.data.group_no} />}
 
-                {hiddenslertcreate === '' && <Aleart label={'Created'} alertname={'Material Unit'} onClose={handleCloseAlertCreate} newMat={mutation.data.data.data.unit_no} />}
+                {hiddenslertcreate === '' && <Aleart label={'Created'} alertname={'Material Unit'} onClose={handleCloseAlertCreate} newMat={mutation.data.data.data.group_no} />}
 
             </div>
 
@@ -67,8 +67,8 @@ const MaterialGroup = () => {
                                 return <tr key={item.group_no}>
                                     <td><DumyInput indum={item.group_no} /></td>
                                     <td>{id !== index + 1 ? <DumyInput indum={item.group_name} /> : <input className='form-control' value={item.group_name} onChange={(e) => handleChangedata(item.group_name, index, 'material_umit', e.target.value,)} />}</td>
-                                    <td><ButtonChange onClick={() => handleChange(item.unit_no)} label={'Change'} /></td>
-                                    <td>{id !== index + 1 ? <button>No Update</button> : <ButtonChange onClick={() => handleUpdate(item.unit_no)} label={'Update'} />}</td>
+                                    <td><ButtonChange onClick={() => handleChange(item.group_no)} label={'Change'} /></td>
+                                    <td>{id !== index + 1 ? <button>No Update</button> : <ButtonChange onClick={() => handleUpdate(item.group_no)} label={'Update'} />}</td>
                                 </tr>
                             })
                         }

@@ -40,6 +40,7 @@ export const useMaterialGroup=()=>{
     }
 
     async function handleUpdate(ID_No: Number) {
+        console.log(ID_No)
 
         const newData = [...materialGroup]
         const filterData = newData.filter((item) => {
