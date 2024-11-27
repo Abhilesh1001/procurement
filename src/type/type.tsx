@@ -157,4 +157,18 @@ export interface hiddenType {
     issuematerial : string
   }
 
+
+  export interface DeliveryType {
+    s_no?: null|number,
+    name: string,
+    phone_no: number|null,
+    vendor_name: string,
+    address: string,
+    gst: string,
+    email: string,
+    company_s_no:null | number,
+    company_name : string,
+    company_address : string
+}
+
   
