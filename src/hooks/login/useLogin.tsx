@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios'
 import { jwtDecode } from "jwt-decode";
-import { getUser, getAuthToken, clearAuthToken, clearUser, getUserId } from '@/redux/slice'
+import { getUser, getAuthToken, clearAuthToken, clearUser, getUserId, getAdmin,getAdminCompany,getCompanyId } from '@/redux/slice'
 import { StateProps } from '@/type/type'
 import { getMainheader } from '@/redux/slice'
 import { soundClick, soundSsuccess, soundError } from "@/sound/sound"
@@ -83,8 +83,11 @@ export const useLogin = (data?: loginred) => {
         document.cookie = 'tokenAcess=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
         dispatch(clearAuthToken(''))
         dispatch(clearUser(""))
-        route.push('/login')
         dispatch(getMainheader('Login Page' ))
+        dispatch(getAdmin(false))
+        dispatch(getAdminCompany(false))
+        dispatch(getCompanyId(null))
+        route.push('/login')
     }
 
     return { handleSubmit, handleLogout,loading }

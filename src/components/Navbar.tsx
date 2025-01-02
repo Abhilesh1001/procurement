@@ -2,7 +2,7 @@
 import React, { useEffect, useState, memo } from 'react'
 import Link from 'next/link'
 import { useLogin } from '@/hooks/login/useLogin'
-import { getMainheader } from '@/redux/slice'
+import { getMainheader,getAdmin,getAdminCompany,getCompanyId } from '@/redux/slice'
 import './style.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { getAuthToken } from '@/redux/slice'
@@ -13,6 +13,8 @@ import { useMenu } from '@/hooks/menu/useMenu'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import NavColl from './navcomponent/NavColl'
+import DrawerAdmin from './navcomponent/DrawerAdmin'
+import DrawerAdminCompany from './navcomponent/DrawerAdminCompany'
 
 
 export type StateProps = {
@@ -22,14 +24,16 @@ export type StateProps = {
         authToken: {
             access: string
         }
-        baseurl: string
+        baseurl: string,
+        is_admin : boolean,
+        is_company_admin : boolean
     }
 }
 
-
 const Navbar = () => {
     const dispatch = useDispatch()
-    const { user, mainheader, authToken, baseurl } = useSelector((state: StateProps) => state.counter)
+    const { user, mainheader, authToken, baseurl,is_admin,is_company_admin } = useSelector((state: StateProps) => state.counter)
+    // console.log(is_admin,is_company_admin)
     const data = { email: '', password: '' }
     const { handleLogout } = useLogin(data)
     const { handleClickMenu, hiddenmenu } = useMenu()
@@ -70,6 +74,11 @@ const Navbar = () => {
                         Authorization: `Bearer ${authToken?.access}`
                     }
                 })
+                // console.log(data.data)
+
+                dispatch(getAdmin(data.data.is_admin))
+                dispatch(getAdminCompany(data.data.is_company_admin))
+                dispatch(getCompanyId(data.data.company))
 
             } catch (error) {
                 console.log('errro', error)
@@ -132,6 +141,20 @@ const Navbar = () => {
                     </ul>
                 </nav>
             </div>
+
+
+            
+                 {/* Drawer  */}
+
+                 {is_admin && <DrawerAdmin />}
+            {is_company_admin && <DrawerAdminCompany />}
+
+
+            {/* end Drawer  */}
+
+
+
+
         </nav>
     )
 }

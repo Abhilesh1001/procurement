@@ -11,13 +11,20 @@ export interface CounterState {
   userId : number|null,
   mainheader :string,
   hidden : hiddenType,
-  alerthidden : string
+  alerthidden : string,
+  is_admin : boolean,
+  is_company_admin :boolean,
+  companyId : null |number
+
 }
+
+// const baseurlfile = process.env.NEXT_PUBLIC_BASEURL;
 
 const initialState: CounterState = {
   // https://abhileshmaterial.pythonanywhere.com/
   // http://127.0.0.1:8000/
   // https://abhileshsharefund.pythonanywhere.com/
+  // baseurl : baseurlfile,
   baseurl : 'https://abhileshmaterial.pythonanywhere.com/',
   logindata : {},
   authToken : null,
@@ -42,7 +49,10 @@ const initialState: CounterState = {
     issuematerial : 'hidden'
   
   },
-  alerthidden :'hidden'
+  alerthidden :'hidden',
+  is_admin : false,
+  is_company_admin : false,
+  companyId : null,
 }
 
 export const counterSlice = createSlice({
@@ -76,14 +86,22 @@ export const counterSlice = createSlice({
     },
     getHidden : (state,action:PayloadAction<hiddenType>)=>{
       state.hidden =action.payload
-    }
-    
+    },
+    getAdmin : (state,action:PayloadAction<boolean>)=>{
+      state.is_admin = action.payload
+    },
+    getAdminCompany : (state,action:PayloadAction<boolean>)=>{
+      state.is_company_admin = action.payload
+    },
+    getCompanyId :(state,action:PayloadAction<number|null>) =>{
+      state.companyId = action.payload
+    },
   },
   
 
 })
 
 // Action creators are generated for each case reducer function
-export const { getLogindata,getAuthToken,getUser,clearAuthToken,clearUser,getUserId,clearUserId,getMainheader,getHidden} = counterSlice.actions
+export const { getLogindata,getAuthToken,getUser,clearAuthToken,clearUser,getUserId,clearUserId,getMainheader,getHidden,getAdmin,getAdminCompany,getCompanyId} = counterSlice.actions
 
 export default counterSlice.reducer
