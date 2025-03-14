@@ -19,6 +19,7 @@ const ProcumentMenu = () => {
         localStorage.setItem('mainHeader',value)
         setHiddenMenu('hidden')
     } 
+    
   return (
     <div className="bg-base-100">
             <div className='top-10 relative overflow-auto'>

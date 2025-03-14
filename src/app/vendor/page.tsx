@@ -21,7 +21,7 @@ const Vendor = () => {
                         }
                     }}>Create</button>
                     <dialog id="my_modal_1" className="modal">
-                        <div className="modal-box">
+                        <div className="modal-box w-11/12 max-w-5xl">
                             <VendorCreate />
                             <div className="modal-action">
                             </div>

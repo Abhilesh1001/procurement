@@ -34,7 +34,7 @@ export const usePrPreview = () => {
     const handleView = async () => {
         soundClick?.play()
         setView(true)
-        console.log('prno', prno)
+        
 
         if (prno === null || prno === 0) {
             soundError?.play()
@@ -74,7 +74,7 @@ export const usePrPreview = () => {
                 console.log(error)
                 if (error.response.status)
                     soundError?.play()
-                toast.error('Enter Correct Pr No fot View of Change', { position: 'top-center' })
+                toast.error('Enter Correct Pr No for View or Change', { position: 'top-center' })
             }
         }
 

@@ -1,30 +1,20 @@
 import axios from "axios";
 import {useSelector} from 'react-redux'
 import {statePropsMaterial} from '@/type/type'
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { soundClick,soundError,soundSsuccess } from "@/sound/sound";
 import { useQuery,useMutation } from '@tanstack/react-query'
 import { toast } from 'react-toastify';
-import { getMaterialUnit } from "@/redux/material/matslicer";
-import { useDispatch } from "react-redux";
-import { useMaterialUnit } from "./useMaterialUnit";
 
 
-type materialunittype= {
-    unit_no?:number|null,
-    material_umit:string,
-    materil_unit_desc:string
-}
 
 
 export const useMaterial = () =>{
-    const {mutation:mutationData}=useMaterialUnit()
-
+    
     const {baseurl,authToken,userId} = useSelector((state:statePropsMaterial)=>state.counter)
     const [loadingNewCreation, setLoading] = useState(false);
     const [newMatNo,setNewMatNo] = useState<null|number>(null)
-    const dispatch = useDispatch()
-    const [enabled, setEnabled] = useState(false);
+
     const [change, setChange] = useState('change')
     const [vid,setVid] = useState<string>()
     const [sfcreate, setSfcreate] = useState('create')
@@ -238,5 +228,5 @@ export const useMaterial = () =>{
 
 
 
-    return {handleSubmit,setDate,data,loadingNewCreation,newMatNo,setEnabled,handleUPdate,handleCreate,handleChange,change,mutation,handleKeyDown,setVid,mutationUpdate,sfcreate,matdata,materialGroup}
+    return {handleSubmit,setDate,data,loadingNewCreation,newMatNo,handleUPdate,handleCreate,handleChange,change,mutation,handleKeyDown,setVid,mutationUpdate,sfcreate,matdata,materialGroup}
 }

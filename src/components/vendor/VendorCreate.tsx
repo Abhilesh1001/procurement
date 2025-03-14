@@ -38,7 +38,11 @@ const VendorCreate = () => {
         <input type="number" placeholder='Vendor Id' onKeyDown={(e) => handleKeyDown(e)} onChange={(e) => setVid(e.target.value)} className="input input-bordered w-full" /></>}
 
     {sfcreate == 'create'  && <form onSubmit={handleSubmit}>
-        <label htmlFor="Name" className="form-label text-sm">Name</label>
+
+        <div className='row'>
+            <div className='col-sm-6'>
+
+            <label htmlFor="Name" className="form-label text-sm">Name</label>
         <input type="text" placeholder='Name' value={vendor.name} onChange={(e) => setVendor({ ...vendor, name: e.target.value })} className="input input-bordered w-full" />
         <label htmlFor="Phone" className="form-label text-sm ">Phone No</label>
         <input type="number"  value={vendor.phone_no === null || vendor.phone_no ===0 ? '' : vendor.phone_no} placeholder='Phone No'  onChange={(e) => setVendor({ ...vendor, phone_no: Number(e.target.value) })} className="input input-bordered w-full" />
@@ -49,14 +53,24 @@ const VendorCreate = () => {
 
         <label htmlFor="GST" className="form-label text-sm">GST</label>
         <input type="text" value={vendor.gst} placeholder='gst' onChange={(e) => setVendor({ ...vendor, gst: e.target.value })}  className="input input-bordered w-full" />
+                
+            </div>
+            <div className='col-sm-6'>
 
-        <label htmlFor="Email" className="form-label text-sm">Email</label>
+                 <label htmlFor="Email" className="form-label text-sm">Email</label>
         <input type="email" value={vendor.email} placeholder='email' onChange={(e) => setVendor({ ...vendor, email: e.target.value })}  className="input input-bordered w-full" />
 
         <label htmlFor="Address" className="form-label text-sm">Address</label>
         <input type="email" value={vendor.address}  placeholder='Vendor Name' onChange={(e) => setVendor({ ...vendor, address: e.target.value })}  className="input input-bordered w-full" />
-
+            
         {change !== 'create' && <button type='submit' className="btn btn-success mt-2">Submit</button>}
+
+            </div>
+
+        </div>
+        
+
+       
     </form>}
 
 </div>

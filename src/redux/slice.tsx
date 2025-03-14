@@ -15,17 +15,16 @@ export interface CounterState {
   is_admin : boolean,
   is_company_admin :boolean,
   companyId : null |number
-
 }
 
-// const baseurlfile = process.env.NEXT_PUBLIC_BASEURL;
+const baseurlfile = process.env.NEXT_PUBLIC_BASEURL || 'https://www.mayoor.in.net/';
 
 const initialState: CounterState = {
   // https://abhileshmaterial.pythonanywhere.com/
   // http://127.0.0.1:8000/
   // https://abhileshsharefund.pythonanywhere.com/
   // baseurl : baseurlfile,
-  baseurl : 'https://abhileshmaterial.pythonanywhere.com/',
+  baseurl : baseurlfile,
   logindata : {},
   authToken : null,
   user : "",

@@ -14,6 +14,7 @@ export const useMaterialGroup=()=>{
     const { baseurl, authToken, userId } = useSelector((state: statePropsMaterial) => state.counter)
     const [hiddenslert, setHiddenAlert] = useState('hidden')
     const [hiddenslertcreate, setHiddenAlertCreate] = useState('hidden')
+    const [group,setGroup] = useState({group_name:''})
     const [updateData, setUpdataData] = useState({
         "msg": '',
         "data": {
@@ -88,6 +89,7 @@ export const useMaterialGroup=()=>{
         }})},
         onSuccess:(data)=>{
             console.log(data)
+            setGroup({group_name:''})
             setHiddenAlertCreate('')
             
         },
@@ -99,7 +101,7 @@ export const useMaterialGroup=()=>{
 
     
 
-    const [group,setGroup] = useState({group_name:''})
+   
 
     const handleSubmitUnit=()=>{
         console.log(group)
