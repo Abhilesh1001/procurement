@@ -24,7 +24,7 @@ const {data,irnview,irndata} = useSelector((state:irnsliiceState)=>state.irnSlic
                 <td ><DumyInput indum={item.billing.bill_no} /></td>
                 <td><DumyInput indum={item.material_no} /></td>
                 <td><DumyInput indum={item.material_name} /></td>
-                <td><DumyInput indum={item.material_name} /></td>
+                <td><DumyInput indum={item.material_unit} /></td>
                 <td> <DumyInput indum={item.material_price}/></td>
 
                 <td><DumyInput indum={item.material_qty} /></td>

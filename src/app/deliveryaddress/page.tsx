@@ -1,5 +1,6 @@
 'use client'
 import DeliveryAddress from '@/components/deliveryaddress/DeliveryAddress';
+import DeliveryCompAddre from '@/components/deliveryaddress/DeliveryCompAddre';
 import DumyInput from '@/components/dummyinput/DumyInput';
 import { useDelivery } from '@/hooks/deliveryaddress/useDelivery';
 import { DeliveryType } from '@/type/type'
@@ -8,6 +9,8 @@ import { DeliveryType } from '@/type/type'
 const Page = () => {
 
     const {newData} = useDelivery()
+
+
 
   return (
     <div className=' h-auto bg-base-100  min-h-screen'>
@@ -23,6 +26,20 @@ const Page = () => {
             <dialog id="my_modal_1" className="modal">
                 <div className="modal-box w-11/12 max-w-5xl">
                    <DeliveryAddress />
+                    <div className="modal-action">
+                    </div>
+                </div>
+            </dialog>
+
+            <button className="btn btn-success ml-4" onClick={() => {
+                const modal = document.getElementById('my_modal_2') as HTMLDialogElement;
+                if (modal) {
+                    modal.showModal();
+                }
+            }}>Create Delivery Address</button>
+            <dialog id="my_modal_2" className="modal">
+                <div className="modal-box w-11/12 max-w-5xl">
+                   <DeliveryCompAddre />
                     <div className="modal-action">
                     </div>
                 </div>

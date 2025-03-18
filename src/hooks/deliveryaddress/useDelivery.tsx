@@ -7,12 +7,14 @@ import { vendorType,DeliveryType } from '@/type/type'
 import { soundClick,soundSsuccess,soundError } from '@/sound/sound'
 
 
+
 export const useDelivery=()=>{
 
     const { baseurl, authToken,userId } = useSelector((state: StateProps) => state.counter)
 
     const [vendor, setVendor] = useState<DeliveryType>({ name: '', phone_no: null, vendor_name: '', gst: '', email: '', address: '',company_s_no:null,company_name:'',company_address:''})
-    console.log(vendor)
+    // console.log(vendor)
+    
     const [companyId,setCompanyID] = useState<number | null>(null)
 
     const [vid, setVid] = useState<string>('')
@@ -109,9 +111,10 @@ export const useDelivery=()=>{
           return await axios.get(`${baseurl}mat/createDelivery/${vid}/`,{headers:{
             Authorization:`Bearer ${authToken?.access}`
           }})} ,
-          onSuccess: (data) => {
-               console.log(data,'onsuccess')
-               console.log(data)
+          onSuccess: async  (data) => {
+            //    console.log(data,'onsuccess')
+            //    console.log(data)
+
                setVendor(prev=>{ 
                 return {
                     ...prev,
@@ -120,10 +123,32 @@ export const useDelivery=()=>{
                     vendor_name:data.data.vendor_name, 
                     gst:data.data.gst, 
                     email: data.data.email,
-                    address: data.data.address
+                    address: data.data.address,
                 }
               })
-            
+              
+              try {
+
+                const res = await axios.get(`${baseurl}mat/companyaddress/${data.data.company_address}/`,{headers:{
+                    Authorization:`Bearer ${authToken?.access}`
+                }});
+                console.log(res.data)
+                setVendor(prev=>{ 
+                    return {
+                        ...prev,
+                        company_s_no : data.data.s_no,
+                        company_name : res.data.name,
+                        company_address : res.data.address
+    
+                    }
+                  })
+
+              } catch (error) {
+                console.log(error)
+
+                
+              }
+
               soundSsuccess?.play()
             
             }              

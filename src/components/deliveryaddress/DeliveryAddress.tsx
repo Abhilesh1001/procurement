@@ -5,13 +5,11 @@ import DumyInput from '../dummyinput/DumyInput'
 
 
 
-
 const DeliveryAddress = () => {
 
     const { handleUPdate, change, mutation, handleSubmit, vendor, setVendor, newData, vid, setVid, handleChange, handleCreate, handleKeyDown, mutationUpdate, sfcreate, companyId, setCompanyID, handleAddressSubmit, mutationAddress } = useDelivery()
 
-    console.log(mutation.data)
-
+    
 
 
     return (
@@ -74,20 +72,24 @@ const DeliveryAddress = () => {
 
                         <label htmlFor="Address" className="form-label text-sm">Address</label>
                         <input type="text" value={vendor.address} placeholder='Vendor Name' onChange={(e) => setVendor({ ...vendor, address: e.target.value })} className="input input-bordered w-full" />
+
+
                         {/* company address  */}
+
+
                         <label htmlFor="CO\ompanyAddress" className="form-label text-sm">Company Address</label>
                         <div className='flex'>
-                            <input type="number" value={companyId === null ? '' : companyId} placeholder='Enter Company ID' onChange={(e) => setCompanyID(Number(e.target.value))} className="input input-bordered w-full" />
+                            <input type="number" value={vendor.company_s_no === null ? '' : vendor.company_s_no} placeholder='Enter Company ID' onChange={(e) => setCompanyID(Number(e.target.value))} className="input input-bordered w-full" />
                             <button type='button' onClick={handleAddressSubmit} className='btn btn-accent ml-2'>Enter ID</button>
                         </div>
                         <div className='my-4'>
                             <label htmlFor="Companyname" className="form-label text-sm">Company Name</label>
-                            <DumyInput indum={mutationAddress?.data?.data?.name} />
+                            <DumyInput indum={vendor.company_address} />
                         </div>
                         <div className='my-4'>
 
                             <label htmlFor="Companyname" className="form-label text-sm">Company</label>
-                            <DumyInput indum={mutationAddress?.data?.data?.address} />
+                            <DumyInput indum={vendor.company_name} />
                         </div>
                     </div>
                 </div>

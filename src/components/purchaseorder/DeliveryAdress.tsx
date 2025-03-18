@@ -18,9 +18,9 @@ const DeliveryAdress = () => {
     const { deliveryadress: devAdress, selectedValue, podata } = useSelector((state: posliiceState) => state.poslicer)
     const dispatch = useDispatch()
 
-    console.log(devAdress)
 
-    let devileryAdress: DeliveryType = {
+
+    let deliveryAddress: DeliveryType = {
         s_no: null,
         name: '',
         phone_no: null,
@@ -33,10 +33,18 @@ const DeliveryAdress = () => {
         company_address: ''
 
     };
-    if (podata.delivery_address !== '') {
-        devileryAdress = JSON.parse(podata.delivery_address)
+    console.log(podata.delivery_address, 'podata');
+
+
+    if (podata.delivery_address && typeof podata.delivery_address === 'string') {
+        try {
+            deliveryAddress = JSON.parse(podata.delivery_address);
+        } catch (error) {
+            console.error('Error parsing delivery_address:', error);
+        }
     }
 
+    // console.log(deliveryAddress, 'delivery address');
 
     const addressDetails = async (e: React.ChangeEvent<HTMLInputElement>) => {
 
@@ -59,8 +67,6 @@ const DeliveryAdress = () => {
                     // company_address : data.data.company_address,
                 }
 
-
-
                 dispatch(getDEliveryAdress(newData))
             } catch (errors) {
                 console.log(errors)
@@ -76,27 +82,26 @@ const DeliveryAdress = () => {
                 <thead className='sticky top-0 z-1  h-10 bg-base-200'>
                     <tr>
                         <th>Delivery Id</th>
-                        {devileryAdress.name !== "" && <><th>Name</th>
+                        <th>Name</th>
                             <th>Phone No</th>
                             <th>Name</th>
                             <th>Delivery Adrress</th>
                             <th>GST No</th>
-                            <th>Email</th></>}
+                            <th>Email</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>
 
-                            {selectedValue === 'PO' ? <DumyInput indum={devileryAdress.s_no !== null && devileryAdress.s_no !== undefined ? devileryAdress.s_no : ''} /> : <input type="number" className="input input-bordered input-sm max-w-xs text-sm w-24" onChange={(e) => addressDetails(e)} />}
+                            {selectedValue === 'PO' ? <DumyInput indum={deliveryAddress.s_no !== null && deliveryAddress.s_no !== undefined ? deliveryAddress.s_no : ''} /> : <input type="number" className="input input-bordered input-sm max-w-xs text-sm w-24" onChange={(e) => addressDetails(e)} />}
                         </td>
-
-                        {devileryAdress.name !== "" && <><td> <DumyInput indum={devileryAdress.name} /></td>
-                            <td> <DumyInput indum={selectedValue==='PO'?devileryAdress.phone_no :devAdress.phone_no } />  </td>
-                            <td><DumyInput indum={selectedValue==='PO'?devileryAdress.vendor_name:devAdress.vendor_name} /></td>
-                            <td><DumyInput indum={selectedValue==='PO'?devileryAdress.address:devAdress.address} /></td>
-                            <td><DumyInput indum={selectedValue==='PO'?devileryAdress.gst:devAdress.gst} /></td>
-                            <td><DumyInput indum={selectedValue==='PO'?devileryAdress.email:devAdress.email} /></td></>}
+                        { <><td> <DumyInput indum={selectedValue === 'PO' ? deliveryAddress.name : devAdress.name} /></td>
+                            <td> <DumyInput indum={selectedValue === 'PO' ? deliveryAddress.phone_no : devAdress.phone_no} />  </td>
+                            <td><DumyInput indum={selectedValue === 'PO' ? deliveryAddress.vendor_name : devAdress.vendor_name} /></td>
+                            <td><DumyInput indum={selectedValue === 'PO' ? deliveryAddress.address : devAdress.address} /></td>
+                            <td><DumyInput indum={selectedValue === 'PO' ? deliveryAddress.gst : devAdress.gst} /></td>
+                            <td><DumyInput indum={selectedValue === 'PO' ? deliveryAddress.email : devAdress.email} /></td></>}
                     </tr>
                 </tbody>
             </table>
