@@ -11,7 +11,7 @@ import { usePoview } from './usePoview'
 import { soundClick,soundError,soundSsuccess } from "@/sound/sound";
 
 // redux 
-import { getData,getPoData,getSelectedValue,getMainData,getNewPO,getVendorAdress,getPoPrView,getPoview, getPochange,getUppono, getOrignalData,getTotalQuantity,setHiddenALert,getNewChange } from '@/redux/po/poslicer';
+import { getData,getPoData,getSelectedValue,getMainData,getNewPO,getVendorAdress,getPoPrView,getPoview, getPochange,getUppono, getOrignalData,getTotalQuantity,setHiddenALert,getNewChange,getDEliveryAdress } from '@/redux/po/poslicer';
 import { toast } from 'react-toastify';
 
 
@@ -35,6 +35,7 @@ export const usePo = () => {
             setLoading(false)
             dispatch(getMainData({ TotalAmount: 0, TotalWithtax: 0, TotalTax: 0}))
             dispatch(getVendorAdress({name: '', phone_no: null, vendor_name: '', address: '', gst: '', email: ''}))
+            dispatch(getDEliveryAdress({ name: '', phone_no: null, vendor_name: '', address: '', gst: '', email: ''}))
             dispatch(getData(pomainall))
             getUppono(null)
             dispatch(setHiddenALert(''))  

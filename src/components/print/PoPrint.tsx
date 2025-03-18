@@ -33,8 +33,8 @@ const PoPrint = React.forwardRef<HTMLDivElement>((props, ref) => {
             
             <div className="row">
                 <div className="col-sm-8">
-                    <div className="font-bold text-2xl">Mayroor Studio Limited.</div>
-                    <div>Thana Road Maharajganj Siwan Bihar</div>
+                    <div className="font-bold text-2xl">{deliveryAdress.vendor_name}</div>
+                    <div>{deliveryAdress.address}</div>
                 </div>
                 <div className="col-sm-4">
                     <div className=" text-2xl">Purchase Order</div>

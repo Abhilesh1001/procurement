@@ -61,7 +61,7 @@ const VendorDetails = () => {
                         <th>Party Name</th>
                         <th>Party Adrress</th>
                         <th>Party GST No</th>
-                        <th>Email</th></> 
+                        <th>Email ID</th></> 
                     </tr>
                 </thead>
                 <tbody>
