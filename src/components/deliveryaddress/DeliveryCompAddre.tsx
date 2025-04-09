@@ -11,9 +11,8 @@ import ButtonChange from '../button/ButtonChange'
 
 const DeliveryCompAddre = () => {
 
-    const { hiddenslert, handleCloseAlert, updateData, deliveryComAddress, id, handleChangedata, handleChange, handleUpdate, unit, setUnit, handleSubmitUnit, mutation, hiddenslertcreate, handleCloseAlertCreate } = useDeliveryCompany()
+    const { hiddenslert, handleCloseAlert, updateData, deliveryComAddress, id, handleChangedata, handleChange, handleUpdate, unit, setUnit, handleSubmitUnit, mutation, hiddenslertcreate, handleCloseAlertCreate } = useDeliveryCompany()  
 
-    
 
     return (
         <div>

@@ -11,7 +11,6 @@ import { toast } from 'react-toastify'
 
 
 
-
 export function useIsMaterial(val?: string) {
 
     const { baseurl, authToken, userId } = useSelector((state: StateProps) => state.counter)
@@ -82,7 +81,6 @@ export function useIsMaterial(val?: string) {
         dispatch(getMatData(updateForm))
         
     }
-
 
 
     const mutation = useMutation<any, any, any, unknown>(({
