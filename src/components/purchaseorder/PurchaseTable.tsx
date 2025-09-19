@@ -12,7 +12,6 @@ import { usePoview } from '@/hooks/purchseorder/usePoview'
 // dependencies 
 import DumyInput from '@/components/dummyinput/DumyInput'
 import { format } from 'date-fns';
-import PrBurron from '@/components/button/PrBurron'
 
 const PurchaseTable = () => {
     const {data,poview,podata} = useSelector((state:posliiceState)=>state.poslicer)

@@ -17,7 +17,7 @@ export interface CounterState {
   companyId : null |number
 }
 
-const baseurlfile = process.env.NEXT_PUBLIC_BASEURL || 'https://www.mayoor.in.net/';
+const baseurlfile = process.env.NEXT_PUBLIC_BASEURL || 'https://www.apiabhi.abhilesh.in/';
 
 const initialState: CounterState = {
   // https://abhileshmaterial.pythonanywhere.com/
