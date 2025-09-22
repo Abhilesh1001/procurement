@@ -172,3 +172,11 @@ export interface hiddenType {
 }
 
   
+  export interface assetType {
+    asset_no?: null|number,
+    time?: string,
+    asset_name : string,
+    usersf?: number | null
+    amount_Debit :  number | null 
+    debit_date : string 
+  }
