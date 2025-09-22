@@ -35,6 +35,7 @@ export type StateProps = {
         user :string,
         userId:number | null
         hidden : hiddenType
+        companyId : null |number
     }   
     
 }

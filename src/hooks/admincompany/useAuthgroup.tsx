@@ -21,7 +21,7 @@ export interface authGroupType {
 
 export const useAuthgroup =()=>{
 
-    const { baseurl, authToken,companyId } = useSelector((state: StateProps) => state.counter)
+    const { baseurl, authToken} = useSelector((state: StateProps) => state.counter)
 
   
 
