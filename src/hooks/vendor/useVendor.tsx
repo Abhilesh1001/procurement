@@ -11,7 +11,7 @@ export const useVendor =()=>{
 
     const { baseurl, authToken,userId } = useSelector((state: StateProps) => state.counter)
 
-    const [vendor, setVendor] = useState<vendorType>({ name: '', phone_no: null, vendor_name: '', gst: '', email: '', address: '' })
+    const [vendor, setVendor] = useState<vendorType>({ name: '', phone_no: null, vendor_name: '', gst: '', email: '', address: '',code:'',days:'',description:'',gl_account:'',vendor_code:'' })
     const [vid, setVid] = useState<string>('')
     const [change, setChange] = useState('change')
     const [sfcreate, setSfcreate] = useState('create')
@@ -67,7 +67,7 @@ export const useVendor =()=>{
     const handleCreate=()=>{
         // soundClick?.play()
         setVendor(
-            { name: '', phone_no: null, vendor_name: '', gst: '', email: '', address: '' }
+            { name: '', phone_no: null, vendor_name: '', gst: '', email: '', address: '',code:'',days:'',description:'',gl_account:'',vendor_code:'' }
         )
         setSfcreate('create')
         setChange('')
@@ -83,7 +83,7 @@ export const useVendor =()=>{
             soundSsuccess?.play()
             console.log(data,"success")
             setVendor(
-                { name: '', phone_no: null, vendor_name: '', gst: '', email: '', address: '' }
+                { name: '', phone_no: null, vendor_name: '', gst: '', email: '', address: '',code:'',days:'',description:'',gl_account:'',vendor_code:'' }
             )
         },
         onError:(error)=>{
