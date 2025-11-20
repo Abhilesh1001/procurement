@@ -25,7 +25,7 @@ const PurchaseOrder = () => {
     const { handleDelivery, handleVdetails, vendorView, deliveryView} = usePoview()
 
     const renderTableHeader = () => {
-        const tableHead = ['', 'S No', 'PO Line', 'PR No', 'Material No', 'Material Name', 'Unit', 'Material Price', 'Quantity', 'Total Amount', 'Material Tax (%)', 'Total Amount Tax (%)', 'Material Text', 'Delete', 'GRN No.', 'Created By', 'Date', 'PR Line']
+        const tableHead = ['', 'S No', 'PO Line', 'PR No', 'Material No', 'Material Name', 'Unit', 'Material Price', 'Quantity', 'Total Amount', 'Material Tax (%)', 'Total Amount Tax (%)','HSN', 'Material Text', 'Delete', 'GRN No.', 'Created By', 'Date', 'PR Line','Cost Center','Internal Order']
         return (
             <tr>
                 {tableHead.map((item: any, index: number) => (

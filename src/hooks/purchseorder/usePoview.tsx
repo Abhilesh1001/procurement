@@ -60,6 +60,7 @@ export const usePoview = () => {
             const lastPoLine = data.length > 0 ? data[data.length - 1].po_line || 0 : 0;
 
             const newData = JSON.parse(res.data.item_json)
+            console.log(newData,'newData1')
             const newDataUpdata = newData.map((item: any, index: number) => {
                 const element = {
                     line_no: item.line_no,
@@ -69,11 +70,19 @@ export const usePoview = () => {
                     material_name: item.material_name,
                     material_unit: item.material_unit,
                     material_price: item.material_price,
-                    material_tax: null,
+                    material_tax: Number(item.tax_rate),
                     total_tax: null,
                     material_qty: item.material_qty,
                     material_text: item.material_text,
                     total_amount: item.total_price,
+                    cost_center :item.cost_center,
+                    expense_gl : item.expense_gl,
+                    hsn : item.hsn,
+                    internal_order : item.internal_order,
+                    inventory_gl : item.inventory_gl,
+                    tax : item.tax,
+                    tax_gl : item.tax_gl,
+                    tax_rate : item.tax_rate,
                 }
                 return element
             })

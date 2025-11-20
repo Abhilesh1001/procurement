@@ -65,6 +65,14 @@ export const usePrPreview = () => {
                         material_unit: item.material_unit,
                         material_text: item.material_text,
                         total_price: item.total_price,
+                        cost_center : item.cost_center,
+                        expense_gl : item.expense_gl,
+                        hsn : item.hsn,
+                        internal_order : item.internal_order,
+                        tax : item.tax,
+                        tax_gl : item.tax_gl,
+                        tax_rate : item.tax_rate,
+                        inventory_gl : item.inventory_gl
                     }
                     return element
                 })

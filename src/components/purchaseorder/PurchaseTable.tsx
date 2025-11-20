@@ -52,13 +52,11 @@ const PurchaseTable = () => {
                 <td><DumyInput indum={item.total_amount} /></td>
 
                 <td>
-                    {poview ?<DumyInput indum={item.material_tax}/>:<>{item.grn_no!==null&& item.grn_no!==undefined?<DumyInput indum={item.material_tax}/>:<input required type="number" value={item.material_tax !== null ? item.material_tax===0?'':item.material_tax : ''} onChange={(e) => handleChange(Number(e.target.value), 'material_tax', index)} className="input input-bordered input-sm max-w-xs  w-32" />}</>}
-                    
+                    <DumyInput indum={item.material_tax} />
                 </td>
 
-                <td>
-                <DumyInput indum={item.total_tax} /></td>
-
+                <td><DumyInput indum={item.total_tax} /></td>
+                <td><DumyInput indum={item.hsn} /></td>
                 <td>
                     {poview ?<DumyInput indum={item.material_text}/>:<>{item.grn_no!==null&& item.grn_no!==undefined?<DumyInput indum={item.material_text}/>:<input type="text" onChange={(e) => handleChange(e.target.value, 'material_text', index)} value={item.material_text} className="input input-bordered input-sm max-w-xs text-sm"  required/>}</>}
                 </td>
@@ -68,8 +66,9 @@ const PurchaseTable = () => {
                     <td >{<DumyInput indum={item.grn_no} />}</td>
                 <td >{podata.user !==null ?<DumyInput indum={podata.user} />: "user"}</td>
                 <td >{podata.user !==null ?<DumyInput indum={formattedDateString} />: ""}</td>
-                <td >{<DumyInput indum={item.line_no} />}
-                </td>
+                <td >{<DumyInput indum={item.line_no} />}</td>
+                <td >{<DumyInput indum={item.cost_center} />}</td>
+                <td >{<DumyInput indum={item.internal_order} />}</td>
             </tr>
         })}
 

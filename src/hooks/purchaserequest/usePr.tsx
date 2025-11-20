@@ -74,7 +74,15 @@ export const usePr =()=>{
             material_price: null,
             material_qty: null,
             material_text: '',
-            total_price: null
+            total_price: null,
+            cost_center : '',
+            expense_gl : '',
+            hsn : '',   
+            internal_order : '',
+            tax : '',
+            tax_gl : '',
+            tax_rate :'',
+            inventory_gl :''
         }]))
        
 
@@ -133,7 +141,7 @@ export const usePr =()=>{
                         Authorization: `Bearer ${authToken?.access}`
                     }
                 })
-                console.log(res.data)
+                
                 const result = {
                     [indexval]: res.data
                 }
@@ -145,11 +153,19 @@ export const usePr =()=>{
                         material_no: res.data.s_no,
                         material_name: res.data.material_name,
                         material_unit: res.data.unit,
+                        cost_center : res.data.cost_center,
+                        expense_gl : res.data.expense_gl,
+                        hsn : res.data.hsn,   
+                        internal_order : res.data.internal_order,
+                        tax : res.data.tax,
+                        tax_gl : res.data.tax_gl,
+                        tax_rate : res.data.tax_rate,
+                        inventory_gl : res.data.inventory_gl===undefined?'':res.data.inventory_gl,
                       };
                     }
                     return item;
                   });
-                console.log(newData)
+                console.log(newData,'newData1')
                 dispatch(getPrData(newData))
 
 

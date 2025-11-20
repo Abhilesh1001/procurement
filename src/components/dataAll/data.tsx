@@ -1,8 +1,22 @@
-export const praldata = [{ line_no: 1, pr_no: null, material_name: '', material_unit: '', po_no: null, material_no: null, material_price: null, material_qty: null, material_text: '', total_price: null }]
+export const praldata = [{ line_no: 1, pr_no: null, material_name: '', material_unit: '', po_no: null, material_no: null, material_price: null, material_qty: null, material_text: '', total_price: null, cost_center : '',
+    expense_gl : '',
+    hsn : '',
+    internal_order : '',
+    tax : '',
+    tax_gl : '',
+    tax_rate :'',
+  inventory_gl : ''}]
 
 export const prmainall = { pr_no: null, user: null, time: '', item_json: '' }
 
-export const pomainall = [{ line_no: null, pr_no: null, po_line: null, grn_no: null, material_no: null, material_name: '', material_unit: '', material_price: null, material_tax: null, total_tax: null, material_qty: null, material_text: '', total_amount: null, }]
+export const pomainall = [{ line_no: null, pr_no: null, po_line: null, grn_no: null, material_no: null, material_name: '', material_unit: '', material_price: null, material_tax: null, total_tax: null, material_qty: null, material_text: '', total_amount: null,cost_center :'',
+                    expense_gl : '',
+                    hsn : '',
+                    internal_order : '',
+                    inventory_gl : '',
+                    tax : '',
+                    tax_gl : '',
+                    tax_rate : '', }]
 
 export const grnmainall = [{ line_no: null, pr_no: null, po_line: null, po_no: null, grn_line: null,mrn_no:null, material_name: '', material_no: null, material_unit: '', material_price: null, material_tax: null, total_tax: null, material_qty: null, material_text: '', total_amount: null }] 
 
@@ -22,9 +36,6 @@ export const irnmainall = [{
 export const  matissueMain  =[{mi_line:1,material_no:null,material_name:'',material_unit:'',material_qty:null,material_issue :null,material_remarks:''}]
 
 
-
-export const baseurl = 'https://abhileshmaterial.pythonanywhere.com/'
-// export const pybaseurl  = 'https://abhileshmaterial.pythonanywhere.com/'
 
 
 // Table Params 

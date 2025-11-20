@@ -20,17 +20,29 @@ const VendorDetails = () => {
     const { baseurl, authToken } = useSelector((state: StateProps) => state.counter)
     const  { vendoradress: vendor, selectedValue, podata } = useSelector((state: posliiceState) => state.poslicer)
     const dispatch = useDispatch()
-    let vendorAdress:vendorType={ 
+
+   
+        let vendorAdress:vendorType={ 
         s_no:null,
         name: '',
         phone_no: null,
         vendor_name: '',
         address: '',
         gst: '',
-        email: ''};
+        email: '',
+        code : '',
+        description : '',
+        days :'',
+        gl_account: '',
+        vendor_code : ''
+         };
     if(podata.vendor_address !== ''){
         vendorAdress = JSON.parse(podata.vendor_address)
     }
+
+     console.log(vendor,'vendor address')
+
+
 
     const handleClickVendor = async (e: React.ChangeEvent<HTMLInputElement>) => {
 
@@ -41,6 +53,8 @@ const VendorDetails = () => {
                         Authorization: `Bearer ${authToken?.access}`
                     }
                 })
+
+                // console.log(res.data,'vendor data')
                 dispatch(getVendorAdress(res.data))
 
             } catch (error) {
@@ -50,30 +64,40 @@ const VendorDetails = () => {
 
     }
 
+
+
     return (
           <div className='h-[100px] relative overflow-y-auto bg-base-300 shadow-md mt-4 mb-2 sm:rounded-lg'>
             <table className='w-full text-sm text-left rtl:text-right'>
                 <thead className='bg-base-200'>
                     <tr className='sticky top-0 z-1  h-10'>
                         <th>Party Id</th>
+                        <th>Vendor Code</th>
                         <><th>Name</th>
                         <th>Phone No</th>
                         <th>Party Name</th>
                         <th>Party Adrress</th>
                         <th>Party GST No</th>
-                        <th>Email ID</th></> 
+                        <th>Email ID</th>
+                        <th>Payment Code</th>
+                        </> 
                     </tr>
                 </thead>
                 <tbody>
                         <tr>
                             <td>{selectedValue==='PO'? <DumyInput indum={vendorAdress.s_no !== null && vendorAdress.s_no !== undefined ?vendorAdress.s_no:''} />:<input type="number" className="input input-bordered input-sm max-w-xs text-sm w-24"  onChange={(e) => handleClickVendor(e)} />}</td>
                             { 
-                            <><td><DumyInput indum= {selectedValue==='PO'?vendorAdress.vendor_name:vendor.name} /></td>
+                            <>
+                            <td><DumyInput indum= {selectedValue==='PO'?vendorAdress.vendor_code:vendor.vendor_code} /></td>
+                            <td><DumyInput indum= {selectedValue==='PO'?vendorAdress.name:vendor.name} /></td>
                             <td><DumyInput indum={selectedValue==='PO'?vendorAdress.phone_no:vendor.phone_no} /></td>
                             <td><DumyInput indum={selectedValue==='PO'?vendorAdress.vendor_name:vendor.vendor_name} /></td>
                             <td><DumyInput indum={selectedValue==='PO'?vendorAdress.address:vendor.address} /></td>
                             <td><DumyInput indum={selectedValue==='PO'?vendorAdress.gst:vendor.gst} /></td>
-                            <td><DumyInput indum={selectedValue==='PO'?vendorAdress.email:vendor.email} /></td></>
+                            <td><DumyInput indum={selectedValue==='PO'?vendorAdress.email:vendor.email} /></td>
+                            <td><DumyInput indum={selectedValue==='PO'?vendorAdress.code:vendor.code} /></td>
+
+                            </>
                             }
                             
                         </tr>

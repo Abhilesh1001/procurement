@@ -1,19 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import {vendorType,datatype,podataType,mainType,updataData,CounterStatePo} from '@/type/type'
+import {vendorType,datatype,podataType,mainType,updataData,CounterStatePo, DeliveryType} from '@/type/type'
 import {pomainall } from '@/components/dataAll/data'
 
 
 
 const initialState: CounterStatePo = {
-    deliveryadress:{ name: '', phone_no: null, vendor_name: '', address: '', gst: '', email: '' },
-    vendoradress :{ name: '', phone_no: null, vendor_name: '', address: '', gst: '', email: '' },
+    deliveryadress:{ name: '', phone_no: null, vendor_name: '', address: '', gst: '', email: '',company_address:'',company_name:'',company_s_no:null },
+    vendoradress :{ name: '', phone_no: null, vendor_name: '', address: '', gst: '', email: '',code : '',description : '',days :'',gl_account: '',vendor_code : ''},
     data :pomainall, 
     podata : {po_no:null,time:'',item_pr:'',vendor_address:'',delivery_address:'',user:null,maindata:''},
     selectedValue : 'PR',
     mainData : { TotalAmount: 0, TotalWithtax: 0, TotalTax: 0 },
     newPoNo : null,
-    poprview : null,
+    poprview : null, 
     poview : false,
     pochange :false,
     uppono : null,
@@ -28,7 +28,7 @@ export const poSlice = createSlice({
   name: 'poslicer',
   initialState,
   reducers: {
-    getDEliveryAdress: (state, action: PayloadAction<vendorType>) => {
+    getDEliveryAdress: (state, action: PayloadAction<DeliveryType>) => {
       state.deliveryadress = action.payload
     },
     getVendorAdress : (state, action: PayloadAction<vendorType>) => {
