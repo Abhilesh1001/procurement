@@ -64,6 +64,10 @@ const DeliveryAdress = () => {
                     address: data.data.address,
                     gst: data.data.gst,
                     email: data.data.email,
+                    company_s_no : data.data.company_s_no,
+                    company_name : data.data.company_name,
+                    company_address : data.data.company_address,
+
                     // company_address : data.data.company_address,
                 }
 
