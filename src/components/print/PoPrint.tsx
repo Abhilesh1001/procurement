@@ -71,6 +71,7 @@ const PoPrint = React.forwardRef<HTMLDivElement>((props, ref) => {
                     <tr>
                         <th className="text-nowrap">S No</th>
                         <th className="text-nowrap">Description</th>
+                        <th className="text-nowrap">HSN</th>
                         <th className="text-nowrap">Qty</th>
                         <th className="text-nowrap">Unit</th>
                         <th className="text-nowrap">Unit Price</th>
@@ -89,6 +90,7 @@ const PoPrint = React.forwardRef<HTMLDivElement>((props, ref) => {
                                 <span>{item.material_text}</span>
                                 </div>
                             </td>
+                            <td>{item.hsn}</td>
                             <td>{item.material_qty}</td>
                             <td>{item.material_unit}</td>
                             <td>{item.material_price}</td>

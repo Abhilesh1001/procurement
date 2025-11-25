@@ -35,7 +35,7 @@ export const usePo = () => {
             setLoading(false)
             dispatch(getMainData({ TotalAmount: 0, TotalWithtax: 0, TotalTax: 0}))
             dispatch(getVendorAdress({name: '', phone_no: null, vendor_name: '', address: '', gst: '', email: '',code : '',description : '',days :'',gl_account: '',vendor_code : ''}))
-            dispatch(getDEliveryAdress({name: '', phone_no: null, vendor_name: '', address: '', gst: '', email: '',company_address:'',company_name:'',company_s_no:null }))
+            dispatch(getDEliveryAdress({name: '', phone_no: null, vendor_name: '', address: '', gst: '', email: '',company_address:'',company_name:'',company_s_no:null,company:'',company_adress_code :''}))
             dispatch(getData(pomainall))
             getUppono(null)
             dispatch(setHiddenALert(''))  
@@ -145,7 +145,7 @@ export const usePo = () => {
     const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         soundClick?.play()
         dispatch(getSelectedValue(e.target.value));
-        dispatch(getData(pomainall))
+        dispatch(getData(pomainall)) 
         dispatch(getPoData( {po_no:null,time:'',item_pr:'',vendor_address:'',delivery_address:'',user:null,maindata:''}))
         dispatch(getPoview(false))
         dispatch(getPochange(false))

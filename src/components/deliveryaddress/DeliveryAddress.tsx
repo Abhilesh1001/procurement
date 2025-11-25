@@ -3,8 +3,6 @@ import React, { useState } from 'react'
 import Loading from '../loading/Loading'
 import DumyInput from '../dummyinput/DumyInput'
 
-
-
 const DeliveryAddress = () => {
 
     const { handleUPdate, change, mutation, handleSubmit, vendor, setVendor, newData, vid, setVid, handleChange, handleCreate, handleKeyDown, mutationUpdate, sfcreate, companyId, setCompanyID, handleAddressSubmit, mutationAddress } = useDelivery()
@@ -79,7 +77,7 @@ const DeliveryAddress = () => {
 
                         <label htmlFor="CO\ompanyAddress" className="form-label text-sm">Company Address</label>
                         <div className='flex'>
-                            <input type="number" value={vendor.company_s_no === null ? '' : vendor.company_s_no} placeholder='Enter Company ID' onChange={(e) => setCompanyID(Number(e.target.value))} className="input input-bordered w-full" />
+                            <input type="number" value={companyId === null ? '' : companyId} placeholder='Enter Company ID' onChange={(e) => setCompanyID(Number(e.target.value))} className="input input-bordered w-full" />
                             <button type='button' onClick={handleAddressSubmit} className='btn btn-accent ml-2'>Enter ID</button>
                         </div>
                         <div className='my-4'>

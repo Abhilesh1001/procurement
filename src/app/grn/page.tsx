@@ -5,7 +5,8 @@ import { memo } from 'react'
 
 // component 
 import VendorDetails from '@/components/grn/Vendor'
-import DeliveryAdress from '@/components/purchaseorder/DeliveryAdress'
+
+
 import SelectionHeader from '@/components/grn/Selection'
 import GrnTable from '@/components/grn/GrnTanle'
 import TableHead from '@/components/dummyinput/TableHead'
@@ -17,6 +18,7 @@ import Billing from '@/components/grn/Billing'
 import { useGrnView } from '@/hooks/grn/useGrnView'
 import { grnsliiceState } from '@/type/grn/grntype'
 import { useGrn } from '@/hooks/grn/useGrn'
+import DeliveryAdress from '@/components/grn/DeliveryAdress'
 
 
 const GoodReceipt = () => {
@@ -24,7 +26,7 @@ const GoodReceipt = () => {
 
   const { handleDelivery, handleVdetails, vendorView, deliveryView, handleBilling, billingView } = useGrnView()
   const { handleCloseAlert } = useGrn()
-  const grnTableData = ['', 'S No.', 'GRN Line', 'PO No', 'Material No', 'Material Name', 'Unit', 'Material Price', 'Quantity', 'Total Amount', 'Material Tax (%)', 'Total Amount Tax (%)', 'Material Text', 'Delete', 'Created By', 'Date', 'IRN No']
+  const grnTableData = ['', 'S No.', 'GRN Line', 'PO No', 'Material No', 'Material Name', 'Unit', 'Material Price', 'Quantity', 'Total Amount', 'Material Tax (%)', 'Total Amount Tax (%)', 'Material Text', 'Delete', 'Created By', 'Date', 'IRN No','Cost Center','HSN','Internal Order']
 
 
   return (

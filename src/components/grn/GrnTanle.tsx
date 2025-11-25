@@ -39,10 +39,12 @@ const {data,grnview,grndata} = useSelector((state:grnsliiceState)=>state.grnslic
                 <td><DumyInput indum={item.total_tax} /></td>
                 <td><DumyInput indum={item.material_text}/></td>
                 <td>{grnview ?'' : <>{item.mrn_no !== null && item.mrn_no !== undefined ?'':<PrBurron onClick={()=>handleDelete(index)} label={'Delete'} />}</>}</td>
-
                 <td ><DumyInput indum={grndata.user===null?'User':grndata.user} /></td>
                 <td ><DumyInput indum={grndata.user ===null ?'27.02.2024':format(grndata?.time,'dd-MM-yyyy')} /></td>
                 <td ><DumyInput indum={item.mrn_no} /></td>
+                <td ><DumyInput indum={item.cost_center} /></td>
+                <td ><DumyInput indum={item.hsn} /></td>
+                <td ><DumyInput indum={item.internal_order} /></td>
                
             </tr>
         })}

@@ -18,7 +18,14 @@ export const pomainall = [{ line_no: null, pr_no: null, po_line: null, grn_no: n
                     tax_gl : '',
                     tax_rate : '', }]
 
-export const grnmainall = [{ line_no: null, pr_no: null, po_line: null, po_no: null, grn_line: null,mrn_no:null, material_name: '', material_no: null, material_unit: '', material_price: null, material_tax: null, total_tax: null, material_qty: null, material_text: '', total_amount: null }] 
+export const grnmainall = [{ line_no: null, pr_no: null, po_line: null, po_no: null, grn_line: null,mrn_no:null, material_name: '', material_no: null, material_unit: '', material_price: null, material_tax: null, total_tax: null, material_qty: null, material_text: '', total_amount: null, cost_center: '',
+                    expense_gl: '',
+                    hsn: '',
+                    internal_order: '',
+                    inventory_gl: '',
+                    tax: '',
+                    tax_gl: '',
+                    tax_rate: '', }] 
 
 
 export const irnmainall = [{

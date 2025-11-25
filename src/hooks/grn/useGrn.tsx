@@ -29,7 +29,7 @@ export const useGrn =() =>{
     const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
         dispatch(getSelectedValue(e.target.value))
         dispatch(getMainData({ TotalAmount: 0, TotalWithtax: 0, TotalTax: 0 }))
-        dispatch(getVendorAdress({ name: '', phone_no: null, vendor_name: '', address: '', gst: '', email: '' }))
+        dispatch(getVendorAdress({ name: '', phone_no: null, vendor_name: '', address: '', gst: '', email: '',code :'',description :'',days :'',gl_account :'',vendor_code :''}))
         dispatch(getData(grnmainall))
         dispatch(getOrignalData(grnmainall))
         dispatch(getUpgrno(null))

@@ -1,21 +1,22 @@
 // typescript 
-import { grnsliiceState,datatype } from "@/type/grn/grntype"
+import { grnsliiceState, datatype } from "@/type/grn/grntype"
 import { useState } from "react"
 import { StateProps } from '@/type/type'
 import { grnmainall } from '@/components/dataAll/data'
 
 // redux 
 import { useSelector, useDispatch } from 'react-redux'
-import { getSelectedValue, getGrnPoView, getData, getVendorAdress, getDEliveryAdress, getMainData, getUpgrno, getBillData, getGrnview, getGrnchange, getGrndata,deleteGrnLine, getNewGRN,getOrignalData,getTotalQuantity,setHiddenALert,getNewChange } from '@/redux/grn/grnslicer'
+import { getSelectedValue, getGrnPoView, getData, getVendorAdress, getDEliveryAdress, getMainData, getUpgrno, getBillData, getGrnview, getGrnchange, getGrndata, deleteGrnLine, getNewGRN, getOrignalData, getTotalQuantity, setHiddenALert, getNewChange } from '@/redux/grn/grnslicer'
 
 // dependencies  
 import axios from "axios"
-import { soundClick,soundError,soundSsuccess } from "@/sound/sound"
+import { soundClick, soundError, soundSsuccess } from "@/sound/sound"
 import { toast } from "react-toastify"
+import internal from "stream"
 
 
 export const useGrnView = () => {
-    const { data, grnpoview, selectedValue,mainData,billData,orignalData } = useSelector((state: grnsliiceState) => state.grnslice)
+    const { data, grnpoview, selectedValue, mainData, billData, orignalData,deliveryadress,vendoradress } = useSelector((state: grnsliiceState) => state.grnslice)
     const { baseurl, authToken, userId } = useSelector((state: StateProps) => state.counter)
     const dispatch = useDispatch()
     const [vendorView, setVendorView] = useState('view')
@@ -32,19 +33,19 @@ export const useGrnView = () => {
     const handleDelete = (index: number) => {
         soundClick?.play()
 
-        const orignalData = data?.filter((item:any,indexs:number)=>{
-            if (index!==indexs){
+        const orignalData = data?.filter((item: any, indexs: number) => {
+            if (index !== indexs) {
                 return item
             }
         })
         newfun(orignalData)
-        dispatch(deleteGrnLine({index})) 
-        
+        dispatch(deleteGrnLine({ index }))
+
     }
 
 
 
-    function newfun(newDataUpdata:any) {
+    function newfun(newDataUpdata: any) {
         const newData = [...newDataUpdata]
         console.log(newData, 'newData')
         const TotalAmount = newData.reduce((acc, item) => {
@@ -54,27 +55,27 @@ export const useGrnView = () => {
             return acc
         }, 0)
 
-        const TotalWithTax = newData.reduce((acc,item)=>{
-            if (item.total_tax!==null){
+        const TotalWithTax = newData.reduce((acc, item) => {
+            if (item.total_tax !== null) {
                 acc += item.total_tax
             }
             return acc
-        },0)
+        }, 0)
 
         const TotalTax = newData.reduce((acc, item) => {
-                      console.log(typeof item.material_tax)
-                        if (item.total_amount !== null && item.material_tax !== null) {
-                            acc += item.total_amount * (item.material_tax * 0.01)
-                        }
-                        return acc
-                    }, 0)
-   
-     dispatch(getMainData({ TotalAmount: TotalAmount, TotalWithtax: TotalWithTax, TotalTax: TotalTax }))
+            console.log(typeof item.material_tax)
+            if (item.total_amount !== null && item.material_tax !== null) {
+                acc += item.total_amount * (item.material_tax * 0.01)
+            }
+            return acc
+        }, 0)
+
+        dispatch(getMainData({ TotalAmount: TotalAmount, TotalWithtax: TotalWithTax, TotalTax: TotalTax }))
 
     }
 
     const handleGrnchange = () => {
-        soundClick?.play() 
+        soundClick?.play()
         dispatch(getGrnview(false))
         handleViewChange()
         dispatch(getGrnchange(true))
@@ -95,60 +96,63 @@ export const useGrnView = () => {
     const handleUpdateGRN = async (grn_no: number) => {
 
         soundClick?.play()
-        if(billData.bill_date===null || billData.bill_date=='' || billData.bill_no===null || billData.bill_no==='' || billData.delivery_note===null || billData.delivery_note===''|| billData.transporter_name===null || billData.transporter_name ==='' ||billData.way_bill ===null || billData.way_bill==='' ){
-            toast.error('Enter Billing address details',{position:'top-center'})
+        if (billData.bill_date === null || billData.bill_date == '' || billData.bill_no === null || billData.bill_no === '' || billData.delivery_note === null || billData.delivery_note === '' || billData.transporter_name === null || billData.transporter_name === '' || billData.way_bill === null || billData.way_bill === '') {
+            toast.error('Enter Billing address details', { position: 'top-center' })
             soundError?.play()
             return
         }
 
 
-        const resData = data.map((item)=>{
-            if(item.material_qty===null || item.material_qty===0){
+        const resData = data.map((item) => {
+            if (item.material_qty === null || item.material_qty === 0) {
                 return false
-            }else{
+            } else {
                 return true
             }
-        }) 
+        })
 
-        const resSome = resData.some((item)=>{
-            return item===false
-        }) 
+        const resSome = resData.some((item) => {
+            return item === false
+        })
 
         dispatch(setHiddenALert(''))
-        const newData =  {
+        const newData = {
             item_po: JSON.stringify(data),
-            user:userId,
-            maindata : JSON.stringify(mainData),
-            billing : JSON.stringify(billData)
+            vendor_address : JSON.stringify(vendoradress),
+            delivery_address : JSON.stringify(deliveryadress),
+            user: userId,
+            maindata: JSON.stringify(mainData),
+            billing: JSON.stringify(billData)
         }
-        try{
-           if (!resSome){
-            const res = await axios.patch(`${baseurl}grn/grncreated/${grn_no}/`,newData,{
-                headers:{
-                    Authorization :`Bearer ${authToken?.access}`
-                }
-            })
-            dispatch(getUpgrno(res.data.data.grn_no))    
-            ResetGRN()
-            dispatch(getNewGRN(null))
-           }else{
+        try {
+            if (!resSome) {
+                const res = await axios.patch(`${baseurl}grn/grncreated/${grn_no}/`, newData, {
+                    headers: {
+                        Authorization: `Bearer ${authToken?.access}`
+                    }
+                })
+                console.log(res.data)
+                dispatch(getUpgrno(res.data.data.grn_no))
+                ResetGRN()
+                dispatch(getNewGRN(null))
+            } else {
                 soundError?.play()
-                toast.error('Enter required Fields',{position:'top-center'})
-           }
-        }catch(error) {
+                toast.error('Enter required Fields', { position: 'top-center' })
+            }
+        } catch (error) {
             console.log(error)
         }
 
     }
     const ResetGRN = () => {
         dispatch(getMainData({ TotalAmount: 0, TotalWithtax: 0, TotalTax: 0 }))
-        dispatch(getVendorAdress({ name: '', phone_no: null, vendor_name: '', address: '', gst: '', email: '' }))
+        dispatch(getVendorAdress({ name: '', phone_no: null, vendor_name: '', address: '', gst: '', email: '',code :'',description :'',days :'',gl_account :'',vendor_code :''}))
         dispatch(getData(grnmainall))
         dispatch(getOrignalData(grnmainall))
-        
+
         dispatch(getBillData({ bill_date: null, bill_no: null, delivery_note: null, transporter_name: null, way_bill: null }))
         dispatch(getSelectedValue('PO'))
-    }
+    }   
 
 
 
@@ -169,7 +173,8 @@ export const useGrnView = () => {
                     }
                 })
                 dispatch(getGrndata(response.data))
-                // console.log(response.data.item_po)
+                console.log(response.data.item_po)
+                // console.log('newdataview',newData)
                 const newData = JSON.parse(response.data.item_po)
                 const resData = JSON.parse(response.data.vendor_address)
                 const resDelivery = JSON.parse(response.data.delivery_address)
@@ -177,15 +182,14 @@ export const useGrnView = () => {
                 dispatch(getVendorAdress(resData))
                 dispatch(getDEliveryAdress(resDelivery))
                 const mainPrice = JSON.parse(response.data.maindata)
-                // console.log('newdataview',newData)
                 const newDataUpdata = newData.map((item: any) => {
                     const element = {
                         line_no: item.line_no,
                         pr_no: item.pr_no,
                         po_line: item.po_line,
                         po_no: item.po_no,
-                        grn_line : item.grn_line, 
-                        mrn_no : item.mir_no===0? null:item.mir_no,
+                        grn_line: item.grn_line,
+                        mrn_no: item.mir_no === 0 ? null : item.mir_no,
                         material_no: item.material_no,
                         material_name: item.material_name,
                         material_unit: item.material_unit,
@@ -195,6 +199,14 @@ export const useGrnView = () => {
                         material_qty: item.material_qty,
                         material_text: item.material_text,
                         total_amount: item.total_amount,
+                        cost_center: item.cost_center,
+                        expense_gl: item.expense_gl,
+                        hsn: item.hsn,
+                        internal_order: item.internal_order,
+                        inventory_gl: item.inventory_gl,
+                        tax: item.tax,
+                        tax_gl: item.tax_gl,
+                        tax_rate: item.tax_rate,
                     }
                     return element
                 })
@@ -216,10 +228,18 @@ export const useGrnView = () => {
                         material_qty: item.original_qty_po,
                         material_text: item.material_text,
                         total_amount: item.total_amount,
+                        cost_center: item.cost_center,
+                        expense_gl: item.expense_gl,
+                        hsn: item.hsn,
+                        internal_order: item.internal_order,
+                        inventory_gl: item.inventory_gl,
+                        tax: item.tax,
+                        tax_gl: item.tax_gl,
+                        tax_rate: item.tax_rate,
                     }
                     return element
                 })
-               
+
                 dispatch(getMainData(mainPrice))
                 dispatch(getData(newDataUpdata))
                 // use for orignal po data 
@@ -228,8 +248,8 @@ export const useGrnView = () => {
             } catch (error) {
                 soundError?.play()
                 console.log(error)
-                toast.error('Enter Correct GRN No.',{position:'top-center'})
-                
+                toast.error('Enter Correct GRN No.', { position: 'top-center' })
+
             }
 
         }
@@ -251,15 +271,16 @@ export const useGrnView = () => {
             dispatch(getMainData(mainDataMain))
             dispatch(getVendorAdress(resData))
             dispatch(getDEliveryAdress(resDelivery))
+            console.log(resDelivery, 'newdatavoew')
 
             const newDataUpdata = newData.map((item: any, index: number) => {
-            
+
                 const element = {
                     line_no: item.line_no,
                     pr_no: item.pr_no,
                     po_line: item.po_line,
-                    po_no:item.po_no,
-                    grn_line: index+1,
+                    po_no: item.po_no,
+                    grn_line: index + 1,
                     material_no: item.material_no,
                     material_name: item.material_name,
                     material_unit: item.material_unit,
@@ -269,59 +290,67 @@ export const useGrnView = () => {
                     material_qty: item.material_qty,
                     material_text: item.material_text,
                     total_amount: item.total_amount,
+                    cost_center: item.cost_center,
+                    expense_gl: item.expense_gl,
+                    hsn: item.hsn,
+                    internal_order: item.internal_order,
+                    inventory_gl: item.inventory_gl,
+                    tax: item.tax,
+                    tax_gl: item.tax_gl,
+                    tax_rate: item.tax_rate,
                 }
                 return element
             })
-           
-                dispatch(getData(newDataUpdata))
-                // Used for Quantity check to the original Quantity
-                const remmodeData:datatype[] = removeDuplicates(newDataUpdata)
-                const totalQty= TotalQuantity(newDataUpdata)
-                dispatch(getTotalQuantity(totalQty))
-                dispatch(getOrignalData(remmodeData));
+
+            dispatch(getData(newDataUpdata))
+            // Used for Quantity check to the original Quantity
+            const remmodeData: datatype[] = removeDuplicates(newDataUpdata)
+            const totalQty = TotalQuantity(newDataUpdata)
+            dispatch(getTotalQuantity(totalQty))
+            dispatch(getOrignalData(remmodeData));
         } catch (error) {
             // console.log('error',error)
             soundError?.play()
-            toast.error('Enter correct PO no',{position:'top-center'})
+            toast.error('Enter correct PO no', { position: 'top-center' })
         }
     }
 
     function removeDuplicates(originalData: datatype[]): datatype[] {
         const uniqueItems: Record<string, datatype> = {};
         const result: datatype[] = [];
-    
+
         originalData.forEach(item => {
             const key = `${item.po_line}-${item.po_no}`;
-    
+
             if (!uniqueItems[key]) {
                 uniqueItems[key] = { ...item };
                 result.push(uniqueItems[key]);
-            } 
+            }
         });
-    
+
         return result;
     }
-    
+
     function TotalQuantity(originalData: datatype[]): datatype[] {
         const uniqueItems: Record<string, datatype> = {};
         const result: datatype[] = [];
 
-        const orignalDa= [...originalData]
-        
+        const orignalDa = [...originalData]
+
         orignalDa.forEach(item => {
             const key = `${item.po_line}-${item.po_no}`;
-    
+
             if (!uniqueItems[key]) {
                 uniqueItems[key] = { ...item };
                 result.push(uniqueItems[key]);
             } else {
                 const existingItem = uniqueItems[key];
-                if (existingItem.material_qty !==null && item.material_qty!== null) {
-                    existingItem.material_qty +=item.material_qty;
+                if (existingItem.material_qty !== null && item.material_qty !== null) {
+                    existingItem.material_qty += item.material_qty;
                 }
             }
         });
-    
+
         return result;
     }
 
@@ -342,8 +371,8 @@ export const useGrnView = () => {
         soundClick?.play()
         setBillingView(`${billingView === 'bview' ? null : 'bview'}`)
 
-    } 
+    }
 
 
-    return { handleViewClick, handleGrnchange, handleInsert, handleInsertPoInGRN, handleUpdateGRN, ResetGRN, handleDelete, handleDelivery, handleVdetails, vendorView, deliveryView, handleBilling, billingView,TotalQuantity}
+    return { handleViewClick, handleGrnchange, handleInsert, handleInsertPoInGRN, handleUpdateGRN, ResetGRN, handleDelete, handleDelivery, handleVdetails, vendorView, deliveryView, handleBilling, billingView, TotalQuantity }
 }

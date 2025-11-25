@@ -34,7 +34,9 @@ export interface DeliveryType {
   email: string,
   company_s_no: null | number,
   company_name: string,
-  company_address: string
+  company_address: string,
+  company_adress_code :string,
+  company : string
 
 }
 

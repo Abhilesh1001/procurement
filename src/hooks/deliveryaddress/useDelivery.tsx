@@ -12,7 +12,7 @@ export const useDelivery=()=>{
 
     const { baseurl, authToken,userId } = useSelector((state: StateProps) => state.counter)
 
-    const [vendor, setVendor] = useState<DeliveryType>({ name: '', phone_no: null, vendor_name: '', gst: '', email: '', address: '',company_s_no:null,company_name:'',company_address:''})
+    const [vendor, setVendor] = useState<DeliveryType>({ name: '', phone_no: null, vendor_name: '', gst: '', email: '', address: '',company_s_no:null,company_name:'',company_address:'',company:'',company_adress_code:''})
     // console.log(vendor)
     
     const [companyId,setCompanyID] = useState<number | null>(null)
@@ -80,7 +80,7 @@ export const useDelivery=()=>{
     const handleCreate=()=>{
         // soundClick?.play()
         setVendor(
-            { name: '', phone_no: null, vendor_name: '', gst: '', email: '', address: '',company_s_no:null,company_name:'',company_address:''}
+            { name: '', phone_no: null, vendor_name: '', gst: '', email: '', address: '',company_s_no:null,company_name:'',company_address:'',company:'',company_adress_code:''}
         )
         setSfcreate('create')
         setChange('')
@@ -96,7 +96,7 @@ export const useDelivery=()=>{
             soundSsuccess?.play()
             console.log(data,"success")
             setVendor(
-                { name: '', phone_no: null, vendor_name: '', gst: '', email: '', address: '',company_s_no:null,company_name:'',company_address:''}
+                { name: '', phone_no: null, vendor_name: '', gst: '', email: '', address: '',company_s_no:null,company_name:'',company_address:'',company:'',company_adress_code:''}
             )
         },
         onError:(error)=>{

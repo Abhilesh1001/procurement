@@ -1,18 +1,17 @@
-
 // hooks 
 import { useState } from "react"
 import { useMutation } from "@tanstack/react-query";
 
 // redux 
 import { useSelector, useDispatch } from 'react-redux'
-import { getData, getPoData, getPoview, getSelectedValue, deletePoLine, getPochange, getUppono, getMainData, getNewPO, getOrignalData,getTotalQuantity,getNewChange,setHiddenALert } from '@/redux/po/poslicer';
+import { getData, getPoData, getPoview, getSelectedValue, deletePoLine, getPochange, getUppono, getMainData, getNewPO, getOrignalData, getTotalQuantity, getNewChange, setHiddenALert } from '@/redux/po/poslicer';
 
 
 // dependences/datatype
 import { pomainall } from '@/components/dataAll/data'
-import { soundClick,soundError,soundSsuccess } from "@/sound/sound";
+import { soundClick, soundError, soundSsuccess } from "@/sound/sound";
 import { toast } from "react-toastify";
-import { posliiceState, StateProps,datatype } from '@/type/type'
+import { posliiceState, StateProps, datatype } from '@/type/type'
 import axios from 'axios';
 
 
@@ -60,7 +59,7 @@ export const usePoview = () => {
             const lastPoLine = data.length > 0 ? data[data.length - 1].po_line || 0 : 0;
 
             const newData = JSON.parse(res.data.item_json)
-            console.log(newData,'newData1')
+            console.log(newData, 'newData1')
             const newDataUpdata = newData.map((item: any, index: number) => {
                 const element = {
                     line_no: item.line_no,
@@ -75,35 +74,35 @@ export const usePoview = () => {
                     material_qty: item.material_qty,
                     material_text: item.material_text,
                     total_amount: item.total_price,
-                    cost_center :item.cost_center,
-                    expense_gl : item.expense_gl,
-                    hsn : item.hsn,
-                    internal_order : item.internal_order,
-                    inventory_gl : item.inventory_gl,
-                    tax : item.tax,
-                    tax_gl : item.tax_gl,
-                    tax_rate : item.tax_rate,
+                    cost_center: item.cost_center,
+                    expense_gl: item.expense_gl,
+                    hsn: item.hsn,
+                    internal_order: item.internal_order,
+                    inventory_gl: item.inventory_gl,
+                    tax: item.tax,
+                    tax_gl: item.tax_gl,
+                    tax_rate: item.tax_rate,
                 }
                 return element
             })
 
-               
+
             if (data[0].pr_no !== null) {
                 const oldData = [...data]
                 const newElem = [...oldData, ...newDataUpdata]
-                const totalQty= TotalQuantity(newElem)
+                const totalQty = TotalQuantity(newElem)
                 dispatch(getTotalQuantity(totalQty))
                 dispatch(getData((newElem)))
                 // used for Quantity chaeck to the orignal Quantity 
                 const oldOrignalData = [...orignalData, ...newDataUpdata];
-                const remmodeData:datatype[] = removeDuplicates(oldOrignalData)
+                const remmodeData: datatype[] = removeDuplicates(oldOrignalData)
                 dispatch(getOrignalData(remmodeData));
 
             } else {
                 dispatch(getData(newDataUpdata))
                 // Used for Quantity check to the original Quantity
-                const remmodeData:datatype[] = removeDuplicates(newDataUpdata)
-                const totalQty= TotalQuantity(newDataUpdata)
+                const remmodeData: datatype[] = removeDuplicates(newDataUpdata)
+                const totalQty = TotalQuantity(newDataUpdata)
                 dispatch(getTotalQuantity(totalQty))
                 dispatch(getOrignalData(remmodeData));
             }
@@ -111,7 +110,7 @@ export const usePoview = () => {
 
         } catch (error) {
             // console.log(error)
-            toast.error('Provide Correct PR no',{position:'top-center'})
+            toast.error('Provide Correct PR no', { position: 'top-center' })
             soundError?.play()
         }
     }
@@ -137,6 +136,7 @@ export const usePoview = () => {
                 })
                 dispatch(getPoData(response.data))
                 const newData = JSON.parse(response.data.item_pr)
+                console.log('linenewdata',newData)
                 const mainPrice = JSON.parse(response.data.maindata)
                 const newDataUpdata = newData.map((item: any) => {
                     const element = {
@@ -147,12 +147,20 @@ export const usePoview = () => {
                         material_no: item.material_no,
                         material_name: item.material_name,
                         material_unit: item.material_unit,
-                        material_price: item.material_price,                 
+                        material_price: item.material_price,
                         material_tax: item.material_tax,
                         total_tax: item.total_tax,
                         material_qty: item.material_qty,
                         material_text: item.material_text,
                         total_amount: item.total_amount,
+                        cost_center: item.cost_center,
+                        expense_gl: item.expense_gl,
+                        hsn: item.hsn,
+                        internal_order: item.internal_order,
+                        inventory_gl: item.inventory_gl,
+                        tax: item.tax,
+                        tax_gl: item.tax_gl,
+                        tax_rate: item.tax_rate,
 
                     }
                     return element
@@ -177,6 +185,14 @@ export const usePoview = () => {
                         material_qty: item.orignaQtyPr,
                         material_text: item.material_text,
                         total_amount: item.total_amount,
+                        cost_center: item.cost_center,
+                        expense_gl: item.expense_gl,
+                        hsn: item.hsn,
+                        internal_order: item.internal_order,
+                        inventory_gl: item.inventory_gl,
+                        tax: item.tax,
+                        tax_gl: item.tax_gl,
+                        tax_rate: item.tax_rate,
 
                     }
                     return element
@@ -187,7 +203,7 @@ export const usePoview = () => {
             } catch (error) {
                 // console.log(error)
                 soundError?.play()
-                toast.error('Enter Correct PO No',{position:'top-center'})
+                toast.error('Enter Correct PO No', { position: 'top-center' })
             }
 
         }
@@ -196,8 +212,8 @@ export const usePoview = () => {
 
     const handleDelete = (index: number) => {
         soundClick?.play()
-        const orignalData = data?.filter((item:any,indexs:number)=>{
-            if (index!==indexs){
+        const orignalData = data?.filter((item: any, indexs: number) => {
+            if (index !== indexs) {
                 return item
             }
         })
@@ -210,7 +226,7 @@ export const usePoview = () => {
 
 
 
-    function newfun(newDataUpdata:any) {
+    function newfun(newDataUpdata: any) {
         const newData = [...newDataUpdata]
         console.log(newData, 'newData')
         const TotalAmount = newData.reduce((acc, item) => {
@@ -220,48 +236,42 @@ export const usePoview = () => {
             return acc
         }, 0)
 
-        const TotalWithTax = newData.reduce((acc,item)=>{
-            if (item.total_tax!==null){
+        const TotalWithTax = newData.reduce((acc, item) => {
+            if (item.total_tax !== null) {
                 acc += item.total_tax
             }
             return acc
-        },0)
+        }, 0)
 
         const TotalTax = newData.reduce((acc, item) => {
-                      console.log(typeof item.material_tax)
-                        if (item.total_amount !== null && item.material_tax !== null) {
-                            acc += item.total_amount * (item.material_tax * 0.01)
-                        }
-                        return acc
-                    }, 0)
-   
-     dispatch(getMainData({ TotalAmount: TotalAmount, TotalWithtax: TotalWithTax, TotalTax: TotalTax }))
+            console.log(typeof item.material_tax)
+            if (item.total_amount !== null && item.material_tax !== null) {
+                acc += item.total_amount * (item.material_tax * 0.01)
+            }
+            return acc
+        }, 0)
+
+        dispatch(getMainData({ TotalAmount: TotalAmount, TotalWithtax: TotalWithTax, TotalTax: TotalTax }))
 
     }
-
-
-
-
-
-
     const handleUpdatePo = (po_no: number) => {
         mutationUpdate.reset()
         soundClick?.play()
-        
+
         dispatch(setHiddenALert(''))
 
 
-        const dataRes  = data.map((item)=>{
+        const dataRes = data.map((item) => {
             // console.log(item)
-            if(item.material_price===0 || item.material_qty===0 || item.material_tax===0 || item.material_text==='' || item.material_tax===null){
+            if (item.material_price === 0 || item.material_qty === 0 || item.material_tax === 0 || item.material_text === '' || item.material_tax === null) {
                 return false
-            }else{
+            } else {
                 return true
             }
         })
-        
-        const resSome =  dataRes.some((res)=>{
-                return res ===false
+
+        const resSome = dataRes.some((res) => {
+            return res === false
         })
 
 
@@ -270,18 +280,18 @@ export const usePoview = () => {
             user: userId,
             maindata: JSON.stringify(mainData)
         }
-       
-        if(!resSome){
-            mutationUpdate.mutate({neaData : newData,po_no:po_no})
-        }else{
+
+        if (!resSome) {
+            mutationUpdate.mutate({ neaData: newData, po_no: po_no })
+        } else {
             soundError?.play()
-            toast.error('Enter all required Fileds',{position:'top-center'})
+            toast.error('Enter all required Fileds', { position: 'top-center' })
         }
     }
 
 
-    const mutationUpdate = useMutation<any,any,any,unknown>({
-        mutationFn : async  (data)=>{
+    const mutationUpdate = useMutation<any, any, any, unknown>({
+        mutationFn: async (data) => {
             // console.log(data)
             return await axios.patch(`${baseurl}mat/createpo/${data.po_no}/`, data.neaData, {
                 headers: {
@@ -289,15 +299,15 @@ export const usePoview = () => {
                 }
             })
         },
-        onSuccess :(data)=>{
+        onSuccess: (data) => {
             dispatch(getUppono(data.data.data.po_no))
             ResetPo()
             dispatch(getNewPO(null))
             soundSsuccess?.play()
         },
-        onError :(error) =>{
-            console.log('error',error)
-        }   
+        onError: (error) => {
+            console.log('error', error)
+        }
 
     })
     // console.log('outside',mutationUpdate.data)
@@ -313,41 +323,41 @@ export const usePoview = () => {
     function removeDuplicates(originalData: datatype[]): datatype[] {
         const uniqueItems: Record<string, datatype> = {};
         const result: datatype[] = [];
-    
+
         originalData.forEach(item => {
             const key = `${item.line_no}-${item.pr_no}`;
-    
+
             if (!uniqueItems[key]) {
                 uniqueItems[key] = { ...item };
                 result.push(uniqueItems[key]);
-            } 
+            }
         });
-    
+
         return result;
     }
-    
+
 
 
     function TotalQuantity(originalData: datatype[]): datatype[] {
         const uniqueItems: Record<string, datatype> = {};
         const result: datatype[] = [];
 
-        const orignalDa= [...originalData]
-        
+        const orignalDa = [...originalData]
+
         orignalDa.forEach(item => {
             const key = `${item.line_no}-${item.pr_no}`;
-    
+
             if (!uniqueItems[key]) {
                 uniqueItems[key] = { ...item };
                 result.push(uniqueItems[key]);
             } else {
                 const existingItem = uniqueItems[key];
-                if (existingItem.material_qty !==null && item.material_qty!== null) {
-                    existingItem.material_qty +=item.material_qty;
+                if (existingItem.material_qty !== null && item.material_qty !== null) {
+                    existingItem.material_qty += item.material_qty;
                 }
             }
         });
-    
+
         return result;
     }
 
@@ -361,7 +371,7 @@ export const usePoview = () => {
         setVendorView(`${vendorView === 'view' ? null : 'view'}`)
     }
 
-   
-    
-    return { handlePoview, handlePochange, handleViewClick, handleInsert, handleDelete, handleInsertPrInpo, handleUpdatePo, ResetPo,TotalQuantity,handleDelivery,vendorView,deliveryView,handleVdetails,mutationUpdate }
+
+
+    return { handlePoview, handlePochange, handleViewClick, handleInsert, handleDelete, handleInsertPrInpo, handleUpdatePo, ResetPo, TotalQuantity, handleDelivery, vendorView, deliveryView, handleVdetails, mutationUpdate }
 }

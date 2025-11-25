@@ -22,16 +22,17 @@ const DeliveryAdress = () => {
 
     let deliveryAddress: DeliveryType = {
         s_no: null,
+        address: '',
+        company_address: '',
+        company_name: '',
+        company_s_no: null,
+        company_adress_code :'',
+        email: '',
+        gst: '',
         name: '',
         phone_no: null,
         vendor_name: '',
-        address: '',
-        gst: '',
-        email: '',
-        company_s_no: null,
-        company_name: '',
-        company_address: ''
-
+        company :''
     };
     console.log(podata.delivery_address, 'podata');
 
@@ -67,7 +68,8 @@ const DeliveryAdress = () => {
                     company_s_no : data.data.company_s_no,
                     company_name : data.data.company_name,
                     company_address : data.data.company_address,
-
+                    company_adress_code : data.data.company_adress_code,
+                    company : data.data.company,
                     // company_address : data.data.company_address,
                 }
 
@@ -86,6 +88,10 @@ const DeliveryAdress = () => {
                 <thead className='sticky top-0 z-1  h-10 bg-base-200'>
                     <tr>
                         <th>Delivery Id</th>
+                        <th>Company</th>
+                        <th>Company Code</th>
+                        
+
                         <th>Name</th>
                             <th>Phone No</th>
                             <th>Name</th>
@@ -100,7 +106,13 @@ const DeliveryAdress = () => {
 
                             {selectedValue === 'PO' ? <DumyInput indum={deliveryAddress.s_no !== null && deliveryAddress.s_no !== undefined ? deliveryAddress.s_no : ''} /> : <input type="number" className="input input-bordered input-sm max-w-xs text-sm w-24" onChange={(e) => addressDetails(e)} />}
                         </td>
-                        { <><td> <DumyInput indum={selectedValue === 'PO' ? deliveryAddress.name : devAdress.name} /></td>
+                        { <>
+                        <td> <DumyInput indum={selectedValue === 'PO' ? deliveryAddress.company : devAdress.company} />
+                        </td>
+                        <td> <DumyInput indum={selectedValue === 'PO' ? deliveryAddress.company_adress_code : devAdress.company_adress_code} />
+                        </td>
+                        <td> <DumyInput indum={selectedValue === 'PO' ? deliveryAddress.name : devAdress.name} />
+                        </td>
                             <td> <DumyInput indum={selectedValue === 'PO' ? deliveryAddress.phone_no : devAdress.phone_no} />  </td>
                             <td><DumyInput indum={selectedValue === 'PO' ? deliveryAddress.vendor_name : devAdress.vendor_name} /></td>
                             <td><DumyInput indum={selectedValue === 'PO' ? deliveryAddress.address : devAdress.address} /></td>

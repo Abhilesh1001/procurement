@@ -2,13 +2,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import {grnmainall } from '@/components/dataAll/data'
-import { CounterStateGRN,vendorType,datatype,grndataType,mainType,billDetails} from '@/type/grn/grntype'
+import { CounterStateGRN,vendorType,datatype,grndataType,mainType,billDetails,deliveryddressType} from '@/type/grn/grntype'
 
 
 
 const initialState: CounterStateGRN = {
-    deliveryadress:{s_no : null, name: '', phone_no: null, vendor_name: '', address: '', gst: '', email: '' },
-    vendoradress :{s_no:null, name: '', phone_no: null, vendor_name: '', address: '', gst: '', email: '' },
+    deliveryadress:{s_no : null, name: '', phone_no: null, vendor_name: '', address: '', gst: '', email: '',company_address:'',company_name:'',company_s_no:null,company:'',company_adress_code:'' },
+    vendoradress :{s_no:null, name: '', phone_no: null, vendor_name: '', address: '', gst: '', email: '',code:'',days:'',description:'',gl_account:'',vendor_code:''},
     data :grnmainall, 
     billData : {bill_date:null,bill_no : null,delivery_note:null,transporter_name:null,way_bill:null},
     grndata : {grn_no:null,time:'',item_po:'',vendor_address:'',delivery_address:'',user:null,maindata:'',billing:''},
@@ -31,7 +31,7 @@ export const grnSlice = createSlice({
   name: 'grnslicer',
   initialState,
   reducers: {
-    getDEliveryAdress: (state, action: PayloadAction<vendorType>) => {
+    getDEliveryAdress: (state, action: PayloadAction<deliveryddressType>) => {
       state.deliveryadress = action.payload
     },
     getVendorAdress : (state, action: PayloadAction<vendorType>) => {
