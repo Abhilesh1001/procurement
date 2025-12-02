@@ -27,7 +27,7 @@ export const useIrn =() =>{
         soundClick?.play()
         dispatch(getSelectedValue(e.target.value))
         dispatch(getMainData({ TotalAmount: 0, TotalWithtax: 0, TotalTax: 0 }))
-        dispatch(getVendorAdress({ name: '', phone_no: null, vendor_name: '', address: '', gst: '', email: '' }))
+        dispatch(getVendorAdress({ name: '', phone_no: null, vendor_name: '', address: '', gst: '', email: '',vendor_code:'',code :'',description :'',days :'',gl_account :'' }))
         dispatch(getIrnOrignalData(irnmainall))
         dispatch(getOrignalData(irnmainall))
         dispatch(getUpirno(null))

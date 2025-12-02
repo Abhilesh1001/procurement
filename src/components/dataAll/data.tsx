@@ -29,7 +29,14 @@ export const grnmainall = [{ line_no: null, pr_no: null, po_line: null, po_no: n
 
 
 export const irnmainall = [{
-  line_no: null, pr_no: null, po_line: null, po_no: null, grn_line: null, grn_no: null, irn_line: null, material_name: '', material_no: null, material_unit: '', material_price: null, material_tax: null, total_tax: null, material_qty: null, material_text: '', total_amount: null,
+  line_no: null, pr_no: null, po_line: null, po_no: null, grn_line: null, grn_no: null, irn_line: null, material_name: '', material_no: null, material_unit: '', material_price: null, material_tax: null, total_tax: null, material_qty: null, material_text: '', total_amount: null,cost_center: '',
+                    expense_gl: '',
+                    hsn: '',
+                    internal_order: '',
+                    inventory_gl: '',
+                    tax: '',
+                    tax_gl: '',
+                    tax_rate: '',
   billing: {
     bill_date: '',
     bill_no: '',

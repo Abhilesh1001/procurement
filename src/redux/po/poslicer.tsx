@@ -6,7 +6,7 @@ import {pomainall } from '@/components/dataAll/data'
 
 
 const initialState: CounterStatePo = {
-    deliveryadress:{ name: '', phone_no: null, vendor_name: '', address: '', gst: '', email: '',company_address:'',company_name:'',company_s_no:null },
+    deliveryadress:{ name: '', phone_no: null, vendor_name: '', address: '', gst: '', email: '',company_address:'',company_name:'',company_s_no:null,company:'',company_adress_code :''},
     vendoradress :{ name: '', phone_no: null, vendor_name: '', address: '', gst: '', email: '',code : '',description : '',days :'',gl_account: '',vendor_code : ''},
     data :pomainall, 
     podata : {po_no:null,time:'',item_pr:'',vendor_address:'',delivery_address:'',user:null,maindata:''},

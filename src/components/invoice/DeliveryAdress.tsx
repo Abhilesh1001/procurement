@@ -2,8 +2,7 @@
 import React, { useEffect, useState, memo } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 // typeScript 
-import { StateProps, posliiceState, DeliveryType } from '@/type/type'
-import { grnsliiceState, datatype } from "@/type/grn/grntype"
+import {  irnsliiceState } from '@/type/irn/irn'
 
 // redux 
 
@@ -12,7 +11,7 @@ import DumyInput from '../dummyinput/DumyInput'
 
 
 const DeliveryAdress = () => {
-    const { data, grnpoview, selectedValue, mainData, billData, orignalData, deliveryadress } = useSelector((state: grnsliiceState) => state.grnslice)
+     const { deliveryadress} = useSelector((state: irnsliiceState) => state.irnSlice)
 
 
 

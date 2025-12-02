@@ -5,7 +5,8 @@ import { memo } from 'react'
 
 // component 
 import VendorDetails from '@/components/invoice/Vendor'
-import DeliveryAdress from '@/components/purchaseorder/DeliveryAdress'
+import DeliveryAdress from '@/components/invoice/DeliveryAdress'
+
 import SelectionHeader from '@/components/invoice/Selection'
 import IrnTable from '@/components/invoice/IrnTable'
 
@@ -71,6 +72,8 @@ const InvoiceReceipt = () => {
                   <th scope="col" ><div className='ml-2 mr-2'>Delivery Note</div></th>
                   <th scope="col" ><div className='ml-2 mr-2'>Transporter Name</div></th>
                   <th scope="col" ><div className='ml-2 mr-2'>Way Bill</div></th>
+                  <th scope="col" ><div className='ml-2 mr-2'>Cost Center</div></th>
+                  <th scope="col" ><div className='ml-2 mr-2'>Internal Order</div></th>
                   <th scope="col" ><div className='ml-2 mr-2'></div></th>
                 </tr>
               </thead>

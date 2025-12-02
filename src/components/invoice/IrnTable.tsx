@@ -40,6 +40,9 @@ const {data,irnview,irndata} = useSelector((state:irnsliiceState)=>state.irnSlic
                 <td ><DumyInput indum={item.billing.delivery_note} /></td>
                 <td ><DumyInput indum={item.billing.transporter_name} /></td>
                 <td ><DumyInput indum={item.billing.way_bill} /></td>
+                <td ><DumyInput indum={item.cost_center} /></td>
+                <td ><DumyInput indum={item.internal_order} /></td>
+              
             </tr>
         })}
 
