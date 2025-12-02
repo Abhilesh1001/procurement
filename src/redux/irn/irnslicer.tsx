@@ -3,10 +3,11 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { irnmainall } from '@/components/dataAll/data'
 import { CounterStateIRN, vendorType, datatype, irndataType, mainType, billDetails } from '@/type/irn/irn'
+import { deliveryddressType } from '@/type/grn/grntype'
 
 const initialState: CounterStateIRN = {
-  deliveryadress: { s_no: null, name: '', phone_no: null, vendor_name: '', address: '', gst: '', email: '' },
-  vendoradress: { s_no: null, name: '', phone_no: null, vendor_name: '', address: '', gst: '', email: '' },
+  deliveryadress: { s_no: null, name: '', phone_no: null, vendor_name: '', address: '', gst: '', email: '',company:'',company_adress_code :'',company_address:'',company_name:'',company_s_no:null},
+  vendoradress: { s_no: null, name: '', phone_no: null, vendor_name: '', address: '', gst: '', email: '',code :'',description :'',days :'',gl_account :'',vendor_code : ''},
   data: irnmainall,
   billData: { bill_date: null, bill_no: null, delivery_note: null, transporter_name: null, way_bill: null },
   irndata: { mir_no: null, time: '', item_grn: '', vendor_address: '', delivery_address: '', user: null, maindata: '', billing: '' },
@@ -30,7 +31,7 @@ export const irnSlice = createSlice({
   name: 'grnslicer',
   initialState,
   reducers: {
-    getDEliveryAdress: (state, action: PayloadAction<vendorType>) => {
+    getDEliveryAdress: (state, action: PayloadAction<deliveryddressType>) => {
       state.deliveryadress = action.payload
     },
     getVendorAdress: (state, action: PayloadAction<vendorType>) => {
